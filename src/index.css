@@ -159,6 +159,14 @@ body {
 .nav-link:hover { color: var(--gold); }
 .nav-link:hover::after { width: 100%; }
 
+/* Active route NavLink — added by react-router NavLink className */
+.nav-link-active {
+  color: var(--gold) !important;
+}
+.nav-link-active::after {
+  width: 100% !important;
+}
+
 /* ── BUTTONS ───────────────────────────────────────────────────── */
 .btn-gold {
   display: inline-block;
@@ -264,6 +272,46 @@ body {
 }
 .gallery-zoom-icon {
   transition: opacity 0.3s;
+}
+
+/* ── MASONRY (Gallery page) ────────────────────────────────────── */
+.masonry-grid {
+  column-count: 3;
+  column-gap: 14px;
+}
+.masonry-item {
+  display: block;
+  width: 100%;
+  margin-bottom: 14px;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+@media (max-width: 900px) {
+  .masonry-grid { column-count: 2; }
+}
+@media (max-width: 520px) {
+  .masonry-grid { column-count: 1; }
+}
+
+/* ── REELS GRID (Videos page) ──────────────────────────────────── */
+.reels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+@media (max-width: 600px) {
+  .reels-grid {
+    grid-auto-flow: column;
+    grid-auto-columns: 75%;
+    grid-template-columns: unset;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 14px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .reels-grid > * { scroll-snap-align: start; }
 }
 
 .lightbox {
