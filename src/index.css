@@ -2,66 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── REFERENCE-STYLE PREMIUM CATERING THEME ──────────────────────
-   Inspired by omsreesaifoods.com:
-   - cream as the dominant background
-   - dark warm sections for contrast (hero, footer, CTA)
-   - red primary, gold accent
-   - Playfair Display headings + DM Sans body
-*/
+/* ──────────────────────────────────────────────────────────────────
+   AADHYA CATERERS — LUXURY WEDDING CATERING THEME
+   Bright, cream-dominant, gold-accented, soft-red highlights.
+   No black. No dark UI. Only premium light luxury.
+   Headings: Playfair Display    Body: DM Sans
+   ────────────────────────────────────────────────────────────────── */
 
 :root {
-  /* Surfaces — cream / light luxury */
-  --background:  #FFF7E5;   /* default page bg */
-  --card-bg:     #FFFBEC;   /* cream cards */
-  --cream:       #FFF7E5;
-  --cream-2:     #FFF1D6;
-  --cream-3:     #EFE3CB;
+  /* Light luxury surfaces */
+  --background:    #FFF7E5;
+  --ivory:         #FFFBF2;
+  --cream:         #FFF7E5;
+  --cream-warm:    #FBEFD6;
+  --beige:         #F4E4C9;
+  --rose-cream:    #FCEEE8;
+  --card-bg:       #FFFFFF;
 
-  /* Foreground / dark warm tones */
-  --ink:         #221F1F;
-  --ink-soft:    #4A4444;
-  --dark:        #221F1F;
-  --dark-2:      #2A2424;
-  --dark-3:      #1A1717;
-  --darker:      #0D0B0B;
+  /* Warm "ink" tones (NEVER pure black) */
+  --ink:           #3B2A1F;
+  --ink-soft:      #6B5544;
+  --ink-mute:      #8C7763;
 
-  /* Brand primary — deep red / maroon (reference style) */
-  --primary:     #B62121;
-  --primary-dark:#7A1F1F;
+  /* Soft elegant red CTA */
+  --primary:       #C0392B;
+  --primary-dark:  #962E22;
 
-  /* Gold accent (muted, premium — not neon) */
-  --gold:        #C9A857;
-  --gold-light:  #E0C68A;
-  --gold-dark:   #B8923D;
-  --gold-deep:   #8B6B2A;
+  /* Deep luxury maroon (footer / CTA banner) */
+  --maroon:        #6B1F1F;
+  --maroon-deep:   #4A1414;
 
-  /* RGB tuples for rgba() usage */
-  --gold-rgb:    201,168,87;
-  --gold-deep-rgb: 139,107,42;
-  --cream-rgb:   255,247,229;
-  --dark-rgb:    34,31,31;
-  --dark2-rgb:   42,36,36;
-  --primary-rgb: 182,33,33;
+  /* Gold accents */
+  --gold:          #C9A14A;
+  --gold-light:    #E5C77F;
+  --gold-rich:     #B8923D;
+  --gold-deep:     #8B6B2A;
+  --gold-pale:     #FBF6E8;
+
+  /* Rose accents */
+  --rose-100:      #FCEEE8;
+  --rose-200:      #F6D3CA;
+  --rose-300:      #E8A29C;
+
+  /* RGB tuples (for rgba()) */
+  --gold-rgb:        201,161,74;
+  --gold-light-rgb:  229,199,127;
+  --gold-deep-rgb:   139,107,42;
+  --cream-rgb:       255,247,229;
+  --ivory-rgb:       255,251,242;
+  --ink-rgb:         59,42,31;
+  --primary-rgb:     192,57,43;
+  --maroon-rgb:      107,31,31;
 
   /* Shadows */
-  --shadow-premium: 0 8px 32px rgba(var(--dark-rgb), 0.12);
-  --shadow-gold:    0 4px 20px rgba(var(--gold-rgb), 0.30);
-  --shadow-card:    0 4px 16px rgba(var(--dark-rgb), 0.06);
+  --shadow-premium: 0 18px 50px rgba(var(--gold-deep-rgb), 0.18);
+  --shadow-gold:    0 10px 30px rgba(var(--gold-rgb), 0.35);
+  --shadow-card:    0 8px 28px rgba(var(--gold-deep-rgb), 0.10);
+  --shadow-soft:    0 4px 18px rgba(var(--gold-deep-rgb), 0.08);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
-  background-color: var(--background);
+  background: var(--cream);
   color: var(--ink);
   font-family: 'DM Sans', system-ui, sans-serif;
   font-weight: 400;
@@ -72,182 +76,155 @@ body {
 
 /* ── PRELOADER ─────────────────────────────────────────────────── */
 .preloader {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: var(--background);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  position: fixed; inset: 0; z-index: 9999;
+  background: linear-gradient(135deg, #FFFBF2 0%, #FFF7E5 50%, #FBEFD6 100%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
   gap: 24px;
 }
-
 .preloader-logo {
-  height: 90px;
+  height: 110px;
   object-fit: contain;
-  filter: drop-shadow(0 4px 20px rgba(var(--gold-rgb), 0.35));
-  animation: preloaderPulse 1.2s ease-in-out infinite alternate;
+  filter: drop-shadow(0 6px 24px rgba(var(--gold-deep-rgb), 0.30));
+  animation: preloaderPulse 1.4s ease-in-out infinite alternate;
 }
-
 @keyframes preloaderPulse {
-  from { opacity: 0.7; transform: scale(0.97); }
-  to   { opacity: 1;   transform: scale(1); }
+  from { opacity: 0.78; transform: scale(0.97); }
+  to   { opacity: 1;    transform: scale(1.02); }
 }
-
 .preloader-bar {
-  width: 180px;
-  height: 2px;
-  background: rgba(var(--gold-rgb), 0.18);
-  border-radius: 2px;
-  overflow: hidden;
+  width: 220px; height: 2px;
+  background: rgba(var(--gold-deep-rgb), 0.18);
+  border-radius: 2px; overflow: hidden;
 }
-
 .preloader-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold-dark));
+  background: linear-gradient(90deg, var(--gold-deep), var(--gold), var(--gold-light), var(--gold), var(--gold-deep));
   background-size: 200% 100%;
-  animation: shimmerBar 1.2s linear infinite;
+  animation: shimmerBar 1.4s linear infinite;
   border-radius: 2px;
 }
-
 @keyframes shimmerBar {
   0%   { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
 
-/* ── SCROLL TO TOP ─────────────────────────────────────────────── */
+/* ── SCROLL-TO-TOP ─────────────────────────────────────────────── */
 .scroll-top-btn {
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
+  position: fixed; bottom: 90px; right: 20px;
   z-index: 300;
-  width: 46px;
-  height: 46px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  border: none;
+  width: 48px; height: 48px;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold) 50%, var(--gold-rich));
+  border: 1px solid rgba(var(--gold-deep-rgb), 0.35);
   border-radius: 50%;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--cream);
-  font-size: 1.1rem;
-  box-shadow: 0 4px 16px rgba(var(--primary-rgb), 0.35);
+  display: flex; align-items: center; justify-content: center;
+  color: #FFFBF2;
+  font-size: 1.15rem;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(var(--gold-deep-rgb), 0.35);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 .scroll-top-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 22px rgba(var(--primary-rgb), 0.45);
+  box-shadow: 0 12px 30px rgba(var(--gold-deep-rgb), 0.50);
 }
 
 /* ── ORNAMENTAL DIVIDERS ───────────────────────────────────────── */
 .gold-divider {
-  width: 80px;
-  height: 2px;
+  width: 80px; height: 2px;
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
   margin: 0 auto;
 }
 .gold-divider-left {
-  width: 80px;
-  height: 2px;
+  width: 80px; height: 2px;
   background: linear-gradient(90deg, var(--gold), transparent);
 }
 
-/* Filigree-style divider: line ✦ line — premium catering brochure feel */
+/* Filigree divider: line ✦ ❀ ✦ line */
 .ornament-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  margin: 14px auto 18px;
-  color: var(--gold-dark);
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px;
+  margin: 16px auto 20px;
+  color: var(--gold-deep);
 }
 .ornament-divider::before,
 .ornament-divider::after {
   content: '';
-  flex: 0 0 60px;
+  flex: 0 0 70px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(var(--gold-rgb), 0.65), transparent);
+  background: linear-gradient(90deg, transparent, rgba(var(--gold-deep-rgb), 0.65), transparent);
 }
 .ornament-divider .ornament-symbol {
-  font-size: 0.85rem;
-  letter-spacing: 0.4em;
-  color: var(--gold-dark);
-  opacity: 0.95;
-}
-
-/* On dark sections, use lighter gold for divider visibility */
-.dark-section .ornament-divider,
-section[style*="rgb(34, 31, 31)"] .ornament-divider,
-section[style*="#221F1F"] .ornament-divider,
-section[style*="#1A1717"] .ornament-divider {
-  color: var(--gold);
-}
-.dark-section .ornament-divider::before,
-.dark-section .ornament-divider::after {
-  background: linear-gradient(90deg, transparent, rgba(var(--gold-rgb), 0.7), transparent);
+  font-size: 0.95rem;
+  letter-spacing: 0.45em;
+  color: var(--gold-deep);
+  font-family: 'Playfair Display', serif;
 }
 
 /* ── SECTION HELPERS ───────────────────────────────────────────── */
-.section-pad {
-  padding: 90px 0;
-}
-@media (max-width: 768px) {
-  .section-pad { padding: 64px 0; }
-}
+.section-pad      { padding: 100px 0; }
+@media (max-width: 768px) { .section-pad { padding: 70px 0; } }
 
-/* Default section title (used on dark sections — gold) */
-.section-title {
-  font-family: 'Playfair Display', serif;
-  color: var(--gold);
-  font-weight: 700;
-  letter-spacing: -0.005em;
-}
-
-.section-subtitle {
-  font-family: 'DM Sans', sans-serif;
-  color: rgba(var(--cream-rgb), 0.85);
-  font-size: 1.02rem;
-  line-height: 1.7;
-}
-
-/* Italic Playfair "kicker" — replaces the script font.
-   On DARK sections it uses gold; on CREAM sections it switches to primary red. */
 .section-kicker {
   font-family: 'Playfair Display', serif;
   font-style: italic;
-  font-size: clamp(1rem, 1.6vw, 1.18rem);
-  color: var(--gold);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  color: var(--primary);
   letter-spacing: 0.02em;
   font-weight: 500;
   line-height: 1.4;
 }
+.section-title {
+  font-family: 'Playfair Display', serif;
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+.section-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  color: rgba(var(--ink-rgb), 0.78);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
 
-/* ── CREAM (light luxury) SECTION ──────────────────────────────── */
+/* ── CREAM SECTION (default) ───────────────────────────────────── */
 .cream-section {
   background:
-    radial-gradient(circle at 12% 18%, rgba(var(--gold-rgb), 0.06), transparent 35%),
-    radial-gradient(circle at 88% 82%, rgba(var(--primary-rgb), 0.04), transparent 35%),
-    linear-gradient(to bottom, #FFF7E5 0%, #FFF1D6 100%);
+    radial-gradient(circle at 12% 18%, rgba(var(--gold-rgb), 0.10), transparent 35%),
+    radial-gradient(circle at 88% 82%, rgba(var(--primary-rgb), 0.05), transparent 35%),
+    linear-gradient(to bottom, #FFFBF2 0%, #FFF7E5 100%);
   color: var(--ink);
   position: relative;
 }
-.cream-section .section-title    { color: var(--ink); }
-.cream-section .section-subtitle { color: rgba(var(--dark-rgb), 0.78); }
-.cream-section .section-kicker   { color: var(--primary); }
-.cream-section p                 { color: rgba(var(--dark-rgb), 0.85); }
-.cream-section .ornament-divider { color: var(--gold-dark); }
-.cream-section .ornament-divider::before,
-.cream-section .ornament-divider::after {
-  background: linear-gradient(90deg, transparent, rgba(var(--gold-deep-rgb), 0.55), transparent);
+
+/* ── BEIGE / WARMER ALT SECTION ────────────────────────────────── */
+.beige-section {
+  background:
+    radial-gradient(circle at 80% 20%, rgba(var(--gold-rgb), 0.14), transparent 40%),
+    radial-gradient(circle at 15% 85%, rgba(var(--gold-light-rgb), 0.18), transparent 40%),
+    linear-gradient(135deg, #FBEFD6 0%, #F4E4C9 50%, #FBEFD6 100%);
+  color: var(--ink);
+  position: relative;
 }
 
-/* Subtle decorative pattern for cream sections */
-.cream-section::before {
+/* ── ROSE-CREAM (testimonials) ─────────────────────────────────── */
+.rose-section {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(var(--gold-rgb), 0.10), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(232, 162, 156, 0.18), transparent 40%),
+    linear-gradient(135deg, #FCEEE8 0%, #FFF7E5 50%, #FCEEE8 100%);
+  color: var(--ink);
+  position: relative;
+}
+
+/* Subtle decorative diagonal pattern overlay (used by sections) */
+.cream-section::before,
+.beige-section::before,
+.rose-section::before {
   content: '';
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background-image: repeating-linear-gradient(
     45deg,
     transparent,
@@ -258,82 +235,86 @@ section[style*="#1A1717"] .ornament-divider {
   pointer-events: none;
 }
 
-/* ── DARK SECTION HELPER ───────────────────────────────────────── */
-.dark-section {
-  background: linear-gradient(135deg, var(--dark-3), var(--dark));
-  color: rgba(var(--cream-rgb), 0.92);
+/* ── MAROON LUXURY SECTION (CTA banner) ────────────────────────── */
+.maroon-section {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(var(--gold-rgb), 0.20), transparent 40%),
+    radial-gradient(circle at 88% 82%, rgba(var(--gold-light-rgb), 0.18), transparent 40%),
+    linear-gradient(135deg, #6B1F1F 0%, #4A1414 100%);
+  color: #FFFBF2;
   position: relative;
 }
-.dark-section .section-title    { color: var(--gold); }
-.dark-section .section-kicker   { color: var(--gold); }
-.dark-section .section-subtitle { color: rgba(var(--cream-rgb), 0.85); }
+.maroon-section .section-title    { color: var(--gold-light); }
+.maroon-section .section-kicker   { color: var(--gold-light); }
+.maroon-section .section-subtitle { color: rgba(var(--cream-rgb), 0.92); }
+.maroon-section .ornament-divider { color: var(--gold-light); }
+.maroon-section .ornament-divider::before,
+.maroon-section .ornament-divider::after {
+  background: linear-gradient(90deg, transparent, rgba(var(--gold-light-rgb), 0.7), transparent);
+}
 
 /* ── SCROLLBAR ─────────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--cream-2); }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--cream-warm); }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--gold-dark), var(--gold-deep));
-  border-radius: 4px;
+  background: linear-gradient(180deg, var(--gold-light), var(--gold), var(--gold-rich));
+  border-radius: 5px;
+  border: 2px solid var(--cream-warm);
 }
-::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--gold), var(--gold-deep));
+}
 
-/* ── TOP INFO BAR ──────────────────────────────────────────────── */
+/* ── TOP INFO BAR (warm gold gradient — NO black) ──────────────── */
 .top-bar {
   width: 100%;
-  background: linear-gradient(90deg, var(--darker), var(--dark) 50%, var(--darker));
-  border-bottom: 1px solid rgba(var(--gold-rgb), 0.20);
+  background: linear-gradient(90deg, #FBEFD6 0%, #F4E4C9 50%, #FBEFD6 100%);
+  border-bottom: 1px solid rgba(var(--gold-deep-rgb), 0.25);
   font-family: 'DM Sans', sans-serif;
   font-size: 0.78rem;
   letter-spacing: 0.04em;
-  color: rgba(var(--cream-rgb), 0.85);
+  color: var(--ink-soft);
 }
 .top-bar-inner {
-  max-width: 1280px;
-  margin: 0 auto;
+  max-width: 1280px; margin: 0 auto;
   padding: 9px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex; align-items: center; justify-content: space-between;
   gap: 16px;
 }
 .top-bar a {
-  color: rgba(var(--cream-rgb), 0.85);
+  color: var(--ink-soft);
   text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  display: inline-flex; align-items: center; gap: 6px;
   transition: color 0.2s;
 }
-.top-bar a:hover { color: var(--gold); }
-.top-bar .tb-info { display: flex; gap: 22px; flex-wrap: wrap; }
+.top-bar a:hover { color: var(--primary); }
+.top-bar .tb-info   { display: flex; gap: 22px; flex-wrap: wrap; }
 .top-bar .tb-social { display: flex; gap: 10px; }
 .top-bar .tb-social a {
-  width: 26px; height: 26px;
-  border: 1px solid rgba(var(--gold-rgb), 0.40);
+  width: 28px; height: 28px;
+  border: 1px solid rgba(var(--gold-deep-rgb), 0.40);
   border-radius: 50%;
-  display: inline-flex;
-  align-items: center; justify-content: center;
-  color: var(--gold);
-  background: rgba(var(--gold-rgb), 0.06);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--gold-deep);
+  background: rgba(var(--gold-rgb), 0.10);
+  transition: all 0.25s;
 }
 .top-bar .tb-social a:hover {
-  background: rgba(var(--gold-rgb), 0.18);
-  border-color: var(--gold);
-  color: var(--gold-light);
+  background: var(--gold);
+  border-color: var(--gold-deep);
+  color: #FFFBF2;
+  transform: translateY(-2px);
 }
+@media (max-width: 768px) { .top-bar { display: none; } }
 
-@media (max-width: 768px) {
-  .top-bar { display: none; }
-}
-
-/* ── NAVBAR ────────────────────────────────────────────────────── */
+/* ── NAVBAR LINKS ──────────────────────────────────────────────── */
 .nav-link {
   position: relative;
   font-family: 'DM Sans', sans-serif;
   font-size: 0.92rem;
-  font-weight: 500;
-  color: rgba(var(--cream-rgb), 0.92);
-  letter-spacing: 0.04em;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.05em;
   transition: color 0.3s;
   text-decoration: none;
   padding: 4px 0;
@@ -342,174 +323,190 @@ section[style*="#1A1717"] .ornament-divider {
 .nav-link::after {
   content: '';
   position: absolute;
-  bottom: -4px;
-  left: 50%;
+  bottom: -6px; left: 50%;
   transform: translateX(-50%);
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  transition: width 0.35s;
+  width: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--gold-deep), var(--gold), transparent);
+  transition: width 0.4s ease;
 }
-.nav-link:hover { color: var(--gold); }
+.nav-link:hover { color: var(--primary); }
 .nav-link:hover::after { width: 100%; }
-
-/* Active route NavLink — applied via react-router NavLink className */
-.nav-link-active        { color: var(--gold) !important; }
+.nav-link-active        { color: var(--primary) !important; }
 .nav-link-active::after { width: 100% !important; }
 
 /* ── BUTTONS ───────────────────────────────────────────────────── */
 
-/* Primary red — main CTA (matches reference) */
+/* Primary — soft elegant red */
 .btn-primary {
-  display: inline-block;
-  padding: 13px 32px;
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 14px 34px;
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  color: #FFF7E5;
+  color: #FFFBF2;
   font-family: 'DM Sans', sans-serif;
   font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   cursor: pointer;
   border: none;
   border-radius: 999px;
-  transition: all 0.35s;
-  box-shadow: 0 6px 18px rgba(var(--primary-rgb), 0.28);
+  transition: all 0.4s cubic-bezier(0.2, 0.7, 0.3, 1);
+  box-shadow: 0 8px 22px rgba(var(--primary-rgb), 0.30);
   text-decoration: none;
+  position: relative;
+  overflow: hidden;
 }
+.btn-primary::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #D9483A, var(--primary));
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.btn-primary > * { position: relative; z-index: 1; }
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(var(--primary-rgb), 0.45);
-  background: linear-gradient(135deg, #C42626, var(--primary));
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(var(--primary-rgb), 0.50);
 }
+.btn-primary:hover::before { opacity: 1; }
 
-/* Gold pill — accent CTA (matches reference's gold gradient button) */
+/* Gold — premium accent CTA */
 .btn-gold {
-  display: inline-block;
-  padding: 13px 32px;
-  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-  color: var(--dark);
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 14px 34px;
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-rich) 100%);
+  color: #3B2A1F;
   font-family: 'DM Sans', sans-serif;
   font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   cursor: pointer;
   border: none;
   border-radius: 999px;
-  transition: all 0.35s;
-  box-shadow: 0 6px 18px rgba(var(--gold-rgb), 0.32);
+  transition: all 0.4s cubic-bezier(0.2, 0.7, 0.3, 1);
+  box-shadow: 0 8px 22px rgba(var(--gold-deep-rgb), 0.30);
   text-decoration: none;
+  position: relative;
+  overflow: hidden;
 }
 .btn-gold:hover {
-  background: linear-gradient(135deg, var(--gold-light), var(--gold));
-  transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(var(--gold-rgb), 0.50);
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #F2D795 0%, var(--gold-light) 50%, var(--gold) 100%);
+  box-shadow: 0 14px 32px rgba(var(--gold-deep-rgb), 0.50);
 }
 
-/* Outline gold — secondary on dark sections */
+/* Outline gold */
 .btn-outline-gold {
-  display: inline-block;
-  padding: 12px 31px;
-  background: transparent;
-  color: var(--gold);
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 13px 33px;
+  background: rgba(var(--gold-rgb), 0.06);
+  color: var(--gold-deep);
   font-family: 'DM Sans', sans-serif;
   font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   cursor: pointer;
-  border: 1px solid var(--gold);
+  border: 1.5px solid var(--gold-deep);
   border-radius: 999px;
-  transition: all 0.35s;
+  transition: all 0.4s;
   text-decoration: none;
 }
 .btn-outline-gold:hover {
-  background: rgba(var(--gold-rgb), 0.14);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(var(--gold-rgb), 0.22);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: #3B2A1F;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(var(--gold-deep-rgb), 0.30);
+  border-color: var(--gold);
 }
 
-/* On cream sections, outline buttons need the gold-deep tone for legibility */
-.cream-section .btn-outline-gold {
-  color: var(--gold-deep);
-  border-color: var(--gold-deep);
-}
-.cream-section .btn-outline-gold:hover {
-  background: rgba(var(--gold-deep-rgb), 0.10);
-}
-
-/* Outline primary — secondary on cream sections */
+/* Outline primary */
 .btn-outline-primary {
-  display: inline-block;
-  padding: 12px 31px;
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 13px 33px;
   background: transparent;
   color: var(--primary);
   font-family: 'DM Sans', sans-serif;
   font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   cursor: pointer;
-  border: 1px solid var(--primary);
+  border: 1.5px solid var(--primary);
   border-radius: 999px;
-  transition: all 0.35s;
+  transition: all 0.4s;
   text-decoration: none;
 }
 .btn-outline-primary:hover {
-  background: rgba(var(--primary-rgb), 0.08);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(var(--primary-rgb), 0.22);
+  background: var(--primary);
+  color: #FFFBF2;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(var(--primary-rgb), 0.40);
+}
+
+/* Buttons on maroon section need light variants */
+.maroon-section .btn-outline-gold {
+  color: var(--gold-light);
+  border-color: var(--gold-light);
+  background: transparent;
+}
+.maroon-section .btn-outline-gold:hover {
+  background: var(--gold);
+  color: #3B2A1F;
+  border-color: var(--gold-light);
 }
 
 /* ── CARDS ─────────────────────────────────────────────────────── */
-
-/* "gold-card" name kept for backward compat in JSX — used on dark sections */
-.gold-card {
-  border: 1px solid rgba(var(--gold-rgb), 0.28);
-  background: linear-gradient(135deg, rgba(var(--dark2-rgb), 0.95), rgba(var(--dark-rgb), 0.98));
-  border-radius: 14px;
-  transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
-}
-.gold-card:hover {
-  border-color: rgba(var(--gold-rgb), 0.65);
-  transform: translateY(-6px);
-  box-shadow: 0 16px 42px rgba(0,0,0,0.45);
-}
-
-/* Cream card with soft shadow — used on cream sections */
 .cream-card {
-  background: var(--card-bg);
-  border: 1px solid rgba(var(--gold-deep-rgb), 0.20);
-  border-radius: 14px;
+  background: #FFFFFF;
+  border: 1px solid rgba(var(--gold-deep-rgb), 0.18);
+  border-radius: 16px;
   box-shadow: var(--shadow-card);
-  transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s;
+  transition: transform 0.4s cubic-bezier(0.2,0.7,0.3,1),
+              box-shadow 0.4s, border-color 0.4s;
+  overflow: hidden;
 }
 .cream-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
   border-color: rgba(var(--gold-rgb), 0.55);
+  box-shadow: var(--shadow-premium);
+}
+
+/* Backwards-compatible alias used by JSX */
+.gold-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(var(--gold-deep-rgb), 0.20);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.4s cubic-bezier(0.2,0.7,0.3,1),
+              box-shadow 0.4s, border-color 0.4s;
+  overflow: hidden;
+}
+.gold-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--gold);
   box-shadow: var(--shadow-premium);
 }
 
 /* ── HERO FRAME ────────────────────────────────────────────────── */
 .hero-gold-frame {
-  position: absolute;
-  inset: 24px;
-  border: 1px solid rgba(var(--gold-rgb), 0.28);
+  position: absolute; inset: 28px;
+  border: 1px solid rgba(var(--gold-deep-rgb), 0.30);
   pointer-events: none;
   z-index: 3;
+  border-radius: 4px;
 }
 .hero-gold-frame::before {
   content: '';
-  position: absolute;
-  inset: 8px;
-  border: 1px solid rgba(var(--gold-rgb), 0.12);
+  position: absolute; inset: 10px;
+  border: 1px solid rgba(var(--gold-deep-rgb), 0.18);
+  border-radius: 4px;
 }
 .hero-corner {
   position: absolute;
-  width: 32px;
-  height: 32px;
-  border-color: var(--gold);
+  width: 38px; height: 38px;
+  border-color: var(--gold-deep);
   border-style: solid;
   border-width: 0;
   opacity: 0.85;
@@ -522,12 +519,14 @@ section[style*="#1A1717"] .ornament-divider {
 /* ── STAT COUNTER ──────────────────────────────────────────────── */
 .stat-number {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
   font-weight: 700;
-  color: var(--gold);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-deep));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   line-height: 1;
 }
-.cream-section .stat-number { color: var(--primary); }
 
 /* ── GALLERY ───────────────────────────────────────────────────── */
 .gallery-item {
@@ -536,14 +535,14 @@ section[style*="#1A1717"] .ornament-divider {
   border-radius: 8px;
 }
 .gallery-item:hover .gallery-overlay {
-  background: rgba(var(--dark-rgb), 0.55) !important;
+  background: linear-gradient(180deg, rgba(107,31,31,0.10) 0%, rgba(107,31,31,0.55) 100%) !important;
 }
 .gallery-item:hover .gallery-zoom-icon {
   opacity: 1 !important;
   transform: scale(1) !important;
 }
 .gallery-zoom-icon {
-  transition: opacity 0.35s, transform 0.35s;
+  transition: opacity 0.4s, transform 0.4s;
   transform: scale(0.85);
 }
 
@@ -583,13 +582,10 @@ section[style*="#1A1717"] .ornament-divider {
 }
 
 .lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.94);
+  position: fixed; inset: 0;
+  background: rgba(59,42,31,0.95);
   z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   cursor: pointer;
 }
 
@@ -598,133 +594,98 @@ section[style*="#1A1717"] .ornament-divider {
   position: relative;
   aspect-ratio: 9/16;
   overflow: hidden;
-  border: 1px solid rgba(var(--gold-rgb), 0.32);
-  border-radius: 10px;
+  border: 2px solid rgba(var(--gold-deep-rgb), 0.30);
+  border-radius: 12px;
   cursor: pointer;
-  transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
+  transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
+  background: #FFF;
+  box-shadow: var(--shadow-card);
 }
 .video-card:hover {
-  transform: translateY(-4px) scale(1.02);
-  border-color: rgba(var(--gold-rgb), 0.7);
-  box-shadow: 0 14px 36px rgba(0,0,0,0.45);
+  transform: translateY(-6px) scale(1.02);
+  border-color: var(--gold);
+  box-shadow: var(--shadow-premium);
 }
 
 /* ── MENU TABS ─────────────────────────────────────────────────── */
 .menu-tab {
   flex-shrink: 0;
-  padding: 10px 22px;
-  border: 1px solid rgba(var(--gold-rgb), 0.35);
-  background: transparent;
-  color: rgba(var(--cream-rgb), 0.78);
+  padding: 11px 24px;
+  border: 1.5px solid rgba(var(--gold-deep-rgb), 0.40);
+  background: rgba(255,255,255,0.6);
+  color: var(--ink-soft);
   font-family: 'DM Sans', sans-serif;
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.10em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.35s;
   white-space: nowrap;
   border-radius: 999px;
 }
 .menu-tab:hover, .menu-tab.active {
-  background: linear-gradient(135deg, rgba(var(--gold-rgb), 0.22), rgba(var(--gold-rgb), 0.10));
-  border-color: var(--gold);
-  color: var(--gold);
-}
-
-/* On cream sections */
-.cream-section .menu-tab {
-  border-color: rgba(var(--gold-deep-rgb), 0.4);
-  color: rgba(var(--dark-rgb), 0.7);
-}
-.cream-section .menu-tab:hover,
-.cream-section .menu-tab.active {
-  background: linear-gradient(135deg, rgba(var(--gold-rgb), 0.20), rgba(var(--gold-rgb), 0.08));
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
   border-color: var(--gold-deep);
-  color: var(--gold-deep);
+  color: #3B2A1F;
+  box-shadow: var(--shadow-soft);
 }
 
 /* ── TESTIMONIAL ───────────────────────────────────────────────── */
 .testimonial-card {
-  padding: 50px 44px;
-  background: linear-gradient(135deg, var(--dark-2), var(--dark));
-  border: 1px solid rgba(var(--gold-rgb), 0.28);
-  border-radius: 14px;
-  box-shadow: 0 14px 38px rgba(0,0,0,0.30);
+  padding: 56px 50px;
+  background: linear-gradient(135deg, #FFFBF2, #FFFFFF);
+  border: 1px solid rgba(var(--gold-deep-rgb), 0.25);
+  border-radius: 16px;
+  box-shadow: var(--shadow-premium);
   position: relative;
 }
 .testimonial-card::before,
 .testimonial-card::after {
   content: '';
   position: absolute;
-  width: 22px;
-  height: 22px;
-  border: 1px solid var(--gold);
-  opacity: 0.6;
+  width: 28px; height: 28px;
+  border: 1.5px solid var(--gold-deep);
+  opacity: 0.55;
 }
-.testimonial-card::before { top: 12px; left: 12px;     border-right: none; border-bottom: none; }
-.testimonial-card::after  { bottom: 12px; right: 12px; border-left: none;  border-top: none; }
+.testimonial-card::before { top: 14px;    left: 14px;    border-right: none; border-bottom: none; }
+.testimonial-card::after  { bottom: 14px; right: 14px;   border-left: none;  border-top: none; }
 
 /* ── FORM ──────────────────────────────────────────────────────── */
 .form-input {
   width: 100%;
   padding: 14px 18px;
-  background: rgba(var(--dark2-rgb), 0.6);
-  border: 1px solid rgba(var(--gold-rgb), 0.30);
-  color: var(--cream);
+  background: #FFFFFF;
+  border: 1.5px solid rgba(var(--gold-deep-rgb), 0.30);
+  color: var(--ink);
   font-family: 'DM Sans', sans-serif;
   font-size: 0.96rem;
   outline: none;
-  border-radius: 8px;
-  transition: border-color 0.3s, background 0.3s;
+  border-radius: 10px;
+  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
 }
 .form-input:focus {
-  border-color: var(--gold);
-  background: rgba(var(--dark2-rgb), 0.92);
-}
-.form-input::placeholder {
-  color: rgba(var(--cream-rgb), 0.50);
-}
-.form-input option {
-  background: var(--dark-2);
-  color: var(--cream);
-}
-
-/* On cream sections, form inputs flip to light */
-.cream-section .form-input {
-  background: #FFFBEC;
-  color: var(--ink);
-  border-color: rgba(var(--gold-deep-rgb), 0.35);
-}
-.cream-section .form-input::placeholder {
-  color: rgba(var(--dark-rgb), 0.45);
-}
-.cream-section .form-input:focus {
   border-color: var(--primary);
-  background: #FFF;
+  box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.10);
 }
+.form-input::placeholder { color: rgba(var(--ink-rgb), 0.45); }
 
 /* ── WHATSAPP FLOAT ────────────────────────────────────────────── */
 .whatsapp-float {
   position: fixed;
-  bottom: 88px;
-  right: 20px;
-  width: 56px;
-  height: 56px;
+  bottom: 24px; right: 20px;
+  width: 58px; height: 58px;
   background: #25D366;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 22px rgba(37,211,102,0.45);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 26px rgba(37,211,102,0.45);
   z-index: 400;
   transition: transform 0.3s, box-shadow 0.3s;
   text-decoration: none;
 }
 .whatsapp-float::after {
   content: '';
-  position: absolute;
-  inset: -4px;
+  position: absolute; inset: -4px;
   border-radius: 50%;
   border: 2px solid rgba(37,211,102,0.5);
   animation: whatsappPing 1.8s ease-out infinite;
@@ -735,19 +696,17 @@ section[style*="#1A1717"] .ornament-divider {
   100% { transform: scale(1.3);  opacity: 0;   }
 }
 .whatsapp-float:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 26px rgba(37,211,102,0.6);
+  transform: scale(1.10);
+  box-shadow: 0 8px 30px rgba(37,211,102,0.65);
 }
 
 /* ── MOBILE STICKY BAR ─────────────────────────────────────────── */
 .mobile-sticky {
   display: none;
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 0; left: 0; right: 0;
   z-index: 400;
-  box-shadow: 0 -6px 22px rgba(0,0,0,0.4);
+  box-shadow: 0 -8px 24px rgba(var(--gold-deep-rgb), 0.20);
 }
 
 /* ── PATTERN OVERLAY ───────────────────────────────────────────── */
@@ -755,16 +714,16 @@ section[style*="#1A1717"] .ornament-divider {
   background-image: repeating-linear-gradient(
     45deg,
     transparent,
-    transparent 40px,
-    rgba(var(--gold-rgb), 0.022) 40px,
-    rgba(var(--gold-rgb), 0.022) 80px
+    transparent 50px,
+    rgba(var(--gold-deep-rgb), 0.05) 50px,
+    rgba(var(--gold-deep-rgb), 0.05) 100px
   );
 }
 
-/* Selection color */
+/* Selection */
 ::selection {
   background: rgba(var(--primary-rgb), 0.85);
-  color: #fff;
+  color: #FFFBF2;
 }
 
 /* ── RESPONSIVE ────────────────────────────────────────────────── */
@@ -775,17 +734,15 @@ section[style*="#1A1717"] .ornament-divider {
 
   .hero-gold-frame { display: none; }
 
-  /* Gallery: 2-col on mobile, no span */
   .gallery-grid-mobile { grid-template-columns: repeat(2, 1fr) !important; }
   .gallery-span-none   { grid-column: span 1 !important; }
-  .gallery-img-tall    { height: 180px !important; }
-  .gallery-img-short   { height: 180px !important; }
+  .gallery-img-tall    { height: 200px !important; }
+  .gallery-img-short   { height: 200px !important; }
 
-  /* Scroll-to-top: above whatsapp */
   .scroll-top-btn  { bottom: 150px; right: 16px; }
-  .whatsapp-float  { bottom: 80px;  right: 16px; width: 50px; height: 50px; }
+  .whatsapp-float  { bottom: 84px;  right: 16px; width: 52px; height: 52px; }
 
-  .testimonial-card { padding: 34px 24px; }
+  .testimonial-card { padding: 38px 26px; }
 }
 
 @media (min-width: 769px) {

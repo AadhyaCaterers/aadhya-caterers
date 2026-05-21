@@ -3,14 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { TESTIMONIALS } from '../data/testimonials';
 import { FadeUp, StarRating } from './animations';
 
-// Reusable ornamental divider
 const Ornament = ({ maxWidth = 280 }) => (
   <div className="ornament-divider" style={{ maxWidth }}>
     <span className="ornament-symbol">✦ ❀ ✦</span>
   </div>
 );
 
-// Auto-rotating client testimonials carousel
+// Auto-rotating client testimonials — bright rose-cream background, white luxury card
 export default function Testimonials() {
   const [current, setCurrent] = useState(0);
 
@@ -20,13 +19,17 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section className="section-pad" id="testimonials" style={{ background: '#221F1F', position: 'relative', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(/img2.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.05 }} />
-
+    <section className="section-pad rose-section" id="testimonials">
       <div style={{ maxWidth: 1000, margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
         <FadeUp style={{ textAlign: 'center', marginBottom: 50 }}>
           <p className="section-kicker">Happy Clients</p>
-          <h2 className="section-title" style={{ fontSize: 'clamp(1.8rem,3.2vw,2.6rem)', marginTop: 4, marginBottom: 4 }}>What Our Clients Say</h2>
+          <h2 className="section-title" style={{ fontSize: 'clamp(1.9rem, 3.4vw, 2.8rem)', marginTop: 4 }}>
+            What Our <span style={{
+              background: 'linear-gradient(135deg, #B8923D, #C9A14A, #8B6B2A)',
+              WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent',
+              fontStyle: 'italic',
+            }}>Clients</span> Say
+          </h2>
           <Ornament />
         </FadeUp>
 
@@ -36,16 +39,46 @@ export default function Testimonials() {
             initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -24 }}
             transition={{ duration: 0.55 }}
             className="testimonial-card"
-            style={{ borderRadius: 4, textAlign: 'center' }}
+            style={{ textAlign: 'center' }}
           >
-            <div style={{ fontFamily: '"Playfair Display", serif', fontSize: '4.5rem', color: '#C9A857', marginBottom: 8, opacity: 0.35, lineHeight: 0.6 }}>“</div>
-            <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '1.2rem', color: 'rgba(255,247,229,0.92)', lineHeight: 1.85, marginBottom: 26, fontStyle: 'italic' }}>
+            <div style={{
+              fontFamily: '"Playfair Display", serif',
+              fontSize: '5.5rem',
+              color: '#C9A14A',
+              marginBottom: 4,
+              opacity: 0.45,
+              lineHeight: 0.6,
+            }}>"</div>
+            <p style={{
+              fontFamily: '"DM Sans", sans-serif',
+              fontSize: '1.22rem',
+              color: '#3B2A1F',
+              lineHeight: 1.85,
+              marginBottom: 28,
+              fontStyle: 'italic',
+              fontWeight: 400,
+            }}>
               {TESTIMONIALS[current].text}
             </p>
             <StarRating count={TESTIMONIALS[current].rating} />
-            <div style={{ marginTop: 18 }}>
-              <p style={{ fontFamily: '"Playfair Display",serif', color: '#C9A857', fontSize: '1.05rem', fontWeight: 600 }}>{TESTIMONIALS[current].name}</p>
-              <p style={{ fontFamily: '"DM Sans", sans-serif', color: 'rgba(255,247,229,0.6)', fontSize: '0.78rem', letterSpacing: '0.18em', marginTop: 4, textTransform: 'uppercase' }}>
+            <div style={{ marginTop: 20 }}>
+              <p style={{
+                fontFamily: '"Playfair Display", serif',
+                color: '#3B2A1F',
+                fontSize: '1.15rem',
+                fontWeight: 700,
+              }}>
+                {TESTIMONIALS[current].name}
+              </p>
+              <p style={{
+                fontFamily: '"DM Sans", sans-serif',
+                color: '#C0392B',
+                fontSize: '0.78rem',
+                letterSpacing: '0.20em',
+                marginTop: 6,
+                textTransform: 'uppercase',
+                fontWeight: 700,
+              }}>
                 {TESTIMONIALS[current].event}
               </p>
             </div>
@@ -58,7 +91,17 @@ export default function Testimonials() {
               key={i}
               onClick={() => setCurrent(i)}
               aria-label={`Show testimonial ${i + 1}`}
-              style={{ width: i === current ? 32 : 10, height: 10, borderRadius: 5, background: i === current ? '#C9A857' : 'rgba(201,168,87,0.3)', border: 'none', cursor: 'pointer', transition: 'all 0.35s' }}
+              style={{
+                width: i === current ? 36 : 10,
+                height: 10,
+                borderRadius: 5,
+                background: i === current
+                  ? 'linear-gradient(90deg, #C9A14A, #8B6B2A)'
+                  : 'rgba(139,107,42,0.30)',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.4s',
+              }}
             />
           ))}
         </div>

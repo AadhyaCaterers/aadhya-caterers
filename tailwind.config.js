@@ -1,56 +1,73 @@
 /** @type {import('tailwindcss').Config} */
-// Theme inspired by premium Hyderabadi catering reference styling
-// (cream-dominant background + warm-dark sections + gold accent + red primary)
+// LUXURY WEDDING CATERING THEME
+// Bright, cream-dominant, gold-accented, soft-red CTAs.
+// NO black, NO dark UI — only premium light luxury palette.
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        // Surface
-        background: '#FFF7E5', // page default cream
-        card:       '#FFFBEC', // cream cards
-        cream:      '#FFF1D6',
-        'cream-2':  '#FFF1D6',
-        'cream-3':  '#EFE3CB',
+        // ── Light luxury surfaces ────────────────────────────────
+        background:  '#FFF7E5', // page default cream
+        ivory:       '#FFFBF2', // lightest
+        cream:       '#FFF7E5', // main page bg
+        'cream-warm':'#FBEFD6', // alt section
+        beige:       '#F4E4C9', // warmer beige section
+        'rose-cream':'#FCEEE8', // soft rose for testimonials
+        card:        '#FFFFFF', // pure white cards on cream
 
-        // Foreground / dark
-        ink:        '#221F1F',
-        dark:       '#221F1F',
-        'dark-2':   '#2A2424',
-        'dark-3':   '#1A1717',
+        // ── Warm dark "ink" tones (NOT black) ────────────────────
+        ink:         '#3B2A1F', // body text
+        'ink-soft':  '#6B5544',
+        'ink-mute':  '#8C7763',
 
-        // Primary red (deep maroon, like reference brand color)
-        primary:    '#B62121',
-        'primary-dark': '#7A1F1F',
+        // ── Soft elegant red CTA ─────────────────────────────────
+        primary:     '#C0392B',
+        'primary-dark':'#962E22',
 
-        // Gold accent (muted reference gold, not neon)
+        // ── Deep luxury maroon (footer / CTA banner) ─────────────
+        maroon:      '#6B1F1F',
+        'maroon-deep':'#4A1414',
+
+        // ── Gold accents ─────────────────────────────────────────
         gold: {
           50:  '#FBF6E8',
           100: '#F4E9C8',
           200: '#EAD49A',
-          300: '#E0C68A',
+          300: '#E5C77F',
           400: '#D2B273',
-          500: '#C9A857',
+          500: '#C9A14A', // primary gold
           600: '#B8923D',
           700: '#8B6B2A',
           800: '#6E5320',
           900: '#4F3B17',
         },
 
-        // Legacy alias kept for backward compat (so any older references keep working)
-        maroon: '#B62121',
+        // Soft rose accent
+        rose: {
+          100: '#FCEEE8',
+          200: '#F6D3CA',
+          300: '#E8A29C',
+        },
       },
       fontFamily: {
-        // Reference-style premium catering typography
-        serif:   ['"Playfair Display"', 'Georgia', 'serif'],   // headings
-        sans:    ['"DM Sans"', 'system-ui', 'sans-serif'],     // body / UI
+        // Premium catering reference typography
+        serif:   ['"Playfair Display"', 'Georgia', 'serif'],
+        sans:    ['"DM Sans"', 'system-ui', 'sans-serif'],
         body:    ['"DM Sans"', 'system-ui', 'sans-serif'],
         display: ['"Playfair Display"', 'Georgia', 'serif'],
       },
       boxShadow: {
-        premium: '0 8px 32px rgba(34,31,31,0.12)',
-        gold:    '0 4px 20px rgba(201,168,87,0.30)',
-        card:    '0 4px 16px rgba(34,31,31,0.06)',
+        premium: '0 18px 50px rgba(139,107,42,0.18)',
+        gold:    '0 10px 30px rgba(201,161,74,0.35)',
+        card:    '0 8px 28px rgba(107,85,68,0.10)',
+        soft:    '0 4px 18px rgba(107,85,68,0.08)',
+      },
+      backgroundImage: {
+        'gold-gradient':  'linear-gradient(135deg, #E5C77F 0%, #C9A14A 50%, #B8923D 100%)',
+        'cream-gradient': 'linear-gradient(180deg, #FFFBF2 0%, #FFF7E5 50%, #FBEFD6 100%)',
+        'rose-gradient':  'linear-gradient(135deg, #FCEEE8 0%, #FFF7E5 100%)',
+        'maroon-gradient':'linear-gradient(135deg, #6B1F1F 0%, #4A1414 100%)',
       },
     },
   },
