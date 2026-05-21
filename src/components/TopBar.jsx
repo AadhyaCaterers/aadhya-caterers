@@ -4,7 +4,7 @@ import {
   WHATSAPP_URL, YOUTUBE_URL, INSTAGRAM_URL, FACEBOOK_URL,
 } from '../data/constants';
 
-// Tiny inline icons (kept as JSX so we don't need extra deps for the strip)
+// Tiny inline icons
 const Phone = () => (
   <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24c1.16.39 2.41.6 3.69.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A18 18 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.27.21 2.51.6 3.68a1 1 0 0 1-.25 1.05l-2.23 2.06z"/></svg>
 );
@@ -27,7 +27,7 @@ const IconFB = () => (
   <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg>
 );
 
-// Top contact strip — shown on desktop only (mobile keeps things tight)
+// Soft warm-gold gradient strip — desktop only
 export default function TopBar() {
   return (
     <div className="top-bar">
@@ -36,7 +36,7 @@ export default function TopBar() {
           <a href={`tel:${PHONE_PRIMARY}`}><Phone /> +91 94940 55353</a>
           <a href={`tel:${PHONE_SECONDARY}`}><Phone /> +91 93981 83197</a>
           <a href={`mailto:${EMAIL_PRIMARY}`}><Mail /> {EMAIL_PRIMARY}</a>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'rgba(255,247,229,0.65)' }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#6B5544' }}>
             <Clock /> Mon – Sun · 8:00 AM – 9:00 PM
           </span>
         </div>
