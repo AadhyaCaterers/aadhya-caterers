@@ -18,13 +18,13 @@ export default function Services() {
       />
 
       {/* Intro / hook */}
-      <section style={{ background: '#1a0e02', padding: '80px 0 30px' }}>
+      <section style={{ background: '#221F1F', padding: '80px 0 30px' }}>
         <div style={{ maxWidth: 900, margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
           <FadeUp>
             <p className="section-kicker">Crafted For Every Occasion</p>
             <h2 className="section-title" style={{ fontSize: 'clamp(1.8rem,3.2vw,2.6rem)', marginTop: 4, marginBottom: 4 }}>Eight Signature Services</h2>
             <Ornament />
-            <p style={{ fontFamily: '"Cormorant Garamond"', fontSize: '1.12rem', color: 'rgba(253,246,227,0.8)', marginTop: 16, lineHeight: 1.75 }}>
+            <p style={{ fontFamily: '"DM Sans"', fontSize: '1.12rem', color: 'rgba(255,247,229,0.8)', marginTop: 16, lineHeight: 1.75 }}>
               Each Aadhya service comes with menu design, on-site setup, uniformed staff and complete clean-up — so you only worry about enjoying your event.
             </p>
           </FadeUp>
@@ -32,7 +32,7 @@ export default function Services() {
       </section>
 
       {/* Service cards grid */}
-      <section className="section-pad" style={{ background: '#1a0e02', paddingTop: 30 }}>
+      <section className="section-pad" style={{ background: '#221F1F', paddingTop: 30 }}>
         <div style={{ maxWidth: 1240, margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 28 }}>
             {SERVICES.map((svc, i) => (
@@ -47,13 +47,13 @@ export default function Services() {
                       onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
                       onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                     />
-                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(26,14,2,0.9) 0%, transparent 60%)' }} />
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(34,31,31,0.9) 0%, transparent 60%)' }} />
                     <div style={{
                       position: 'absolute', top: 14, left: 14,
-                      background: 'linear-gradient(135deg,#b8860b,#d4a017,#f2cd25)',
-                      color: '#1a0e02',
+                      background: 'linear-gradient(135deg,#B8923D,#C9A857,#E0C68A)',
+                      color: '#221F1F',
                       padding: '6px 14px',
-                      fontFamily: '"Lato"',
+                      fontFamily: '"DM Sans"',
                       fontSize: '0.7rem',
                       fontWeight: 700,
                       letterSpacing: '0.16em',
@@ -65,17 +65,17 @@ export default function Services() {
                   </div>
 
                   <div style={{ padding: '26px 26px 28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                    <h3 style={{ fontFamily: '"Playfair Display", serif', fontSize: '1.3rem', color: '#d4a017', marginBottom: 10 }}>{svc.title}</h3>
-                    <div style={{ width: 40, height: 1, background: 'rgba(212,160,23,0.5)', marginBottom: 14 }} />
-                    <p style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.02rem', color: 'rgba(253,246,227,0.85)', lineHeight: 1.75, marginBottom: 14 }}>
+                    <h3 style={{ fontFamily: '"Playfair Display", serif', fontSize: '1.3rem', color: '#C9A857', marginBottom: 10 }}>{svc.title}</h3>
+                    <div style={{ width: 40, height: 1, background: 'rgba(201,168,87,0.5)', marginBottom: 14 }} />
+                    <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '1.02rem', color: 'rgba(255,247,229,0.85)', lineHeight: 1.75, marginBottom: 14 }}>
                       {svc.long || svc.desc}
                     </p>
 
                     {svc.features && (
                       <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 22px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
                         {svc.features.map((f) => (
-                          <li key={f} style={{ fontFamily: '"Lato"', fontSize: '0.82rem', color: 'rgba(253,246,227,0.72)' }}>
-                            <span style={{ color: '#d4a017', marginRight: 6 }}>✦</span>{f}
+                          <li key={f} style={{ fontFamily: '"DM Sans"', fontSize: '0.82rem', color: 'rgba(255,247,229,0.72)' }}>
+                            <span style={{ color: '#C9A857', marginRight: 6 }}>✦</span>{f}
                           </li>
                         ))}
                       </ul>
@@ -100,7 +100,7 @@ export default function Services() {
             <p className="section-kicker">How We Work</p>
             <h2 className="section-title" style={{ fontSize: 'clamp(1.8rem,3.2vw,2.6rem)', marginTop: 4, marginBottom: 4 }}>A Seamless 4-Step Experience</h2>
             <Ornament />
-            <p style={{ fontFamily: '"Cormorant Garamond"', fontSize: '1.05rem', maxWidth: 680, margin: '14px auto 0', lineHeight: 1.7 }}>
+            <p style={{ fontFamily: '"DM Sans"', fontSize: '1.05rem', maxWidth: 680, margin: '14px auto 0', lineHeight: 1.7 }}>
               From the first call to the final farewell — our process is designed to keep you stress-free.
             </p>
           </FadeUp>
@@ -116,20 +116,20 @@ export default function Services() {
                 <div className="cream-card" style={{ position: 'relative', padding: '40px 26px 28px', borderRadius: 4 }}>
                   <div style={{
                     position: 'absolute', top: -22, left: 22,
-                    background: 'linear-gradient(135deg,#b8860b,#d4a017,#f2cd25)',
-                    color: '#1a0e02',
+                    background: 'linear-gradient(135deg,#B8923D,#C9A857,#E0C68A)',
+                    color: '#221F1F',
                     width: 44, height: 44,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     fontFamily: '"Playfair Display"',
                     fontWeight: 700, fontSize: '0.95rem',
                     borderRadius: '50%',
-                    boxShadow: '0 6px 16px rgba(138,101,8,0.35)',
+                    boxShadow: '0 6px 16px rgba(139,107,42,0.35)',
                   }}>
                     {s.step}
                   </div>
-                  <h3 style={{ fontFamily: '"Playfair Display", serif', color: '#8a6508', fontSize: '1.18rem', marginBottom: 8 }}>{s.title}</h3>
-                  <div style={{ width: 36, height: 1, background: 'rgba(138,101,8,0.4)', marginBottom: 12 }} />
-                  <p style={{ fontFamily: '"Lato", sans-serif', fontSize: '0.9rem', color: 'rgba(58,36,6,0.78)', lineHeight: 1.7 }}>{s.desc}</p>
+                  <h3 style={{ fontFamily: '"Playfair Display", serif', color: '#8B6B2A', fontSize: '1.18rem', marginBottom: 8 }}>{s.title}</h3>
+                  <div style={{ width: 36, height: 1, background: 'rgba(139,107,42,0.4)', marginBottom: 12 }} />
+                  <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.9rem', color: 'rgba(42,36,36,0.78)', lineHeight: 1.7 }}>{s.desc}</p>
                 </div>
               </FadeIn>
             ))}

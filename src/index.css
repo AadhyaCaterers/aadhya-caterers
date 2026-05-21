@@ -2,20 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── REFERENCE-STYLE PREMIUM CATERING THEME ──────────────────────
+   Inspired by omsreesaifoods.com:
+   - cream as the dominant background
+   - dark warm sections for contrast (hero, footer, CTA)
+   - red primary, gold accent
+   - Playfair Display headings + DM Sans body
+*/
+
 :root {
-  --gold: #d4a017;
-  --gold-light: #f2cd25;
-  --gold-dark: #b8860b;
-  --gold-deep: #8a6508;
-  --cream: #fdf6e3;
-  --cream-2: #f6ecc8;
-  --cream-3: #ede0b8;
-  --dark: #1a0e02;
-  --dark-2: #2d1a06;
-  --dark-3: #0e0700;
-  --dark-brown: #2d1a06;
-  --maroon: #7b1c2a;
-  --ink: #3a2406;
+  /* Surfaces — cream / light luxury */
+  --background:  #FFF7E5;   /* default page bg */
+  --card-bg:     #FFFBEC;   /* cream cards */
+  --cream:       #FFF7E5;
+  --cream-2:     #FFF1D6;
+  --cream-3:     #EFE3CB;
+
+  /* Foreground / dark warm tones */
+  --ink:         #221F1F;
+  --ink-soft:    #4A4444;
+  --dark:        #221F1F;
+  --dark-2:      #2A2424;
+  --dark-3:      #1A1717;
+  --darker:      #0D0B0B;
+
+  /* Brand primary — deep red / maroon (reference style) */
+  --primary:     #B62121;
+  --primary-dark:#7A1F1F;
+
+  /* Gold accent (muted, premium — not neon) */
+  --gold:        #C9A857;
+  --gold-light:  #E0C68A;
+  --gold-dark:   #B8923D;
+  --gold-deep:   #8B6B2A;
+
+  /* RGB tuples for rgba() usage */
+  --gold-rgb:    201,168,87;
+  --gold-deep-rgb: 139,107,42;
+  --cream-rgb:   255,247,229;
+  --dark-rgb:    34,31,31;
+  --dark2-rgb:   42,36,36;
+  --primary-rgb: 182,33,33;
+
+  /* Shadows */
+  --shadow-premium: 0 8px 32px rgba(var(--dark-rgb), 0.12);
+  --shadow-gold:    0 4px 20px rgba(var(--gold-rgb), 0.30);
+  --shadow-card:    0 4px 16px rgba(var(--dark-rgb), 0.06);
 }
 
 * {
@@ -29,9 +61,12 @@ html {
 }
 
 body {
-  background-color: var(--dark);
-  color: var(--cream);
-  font-family: 'Lato', sans-serif;
+  background-color: var(--background);
+  color: var(--ink);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
@@ -40,7 +75,7 @@ body {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: var(--dark);
+  background: var(--background);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,19 +86,19 @@ body {
 .preloader-logo {
   height: 90px;
   object-fit: contain;
-  filter: drop-shadow(0 4px 20px rgba(212,160,23,0.4));
+  filter: drop-shadow(0 4px 20px rgba(var(--gold-rgb), 0.35));
   animation: preloaderPulse 1.2s ease-in-out infinite alternate;
 }
 
 @keyframes preloaderPulse {
-  from { opacity: 0.6; transform: scale(0.97); }
+  from { opacity: 0.7; transform: scale(0.97); }
   to   { opacity: 1;   transform: scale(1); }
 }
 
 .preloader-bar {
-  width: 160px;
+  width: 180px;
   height: 2px;
-  background: rgba(212,160,23,0.15);
+  background: rgba(var(--gold-rgb), 0.18);
   border-radius: 2px;
   overflow: hidden;
 }
@@ -87,24 +122,23 @@ body {
   bottom: 90px;
   right: 20px;
   z-index: 300;
-  width: 44px;
-  height: 44px;
-  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  width: 46px;
+  height: 46px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   border: none;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--dark);
+  color: var(--cream);
   font-size: 1.1rem;
-  box-shadow: 0 4px 16px rgba(212,160,23,0.35);
-  transition: opacity 0.3s, transform 0.3s;
+  box-shadow: 0 4px 16px rgba(var(--primary-rgb), 0.35);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-
 .scroll-top-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(212,160,23,0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(var(--primary-rgb), 0.45);
 }
 
 /* ── ORNAMENTAL DIVIDERS ───────────────────────────────────────── */
@@ -114,82 +148,102 @@ body {
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
   margin: 0 auto;
 }
-
 .gold-divider-left {
   width: 80px;
   height: 2px;
   background: linear-gradient(90deg, var(--gold), transparent);
 }
 
-/* Filigree-style divider: line ✦ line — elegant catering brochure feel */
+/* Filigree-style divider: line ✦ line — premium catering brochure feel */
 .ornament-divider {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 14px;
   margin: 14px auto 18px;
-  color: var(--gold);
+  color: var(--gold-dark);
 }
 .ornament-divider::before,
 .ornament-divider::after {
   content: '';
   flex: 0 0 60px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212,160,23,0.7), transparent);
+  background: linear-gradient(90deg, transparent, rgba(var(--gold-rgb), 0.65), transparent);
 }
 .ornament-divider .ornament-symbol {
   font-size: 0.85rem;
   letter-spacing: 0.4em;
-  color: var(--gold);
+  color: var(--gold-dark);
   opacity: 0.95;
 }
 
-/* On cream backgrounds, swap divider color */
-.cream-section .ornament-divider { color: var(--gold-deep); }
-.cream-section .ornament-divider::before,
-.cream-section .ornament-divider::after {
-  background: linear-gradient(90deg, transparent, rgba(138,101,8,0.55), transparent);
+/* On dark sections, use lighter gold for divider visibility */
+.dark-section .ornament-divider,
+section[style*="rgb(34, 31, 31)"] .ornament-divider,
+section[style*="#221F1F"] .ornament-divider,
+section[style*="#1A1717"] .ornament-divider {
+  color: var(--gold);
+}
+.dark-section .ornament-divider::before,
+.dark-section .ornament-divider::after {
+  background: linear-gradient(90deg, transparent, rgba(var(--gold-rgb), 0.7), transparent);
 }
 
-/* ── SECTION ───────────────────────────────────────────────────── */
+/* ── SECTION HELPERS ───────────────────────────────────────────── */
+.section-pad {
+  padding: 90px 0;
+}
+@media (max-width: 768px) {
+  .section-pad { padding: 64px 0; }
+}
+
+/* Default section title (used on dark sections — gold) */
 .section-title {
   font-family: 'Playfair Display', serif;
   color: var(--gold);
+  font-weight: 700;
+  letter-spacing: -0.005em;
 }
 
 .section-subtitle {
-  font-family: 'Cormorant Garamond', serif;
-  color: var(--cream);
-  opacity: 0.85;
+  font-family: 'DM Sans', sans-serif;
+  color: rgba(var(--cream-rgb), 0.85);
+  font-size: 1.02rem;
+  line-height: 1.7;
 }
 
-.section-pad {
-  padding: 100px 0;
-}
-
+/* Italic Playfair "kicker" — replaces the script font.
+   On DARK sections it uses gold; on CREAM sections it switches to primary red. */
 .section-kicker {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 1.6vw, 1.18rem);
   color: var(--gold);
   letter-spacing: 0.02em;
-  line-height: 1;
+  font-weight: 500;
+  line-height: 1.4;
 }
 
 /* ── CREAM (light luxury) SECTION ──────────────────────────────── */
 .cream-section {
   background:
-    radial-gradient(circle at 12% 18%, rgba(212,160,23,0.06), transparent 35%),
-    radial-gradient(circle at 88% 82%, rgba(212,160,23,0.06), transparent 35%),
-    linear-gradient(to bottom, #fdf6e3 0%, #f6ecc8 100%);
+    radial-gradient(circle at 12% 18%, rgba(var(--gold-rgb), 0.06), transparent 35%),
+    radial-gradient(circle at 88% 82%, rgba(var(--primary-rgb), 0.04), transparent 35%),
+    linear-gradient(to bottom, #FFF7E5 0%, #FFF1D6 100%);
   color: var(--ink);
   position: relative;
 }
-.cream-section .section-title { color: var(--gold-deep); }
-.cream-section .section-subtitle { color: rgba(58,36,6,0.78); opacity: 1; }
-.cream-section .section-kicker { color: var(--gold-deep); }
-.cream-section p { color: rgba(58,36,6,0.85); }
+.cream-section .section-title    { color: var(--ink); }
+.cream-section .section-subtitle { color: rgba(var(--dark-rgb), 0.78); }
+.cream-section .section-kicker   { color: var(--primary); }
+.cream-section p                 { color: rgba(var(--dark-rgb), 0.85); }
+.cream-section .ornament-divider { color: var(--gold-dark); }
+.cream-section .ornament-divider::before,
+.cream-section .ornament-divider::after {
+  background: linear-gradient(90deg, transparent, rgba(var(--gold-deep-rgb), 0.55), transparent);
+}
 
-/* Decorative subtle pattern for cream sections */
+/* Subtle decorative pattern for cream sections */
 .cream-section::before {
   content: '';
   position: absolute;
@@ -198,38 +252,52 @@ body {
     45deg,
     transparent,
     transparent 50px,
-    rgba(138,101,8,0.04) 50px,
-    rgba(138,101,8,0.04) 100px
+    rgba(var(--gold-deep-rgb), 0.04) 50px,
+    rgba(var(--gold-deep-rgb), 0.04) 100px
   );
   pointer-events: none;
 }
 
-/* ── SCROLLBAR ─────────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--dark); }
-::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+/* ── DARK SECTION HELPER ───────────────────────────────────────── */
+.dark-section {
+  background: linear-gradient(135deg, var(--dark-3), var(--dark));
+  color: rgba(var(--cream-rgb), 0.92);
+  position: relative;
+}
+.dark-section .section-title    { color: var(--gold); }
+.dark-section .section-kicker   { color: var(--gold); }
+.dark-section .section-subtitle { color: rgba(var(--cream-rgb), 0.85); }
 
-/* ── TOP INFO BAR (above navbar) ───────────────────────────────── */
+/* ── SCROLLBAR ─────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--cream-2); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--gold-dark), var(--gold-deep));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* ── TOP INFO BAR ──────────────────────────────────────────────── */
 .top-bar {
   width: 100%;
-  background: linear-gradient(90deg, #0e0700, #1a0e02 50%, #0e0700);
-  border-bottom: 1px solid rgba(212,160,23,0.18);
-  font-family: 'Lato', sans-serif;
+  background: linear-gradient(90deg, var(--darker), var(--dark) 50%, var(--darker));
+  border-bottom: 1px solid rgba(var(--gold-rgb), 0.20);
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.78rem;
   letter-spacing: 0.04em;
-  color: rgba(253,246,227,0.85);
+  color: rgba(var(--cream-rgb), 0.85);
 }
 .top-bar-inner {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 8px 24px;
+  padding: 9px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
 }
 .top-bar a {
-  color: rgba(253,246,227,0.85);
+  color: rgba(var(--cream-rgb), 0.85);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -241,16 +309,17 @@ body {
 .top-bar .tb-social { display: flex; gap: 10px; }
 .top-bar .tb-social a {
   width: 26px; height: 26px;
-  border: 1px solid rgba(212,160,23,0.35);
+  border: 1px solid rgba(var(--gold-rgb), 0.40);
   border-radius: 50%;
   display: inline-flex;
   align-items: center; justify-content: center;
   color: var(--gold);
-  background: rgba(212,160,23,0.06);
+  background: rgba(var(--gold-rgb), 0.06);
 }
 .top-bar .tb-social a:hover {
-  background: rgba(212,160,23,0.18);
+  background: rgba(var(--gold-rgb), 0.18);
   border-color: var(--gold);
+  color: var(--gold-light);
 }
 
 @media (max-width: 768px) {
@@ -260,19 +329,20 @@ body {
 /* ── NAVBAR ────────────────────────────────────────────────────── */
 .nav-link {
   position: relative;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.02rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
   font-weight: 500;
-  color: var(--cream);
-  letter-spacing: 0.06em;
+  color: rgba(var(--cream-rgb), 0.92);
+  letter-spacing: 0.04em;
   transition: color 0.3s;
   text-decoration: none;
   padding: 4px 0;
+  text-transform: uppercase;
 }
 .nav-link::after {
   content: '';
   position: absolute;
-  bottom: -3px;
+  bottom: -4px;
   left: 50%;
   transform: translateX(-50%);
   width: 0;
@@ -283,101 +353,149 @@ body {
 .nav-link:hover { color: var(--gold); }
 .nav-link:hover::after { width: 100%; }
 
-/* Active route NavLink — added by react-router NavLink className */
-.nav-link-active {
-  color: var(--gold) !important;
-}
-.nav-link-active::after {
-  width: 100% !important;
-}
+/* Active route NavLink — applied via react-router NavLink className */
+.nav-link-active        { color: var(--gold) !important; }
+.nav-link-active::after { width: 100% !important; }
 
 /* ── BUTTONS ───────────────────────────────────────────────────── */
-.btn-gold {
+
+/* Primary red — main CTA (matches reference) */
+.btn-primary {
   display: inline-block;
-  padding: 13px 30px;
-  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-  color: var(--dark);
-  font-family: 'Lato', sans-serif;
+  padding: 13px 32px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #FFF7E5;
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   cursor: pointer;
   border: none;
+  border-radius: 999px;
   transition: all 0.35s;
-  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-  position: relative;
+  box-shadow: 0 6px 18px rgba(var(--primary-rgb), 0.28);
+  text-decoration: none;
 }
-.btn-gold:hover {
-  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+.btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(212,160,23,0.45);
+  box-shadow: 0 10px 26px rgba(var(--primary-rgb), 0.45);
+  background: linear-gradient(135deg, #C42626, var(--primary));
 }
 
-.btn-outline-gold {
+/* Gold pill — accent CTA (matches reference's gold gradient button) */
+.btn-gold {
   display: inline-block;
-  padding: 12px 29px;
-  background: transparent;
-  color: var(--gold);
-  font-family: 'Lato', sans-serif;
+  padding: 13px 32px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--dark);
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  border-radius: 999px;
+  transition: all 0.35s;
+  box-shadow: 0 6px 18px rgba(var(--gold-rgb), 0.32);
+  text-decoration: none;
+}
+.btn-gold:hover {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(var(--gold-rgb), 0.50);
+}
+
+/* Outline gold — secondary on dark sections */
+.btn-outline-gold {
+  display: inline-block;
+  padding: 12px 31px;
+  background: transparent;
+  color: var(--gold);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   cursor: pointer;
   border: 1px solid var(--gold);
+  border-radius: 999px;
   transition: all 0.35s;
-  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  text-decoration: none;
 }
 .btn-outline-gold:hover {
-  background: rgba(212,160,23,0.12);
+  background: rgba(var(--gold-rgb), 0.14);
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(212,160,23,0.25);
+  box-shadow: 0 6px 18px rgba(var(--gold-rgb), 0.22);
 }
 
-/* On cream sections, outline buttons need darker color */
+/* On cream sections, outline buttons need the gold-deep tone for legibility */
 .cream-section .btn-outline-gold {
   color: var(--gold-deep);
   border-color: var(--gold-deep);
 }
 .cream-section .btn-outline-gold:hover {
-  background: rgba(138,101,8,0.1);
+  background: rgba(var(--gold-deep-rgb), 0.10);
+}
+
+/* Outline primary — secondary on cream sections */
+.btn-outline-primary {
+  display: inline-block;
+  padding: 12px 31px;
+  background: transparent;
+  color: var(--primary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid var(--primary);
+  border-radius: 999px;
+  transition: all 0.35s;
+  text-decoration: none;
+}
+.btn-outline-primary:hover {
+  background: rgba(var(--primary-rgb), 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(var(--primary-rgb), 0.22);
 }
 
 /* ── CARDS ─────────────────────────────────────────────────────── */
+
+/* "gold-card" name kept for backward compat in JSX — used on dark sections */
 .gold-card {
-  border: 1px solid rgba(212,160,23,0.3);
-  background: linear-gradient(135deg, rgba(45,26,6,0.95), rgba(26,14,2,0.98));
+  border: 1px solid rgba(var(--gold-rgb), 0.28);
+  background: linear-gradient(135deg, rgba(var(--dark2-rgb), 0.95), rgba(var(--dark-rgb), 0.98));
+  border-radius: 14px;
   transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
 }
 .gold-card:hover {
-  border-color: rgba(212,160,23,0.65);
+  border-color: rgba(var(--gold-rgb), 0.65);
   transform: translateY(-6px);
-  box-shadow: 0 16px 42px rgba(0,0,0,0.5);
+  box-shadow: 0 16px 42px rgba(0,0,0,0.45);
 }
 
-/* Premium card with double border (cream version) */
+/* Cream card with soft shadow — used on cream sections */
 .cream-card {
-  background: #fffdf4;
-  border: 1px solid rgba(138,101,8,0.22);
-  box-shadow:
-    0 1px 0 rgba(212,160,23,0.18) inset,
-    0 14px 30px rgba(58,36,6,0.08);
+  background: var(--card-bg);
+  border: 1px solid rgba(var(--gold-deep-rgb), 0.20);
+  border-radius: 14px;
+  box-shadow: var(--shadow-card);
   transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s;
 }
 .cream-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(212,160,23,0.55);
-  box-shadow:
-    0 1px 0 rgba(212,160,23,0.4) inset,
-    0 18px 40px rgba(58,36,6,0.18);
+  border-color: rgba(var(--gold-rgb), 0.55);
+  box-shadow: var(--shadow-premium);
 }
 
 /* ── HERO FRAME ────────────────────────────────────────────────── */
 .hero-gold-frame {
   position: absolute;
   inset: 24px;
-  border: 1px solid rgba(212,160,23,0.28);
+  border: 1px solid rgba(var(--gold-rgb), 0.28);
   pointer-events: none;
   z-index: 3;
 }
@@ -385,7 +503,7 @@ body {
   content: '';
   position: absolute;
   inset: 8px;
-  border: 1px solid rgba(212,160,23,0.12);
+  border: 1px solid rgba(var(--gold-rgb), 0.12);
 }
 .hero-corner {
   position: absolute;
@@ -396,10 +514,10 @@ body {
   border-width: 0;
   opacity: 0.85;
 }
-.hero-corner.tl { top: -1px; left: -1px;   border-top-width: 2px; border-left-width: 2px; }
-.hero-corner.tr { top: -1px; right: -1px;  border-top-width: 2px; border-right-width: 2px; }
-.hero-corner.bl { bottom: -1px; left: -1px;  border-bottom-width: 2px; border-left-width: 2px; }
-.hero-corner.br { bottom: -1px; right: -1px; border-bottom-width: 2px; border-right-width: 2px; }
+.hero-corner.tl { top: -1px;    left: -1px;    border-top-width: 2px;    border-left-width: 2px; }
+.hero-corner.tr { top: -1px;    right: -1px;   border-top-width: 2px;    border-right-width: 2px; }
+.hero-corner.bl { bottom: -1px; left: -1px;    border-bottom-width: 2px; border-left-width: 2px; }
+.hero-corner.br { bottom: -1px; right: -1px;   border-bottom-width: 2px; border-right-width: 2px; }
 
 /* ── STAT COUNTER ──────────────────────────────────────────────── */
 .stat-number {
@@ -409,14 +527,16 @@ body {
   color: var(--gold);
   line-height: 1;
 }
+.cream-section .stat-number { color: var(--primary); }
 
 /* ── GALLERY ───────────────────────────────────────────────────── */
 .gallery-item {
   overflow: hidden;
   position: relative;
+  border-radius: 8px;
 }
 .gallery-item:hover .gallery-overlay {
-  background: rgba(26,14,2,0.55) !important;
+  background: rgba(var(--dark-rgb), 0.55) !important;
 }
 .gallery-item:hover .gallery-zoom-icon {
   opacity: 1 !important;
@@ -440,13 +560,8 @@ body {
   -webkit-column-break-inside: avoid;
   page-break-inside: avoid;
 }
-
-@media (max-width: 900px) {
-  .masonry-grid { column-count: 2; }
-}
-@media (max-width: 520px) {
-  .masonry-grid { column-count: 1; }
-}
+@media (max-width: 900px) { .masonry-grid { column-count: 2; } }
+@media (max-width: 520px) { .masonry-grid { column-count: 1; } }
 
 /* ── REELS GRID (Videos page) ──────────────────────────────────── */
 .reels-grid {
@@ -483,44 +598,59 @@ body {
   position: relative;
   aspect-ratio: 9/16;
   overflow: hidden;
-  border: 1px solid rgba(212,160,23,0.3);
-  border-radius: 6px;
+  border: 1px solid rgba(var(--gold-rgb), 0.32);
+  border-radius: 10px;
   cursor: pointer;
   transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
 }
 .video-card:hover {
   transform: translateY(-4px) scale(1.02);
-  border-color: rgba(212,160,23,0.7);
+  border-color: rgba(var(--gold-rgb), 0.7);
   box-shadow: 0 14px 36px rgba(0,0,0,0.45);
 }
 
 /* ── MENU TABS ─────────────────────────────────────────────────── */
 .menu-tab {
   flex-shrink: 0;
-  padding: 9px 22px;
-  border: 1px solid rgba(212,160,23,0.3);
+  padding: 10px 22px;
+  border: 1px solid rgba(var(--gold-rgb), 0.35);
   background: transparent;
-  color: rgba(253,246,227,0.75);
-  font-family: 'Lato', sans-serif;
+  color: rgba(var(--cream-rgb), 0.78);
+  font-family: 'DM Sans', sans-serif;
   font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s;
   white-space: nowrap;
+  border-radius: 999px;
 }
 .menu-tab:hover, .menu-tab.active {
-  background: linear-gradient(135deg, rgba(212,160,23,0.22), rgba(212,160,23,0.1));
+  background: linear-gradient(135deg, rgba(var(--gold-rgb), 0.22), rgba(var(--gold-rgb), 0.10));
   border-color: var(--gold);
   color: var(--gold);
+}
+
+/* On cream sections */
+.cream-section .menu-tab {
+  border-color: rgba(var(--gold-deep-rgb), 0.4);
+  color: rgba(var(--dark-rgb), 0.7);
+}
+.cream-section .menu-tab:hover,
+.cream-section .menu-tab.active {
+  background: linear-gradient(135deg, rgba(var(--gold-rgb), 0.20), rgba(var(--gold-rgb), 0.08));
+  border-color: var(--gold-deep);
+  color: var(--gold-deep);
 }
 
 /* ── TESTIMONIAL ───────────────────────────────────────────────── */
 .testimonial-card {
   padding: 50px 44px;
-  background: linear-gradient(135deg, rgba(45,26,6,0.92), rgba(26,14,2,0.96));
-  border: 1px solid rgba(212,160,23,0.28);
+  background: linear-gradient(135deg, var(--dark-2), var(--dark));
+  border: 1px solid rgba(var(--gold-rgb), 0.28);
+  border-radius: 14px;
+  box-shadow: 0 14px 38px rgba(0,0,0,0.30);
   position: relative;
 }
 .testimonial-card::before,
@@ -532,31 +662,46 @@ body {
   border: 1px solid var(--gold);
   opacity: 0.6;
 }
-.testimonial-card::before { top: 10px; left: 10px; border-right: none; border-bottom: none; }
-.testimonial-card::after  { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+.testimonial-card::before { top: 12px; left: 12px;     border-right: none; border-bottom: none; }
+.testimonial-card::after  { bottom: 12px; right: 12px; border-left: none;  border-top: none; }
 
 /* ── FORM ──────────────────────────────────────────────────────── */
 .form-input {
   width: 100%;
   padding: 14px 18px;
-  background: rgba(45,26,6,0.6);
-  border: 1px solid rgba(212,160,23,0.28);
+  background: rgba(var(--dark2-rgb), 0.6);
+  border: 1px solid rgba(var(--gold-rgb), 0.30);
   color: var(--cream);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.96rem;
   outline: none;
+  border-radius: 8px;
   transition: border-color 0.3s, background 0.3s;
 }
 .form-input:focus {
   border-color: var(--gold);
-  background: rgba(45,26,6,0.9);
+  background: rgba(var(--dark2-rgb), 0.92);
 }
 .form-input::placeholder {
-  color: rgba(253,246,227,0.45);
+  color: rgba(var(--cream-rgb), 0.50);
 }
 .form-input option {
-  background: var(--dark-brown);
+  background: var(--dark-2);
   color: var(--cream);
+}
+
+/* On cream sections, form inputs flip to light */
+.cream-section .form-input {
+  background: #FFFBEC;
+  color: var(--ink);
+  border-color: rgba(var(--gold-deep-rgb), 0.35);
+}
+.cream-section .form-input::placeholder {
+  color: rgba(var(--dark-rgb), 0.45);
+}
+.cream-section .form-input:focus {
+  border-color: var(--primary);
+  background: #FFF;
 }
 
 /* ── WHATSAPP FLOAT ────────────────────────────────────────────── */
@@ -564,8 +709,8 @@ body {
   position: fixed;
   bottom: 88px;
   right: 20px;
-  width: 54px;
-  height: 54px;
+  width: 56px;
+  height: 56px;
   background: #25D366;
   border-radius: 50%;
   display: flex;
@@ -602,7 +747,7 @@ body {
   left: 0;
   right: 0;
   z-index: 400;
-  box-shadow: 0 -6px 22px rgba(0,0,0,0.5);
+  box-shadow: 0 -6px 22px rgba(0,0,0,0.4);
 }
 
 /* ── PATTERN OVERLAY ───────────────────────────────────────────── */
@@ -611,9 +756,15 @@ body {
     45deg,
     transparent,
     transparent 40px,
-    rgba(212,160,23,0.018) 40px,
-    rgba(212,160,23,0.018) 80px
+    rgba(var(--gold-rgb), 0.022) 40px,
+    rgba(var(--gold-rgb), 0.022) 80px
   );
+}
+
+/* Selection color */
+::selection {
+  background: rgba(var(--primary-rgb), 0.85);
+  color: #fff;
 }
 
 /* ── RESPONSIVE ────────────────────────────────────────────────── */
@@ -621,26 +772,20 @@ body {
   .hidden-mobile { display: none !important; }
   .show-mobile   { display: block !important; }
   .mobile-sticky { display: flex !important; }
-  .section-pad   { padding: 70px 0; }
 
-  .hero-gold-frame { inset: 10px; }
+  .hero-gold-frame { display: none; }
 
   /* Gallery: 2-col on mobile, no span */
-  .gallery-grid-mobile {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  .gallery-span-none {
-    grid-column: span 1 !important;
-  }
-  .gallery-img-tall { height: 180px !important; }
-  .gallery-img-short { height: 180px !important; }
+  .gallery-grid-mobile { grid-template-columns: repeat(2, 1fr) !important; }
+  .gallery-span-none   { grid-column: span 1 !important; }
+  .gallery-img-tall    { height: 180px !important; }
+  .gallery-img-short   { height: 180px !important; }
 
   /* Scroll-to-top: above whatsapp */
-  .scroll-top-btn { bottom: 150px; right: 16px; }
-  .whatsapp-float { bottom: 80px; right: 16px; width: 48px; height: 48px; }
+  .scroll-top-btn  { bottom: 150px; right: 16px; }
+  .whatsapp-float  { bottom: 80px;  right: 16px; width: 50px; height: 50px; }
 
   .testimonial-card { padding: 34px 24px; }
-  .hero-gold-frame  { display: none; }
 }
 
 @media (min-width: 769px) {

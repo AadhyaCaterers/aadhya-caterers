@@ -36,7 +36,7 @@ export default function TopBar() {
           <a href={`tel:${PHONE_PRIMARY}`}><Phone /> +91 94940 55353</a>
           <a href={`tel:${PHONE_SECONDARY}`}><Phone /> +91 93981 83197</a>
           <a href={`mailto:${EMAIL_PRIMARY}`}><Mail /> {EMAIL_PRIMARY}</a>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'rgba(253,246,227,0.65)' }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'rgba(255,247,229,0.65)' }}>
             <Clock /> Mon – Sun · 8:00 AM – 9:00 PM
           </span>
         </div>

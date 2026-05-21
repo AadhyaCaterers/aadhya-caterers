@@ -21,9 +21,9 @@ export default function CTASection({
     >
       {/* Background image with heavy dark overlay (luxury catering feel) */}
       <div style={{ position: 'absolute', inset: 0, backgroundImage: `url(${image})`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'brightness(0.35) contrast(1.1)' }} />
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(26,14,2,0.92), rgba(45,26,6,0.85), rgba(26,14,2,0.95))' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(34,31,31,0.92), rgba(42,36,36,0.85), rgba(34,31,31,0.95))' }} />
       {/* Gold border ornament */}
-      <div style={{ position: 'absolute', inset: 30, border: '1px solid rgba(212,160,23,0.25)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 30, border: '1px solid rgba(201,168,87,0.25)', pointerEvents: 'none' }} />
 
       <div style={{ maxWidth: 880, margin: '0 auto', padding: '0 28px', position: 'relative', zIndex: 2, textAlign: 'center' }}>
         <FadeUp>
@@ -32,7 +32,7 @@ export default function CTASection({
           <div className="ornament-divider" style={{ maxWidth: 260 }}>
             <span className="ornament-symbol">✦ ❀ ✦</span>
           </div>
-          <p style={{ fontFamily: '"Cormorant Garamond"', fontSize: '1.15rem', color: 'rgba(253,246,227,0.88)', marginTop: 14, lineHeight: 1.75 }}>
+          <p style={{ fontFamily: '"DM Sans"', fontSize: '1.15rem', color: 'rgba(255,247,229,0.88)', marginTop: 14, lineHeight: 1.75 }}>
             {subtitle}
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: 14, flexWrap: 'wrap', marginTop: 32 }}>

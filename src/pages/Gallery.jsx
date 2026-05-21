@@ -47,7 +47,7 @@ export default function Gallery() {
       />
 
       {/* Filter bar */}
-      <section style={{ background: '#1a0e02', padding: '70px 0 30px' }}>
+      <section style={{ background: '#221F1F', padding: '70px 0 30px' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
           <FadeUp style={{ textAlign: 'center', marginBottom: 36 }}>
             <p className="section-kicker">Browse Our Best</p>
@@ -71,7 +71,7 @@ export default function Gallery() {
       </section>
 
       {/* Masonry grid using CSS columns — true masonry effect */}
-      <section style={{ background: '#1a0e02', paddingBottom: 90 }}>
+      <section style={{ background: '#221F1F', paddingBottom: 90 }}>
         <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px' }}>
           <div className="masonry-grid">
             <AnimatePresence>
@@ -85,7 +85,7 @@ export default function Gallery() {
                   transition={{ duration: 0.4 }}
                   className="masonry-item gallery-item"
                   onClick={() => openLightbox(idx)}
-                  style={{ cursor: 'pointer', border: '1px solid rgba(212,160,23,0.25)', borderRadius: 4, overflow: 'hidden', position: 'relative' }}
+                  style={{ cursor: 'pointer', border: '1px solid rgba(201,168,87,0.25)', borderRadius: 4, overflow: 'hidden', position: 'relative' }}
                 >
                   <img
                     src={img.src}
@@ -96,10 +96,10 @@ export default function Gallery() {
                     onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                   />
                   <div className="gallery-overlay" style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0)', transition: 'background 0.35s' }}>
-                    <span className="gallery-zoom-icon" style={{ color: '#d4a017', fontSize: '1.6rem', opacity: 0, border: '2px solid #d4a017', width: 56, height: 56, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>+</span>
+                    <span className="gallery-zoom-icon" style={{ color: '#C9A857', fontSize: '1.6rem', opacity: 0, border: '2px solid #C9A857', width: 56, height: 56, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>+</span>
                   </div>
                   {img.category && (
-                    <div style={{ position: 'absolute', top: 10, left: 10, background: 'rgba(26,14,2,0.85)', color: '#d4a017', padding: '4px 10px', fontSize: '0.7rem', fontFamily: '"Lato"', letterSpacing: '0.12em', textTransform: 'uppercase', border: '1px solid rgba(212,160,23,0.35)' }}>
+                    <div style={{ position: 'absolute', top: 10, left: 10, background: 'rgba(34,31,31,0.85)', color: '#C9A857', padding: '4px 10px', fontSize: '0.7rem', fontFamily: '"DM Sans"', letterSpacing: '0.12em', textTransform: 'uppercase', border: '1px solid rgba(201,168,87,0.35)' }}>
                       {img.category}
                     </div>
                   )}
@@ -123,16 +123,16 @@ export default function Gallery() {
               initial={{ scale: 0.85, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.85, opacity: 0 }}
               src={filtered[lightboxIdx].src}
               alt={filtered[lightboxIdx].alt}
-              style={{ maxWidth: '88vw', maxHeight: '82vh', objectFit: 'contain', borderRadius: 4, border: '2px solid rgba(212,160,23,0.4)' }}
+              style={{ maxWidth: '88vw', maxHeight: '82vh', objectFit: 'contain', borderRadius: 4, border: '2px solid rgba(201,168,87,0.4)' }}
               onClick={(e) => e.stopPropagation()}
             />
-            <button onClick={closeLightbox}  aria-label="Close" style={{ position: 'absolute', top: 20, right: 24, background: 'rgba(212,160,23,0.95)', border: 'none', color: '#1a0e02', width: 42, height: 42, fontSize: '1.1rem', cursor: 'pointer', borderRadius: '50%', fontWeight: 700 }}>✕</button>
-            <button onClick={prevImg}  aria-label="Previous" style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', background: 'rgba(212,160,23,0.15)', border: '1px solid rgba(212,160,23,0.4)', color: '#d4a017', width: 46, height: 46, fontSize: '1.3rem', cursor: 'pointer', borderRadius: '50%' }}>‹</button>
-            <button onClick={nextImg}  aria-label="Next" style={{ position: 'absolute', right: 16, top: '50%', transform: 'translateY(-50%)', background: 'rgba(212,160,23,0.15)', border: '1px solid rgba(212,160,23,0.4)', color: '#d4a017', width: 46, height: 46, fontSize: '1.3rem', cursor: 'pointer', borderRadius: '50%' }}>›</button>
+            <button onClick={closeLightbox}  aria-label="Close" style={{ position: 'absolute', top: 20, right: 24, background: 'rgba(201,168,87,0.95)', border: 'none', color: '#221F1F', width: 42, height: 42, fontSize: '1.1rem', cursor: 'pointer', borderRadius: '50%', fontWeight: 700 }}>✕</button>
+            <button onClick={prevImg}  aria-label="Previous" style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', background: 'rgba(201,168,87,0.15)', border: '1px solid rgba(201,168,87,0.4)', color: '#C9A857', width: 46, height: 46, fontSize: '1.3rem', cursor: 'pointer', borderRadius: '50%' }}>‹</button>
+            <button onClick={nextImg}  aria-label="Next" style={{ position: 'absolute', right: 16, top: '50%', transform: 'translateY(-50%)', background: 'rgba(201,168,87,0.15)', border: '1px solid rgba(201,168,87,0.4)', color: '#C9A857', width: 46, height: 46, fontSize: '1.3rem', cursor: 'pointer', borderRadius: '50%' }}>›</button>
 
-            <div style={{ position: 'absolute', bottom: 22, left: '50%', transform: 'translateX(-50%)', textAlign: 'center', color: 'rgba(253,246,227,0.65)' }}>
-              <p style={{ fontFamily: '"Cormorant Garamond"', fontSize: '0.95rem' }}>{filtered[lightboxIdx].alt}</p>
-              <p style={{ fontFamily: '"Lato"', fontSize: '0.72rem', letterSpacing: '0.18em', marginTop: 4 }}>{lightboxIdx + 1} / {filtered.length}</p>
+            <div style={{ position: 'absolute', bottom: 22, left: '50%', transform: 'translateX(-50%)', textAlign: 'center', color: 'rgba(255,247,229,0.65)' }}>
+              <p style={{ fontFamily: '"DM Sans"', fontSize: '0.95rem' }}>{filtered[lightboxIdx].alt}</p>
+              <p style={{ fontFamily: '"DM Sans"', fontSize: '0.72rem', letterSpacing: '0.18em', marginTop: 4 }}>{lightboxIdx + 1} / {filtered.length}</p>
             </div>
           </motion.div>
         )}

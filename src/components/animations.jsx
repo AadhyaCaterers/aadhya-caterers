@@ -15,7 +15,7 @@ export const Ornament = ({ symbol = '✦ ❀ ✦', maxWidth = 280, className = '
 export const StarRating = ({ count = 5 }) => (
   <div style={{ display: 'flex', gap: 4, justifyContent: 'center' }}>
     {Array.from({ length: count }).map((_, i) => (
-      <span key={i} style={{ color: '#d4a017', fontSize: '1.1rem' }}>★</span>
+      <span key={i} style={{ color: '#C9A857', fontSize: '1.1rem' }}>★</span>
     ))}
   </div>
 );
