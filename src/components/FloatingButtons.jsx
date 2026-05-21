@@ -22,9 +22,9 @@ export default function FloatingButtons() {
           href={`tel:${PHONE_PRIMARY}`}
           style={{
             flex: 1, padding: '16px 8px',
-            background: 'linear-gradient(135deg,#b8860b,#d4a017,#f2cd25)',
-            color: '#1a0e02', textAlign: 'center', textDecoration: 'none',
-            fontFamily: '"Lato",sans-serif', fontWeight: 700,
+            background: 'linear-gradient(135deg,#B8923D,#C9A857,#E0C68A)',
+            color: '#221F1F', textAlign: 'center', textDecoration: 'none',
+            fontFamily: '"DM Sans", sans-serif', fontWeight: 700,
             fontSize: '0.78rem', letterSpacing: '0.1em', textTransform: 'uppercase',
             display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2,
           }}
@@ -39,7 +39,7 @@ export default function FloatingButtons() {
           style={{
             flex: 1, padding: '16px 8px',
             background: '#25D366', color: 'white', textAlign: 'center', textDecoration: 'none',
-            fontFamily: '"Lato",sans-serif', fontWeight: 700,
+            fontFamily: '"DM Sans", sans-serif', fontWeight: 700,
             fontSize: '0.78rem', letterSpacing: '0.1em', textTransform: 'uppercase',
             display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2,
           }}
@@ -51,10 +51,10 @@ export default function FloatingButtons() {
           to="/contact"
           style={{
             flex: 1, padding: '16px 8px',
-            background: '#1a0e02', color: '#d4a017', textAlign: 'center', textDecoration: 'none',
-            fontFamily: '"Lato",sans-serif', fontWeight: 700,
+            background: '#221F1F', color: '#C9A857', textAlign: 'center', textDecoration: 'none',
+            fontFamily: '"DM Sans", sans-serif', fontWeight: 700,
             fontSize: '0.74rem', letterSpacing: '0.08em', textTransform: 'uppercase',
-            border: '2px solid #d4a017', borderBottom: 'none',
+            border: '2px solid #C9A857', borderBottom: 'none',
             display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2,
           }}
         >

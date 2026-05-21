@@ -20,7 +20,7 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section className="section-pad" id="testimonials" style={{ background: '#1a0e02', position: 'relative', overflow: 'hidden' }}>
+    <section className="section-pad" id="testimonials" style={{ background: '#221F1F', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(/img2.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.05 }} />
 
       <div style={{ maxWidth: 1000, margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
@@ -38,14 +38,14 @@ export default function Testimonials() {
             className="testimonial-card"
             style={{ borderRadius: 4, textAlign: 'center' }}
           >
-            <div style={{ fontFamily: '"Playfair Display", serif', fontSize: '4.5rem', color: '#d4a017', marginBottom: 8, opacity: 0.35, lineHeight: 0.6 }}>“</div>
-            <p style={{ fontFamily: '"Cormorant Garamond",serif', fontSize: '1.2rem', color: 'rgba(253,246,227,0.92)', lineHeight: 1.85, marginBottom: 26, fontStyle: 'italic' }}>
+            <div style={{ fontFamily: '"Playfair Display", serif', fontSize: '4.5rem', color: '#C9A857', marginBottom: 8, opacity: 0.35, lineHeight: 0.6 }}>“</div>
+            <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '1.2rem', color: 'rgba(255,247,229,0.92)', lineHeight: 1.85, marginBottom: 26, fontStyle: 'italic' }}>
               {TESTIMONIALS[current].text}
             </p>
             <StarRating count={TESTIMONIALS[current].rating} />
             <div style={{ marginTop: 18 }}>
-              <p style={{ fontFamily: '"Playfair Display",serif', color: '#d4a017', fontSize: '1.05rem', fontWeight: 600 }}>{TESTIMONIALS[current].name}</p>
-              <p style={{ fontFamily: '"Lato",sans-serif', color: 'rgba(253,246,227,0.6)', fontSize: '0.78rem', letterSpacing: '0.18em', marginTop: 4, textTransform: 'uppercase' }}>
+              <p style={{ fontFamily: '"Playfair Display",serif', color: '#C9A857', fontSize: '1.05rem', fontWeight: 600 }}>{TESTIMONIALS[current].name}</p>
+              <p style={{ fontFamily: '"DM Sans", sans-serif', color: 'rgba(255,247,229,0.6)', fontSize: '0.78rem', letterSpacing: '0.18em', marginTop: 4, textTransform: 'uppercase' }}>
                 {TESTIMONIALS[current].event}
               </p>
             </div>
@@ -58,7 +58,7 @@ export default function Testimonials() {
               key={i}
               onClick={() => setCurrent(i)}
               aria-label={`Show testimonial ${i + 1}`}
-              style={{ width: i === current ? 32 : 10, height: 10, borderRadius: 5, background: i === current ? '#d4a017' : 'rgba(212,160,23,0.3)', border: 'none', cursor: 'pointer', transition: 'all 0.35s' }}
+              style={{ width: i === current ? 32 : 10, height: 10, borderRadius: 5, background: i === current ? '#C9A857' : 'rgba(201,168,87,0.3)', border: 'none', cursor: 'pointer', transition: 'all 0.35s' }}
             />
           ))}
         </div>

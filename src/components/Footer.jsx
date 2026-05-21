@@ -38,15 +38,15 @@ const SocialBtn = ({ href, icon, label }) => (
     title={label}
     style={{
       width: 40, height: 40,
-      background: 'rgba(212,160,23,0.1)',
-      border: '1px solid rgba(212,160,23,0.35)',
+      background: 'rgba(201,168,87,0.1)',
+      border: '1px solid rgba(201,168,87,0.35)',
       borderRadius: 4,
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      textDecoration: 'none', color: '#d4a017',
+      textDecoration: 'none', color: '#C9A857',
       transition: 'all 0.3s',
     }}
-    onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(212,160,23,0.3)'; e.currentTarget.style.borderColor = '#d4a017'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-    onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(212,160,23,0.1)'; e.currentTarget.style.borderColor = 'rgba(212,160,23,0.35)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+    onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(201,168,87,0.3)'; e.currentTarget.style.borderColor = '#C9A857'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+    onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(201,168,87,0.1)'; e.currentTarget.style.borderColor = 'rgba(201,168,87,0.35)'; e.currentTarget.style.transform = 'translateY(0)'; }}
   >
     {icon}
   </a>
@@ -55,19 +55,19 @@ const SocialBtn = ({ href, icon, label }) => (
 // Site footer — appears on every page
 export default function Footer() {
   return (
-    <footer style={{ background: 'linear-gradient(to bottom, #0e0700, #050200)', borderTop: '1px solid rgba(212,160,23,0.25)', paddingBottom: 80, position: 'relative' }}>
+    <footer style={{ background: 'linear-gradient(to bottom, #1A1717, #0D0B0B)', borderTop: '1px solid rgba(201,168,87,0.25)', paddingBottom: 80, position: 'relative' }}>
       {/* Top gold accent line */}
-      <div style={{ height: 3, background: 'linear-gradient(90deg, transparent, #d4a017, transparent)' }} />
+      <div style={{ height: 3, background: 'linear-gradient(90deg, transparent, #C9A857, transparent)' }} />
 
       <div style={{ maxWidth: 1240, margin: '0 auto', padding: '70px 24px 40px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 44, marginBottom: 50 }}>
           {/* Brand */}
           <div>
-            <img src="/logo.png" alt="Aadhya Caterers" style={{ height: 75, marginBottom: 18, filter: 'drop-shadow(0 2px 10px rgba(212,160,23,0.25))' }} />
-            <p style={{ fontFamily: '"Great Vibes", cursive', color: '#d4a017', fontSize: '1.5rem', lineHeight: 1, marginBottom: 12 }}>
+            <img src="/logo.png" alt="Aadhya Caterers" style={{ height: 75, marginBottom: 18, filter: 'drop-shadow(0 2px 10px rgba(201,168,87,0.25))' }} />
+            <p style={{ fontFamily: '"Playfair Display", serif', fontStyle: 'italic', color: '#C9A857', fontSize: '1.4rem', lineHeight: 1, marginBottom: 12, fontWeight: 500 }}>
               Aadhya Caterers
             </p>
-            <p style={{ fontFamily: '"Cormorant Garamond",serif', color: 'rgba(253,246,227,0.72)', lineHeight: 1.85, fontSize: '0.98rem', marginBottom: 22 }}>
+            <p style={{ fontFamily: '"DM Sans", sans-serif', color: 'rgba(255,247,229,0.72)', lineHeight: 1.85, fontSize: '0.98rem', marginBottom: 22 }}>
               Deliciously Crafted &middot; Royally Served &middot; Memorably Celebrated. Premium catering services for weddings, corporate events and traditional Telugu feasts across Hyderabad.
             </p>
             <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
@@ -80,16 +80,16 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 style={{ fontFamily: '"Playfair Display",serif', color: '#d4a017', marginBottom: 8, fontSize: '1.05rem', letterSpacing: '0.04em' }}>Quick Links</h4>
-            <div style={{ width: 36, height: 1, background: 'rgba(212,160,23,0.5)', marginBottom: 18 }} />
+            <h4 style={{ fontFamily: '"Playfair Display",serif', color: '#C9A857', marginBottom: 8, fontSize: '1.05rem', letterSpacing: '0.04em' }}>Quick Links</h4>
+            <div style={{ width: 36, height: 1, background: 'rgba(201,168,87,0.5)', marginBottom: 18 }} />
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {NAV_LINKS.map((l) => (
                 <Link
                   key={l.to}
                   to={l.to}
-                  style={{ fontFamily: '"Lato",sans-serif', color: 'rgba(253,246,227,0.65)', textDecoration: 'none', fontSize: '0.88rem', transition: 'color 0.3s, padding 0.3s' }}
-                  onMouseOver={(e) => { e.currentTarget.style.color = '#d4a017'; e.currentTarget.style.paddingLeft = '6px'; }}
-                  onMouseOut={(e) => { e.currentTarget.style.color = 'rgba(253,246,227,0.65)'; e.currentTarget.style.paddingLeft = '0'; }}
+                  style={{ fontFamily: '"DM Sans", sans-serif', color: 'rgba(255,247,229,0.65)', textDecoration: 'none', fontSize: '0.88rem', transition: 'color 0.3s, padding 0.3s' }}
+                  onMouseOver={(e) => { e.currentTarget.style.color = '#C9A857'; e.currentTarget.style.paddingLeft = '6px'; }}
+                  onMouseOut={(e) => { e.currentTarget.style.color = 'rgba(255,247,229,0.65)'; e.currentTarget.style.paddingLeft = '0'; }}
                 >
                   ✦ {l.label}
                 </Link>
@@ -99,16 +99,16 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 style={{ fontFamily: '"Playfair Display",serif', color: '#d4a017', marginBottom: 8, fontSize: '1.05rem', letterSpacing: '0.04em' }}>Our Services</h4>
-            <div style={{ width: 36, height: 1, background: 'rgba(212,160,23,0.5)', marginBottom: 18 }} />
+            <h4 style={{ fontFamily: '"Playfair Display",serif', color: '#C9A857', marginBottom: 8, fontSize: '1.05rem', letterSpacing: '0.04em' }}>Our Services</h4>
+            <div style={{ width: 36, height: 1, background: 'rgba(201,168,87,0.5)', marginBottom: 18 }} />
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {SERVICES.slice(0, 6).map((s) => (
                 <Link
                   key={s.title}
                   to="/services"
-                  style={{ fontFamily: '"Lato",sans-serif', color: 'rgba(253,246,227,0.65)', textDecoration: 'none', fontSize: '0.88rem', transition: 'color 0.3s, padding 0.3s' }}
-                  onMouseOver={(e) => { e.currentTarget.style.color = '#d4a017'; e.currentTarget.style.paddingLeft = '6px'; }}
-                  onMouseOut={(e) => { e.currentTarget.style.color = 'rgba(253,246,227,0.65)'; e.currentTarget.style.paddingLeft = '0'; }}
+                  style={{ fontFamily: '"DM Sans", sans-serif', color: 'rgba(255,247,229,0.65)', textDecoration: 'none', fontSize: '0.88rem', transition: 'color 0.3s, padding 0.3s' }}
+                  onMouseOver={(e) => { e.currentTarget.style.color = '#C9A857'; e.currentTarget.style.paddingLeft = '6px'; }}
+                  onMouseOut={(e) => { e.currentTarget.style.color = 'rgba(255,247,229,0.65)'; e.currentTarget.style.paddingLeft = '0'; }}
                 >
                   ✦ {s.title}
                 </Link>
@@ -118,25 +118,25 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 style={{ fontFamily: '"Playfair Display",serif', color: '#d4a017', marginBottom: 8, fontSize: '1.05rem', letterSpacing: '0.04em' }}>Get in Touch</h4>
-            <div style={{ width: 36, height: 1, background: 'rgba(212,160,23,0.5)', marginBottom: 18 }} />
+            <h4 style={{ fontFamily: '"Playfair Display",serif', color: '#C9A857', marginBottom: 8, fontSize: '1.05rem', letterSpacing: '0.04em' }}>Get in Touch</h4>
+            <div style={{ width: 36, height: 1, background: 'rgba(201,168,87,0.5)', marginBottom: 18 }} />
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <a href={`tel:${PHONE_PRIMARY}`}    style={{ color: 'rgba(253,246,227,0.78)', textDecoration: 'none', fontFamily: '"Lato"', fontSize: '0.88rem', display: 'flex', gap: 8 }}>
-                <span style={{ color: '#d4a017' }}>📞</span> +91 94940 55353
+              <a href={`tel:${PHONE_PRIMARY}`}    style={{ color: 'rgba(255,247,229,0.78)', textDecoration: 'none', fontFamily: '"DM Sans"', fontSize: '0.88rem', display: 'flex', gap: 8 }}>
+                <span style={{ color: '#C9A857' }}>📞</span> +91 94940 55353
               </a>
-              <a href={`tel:${PHONE_SECONDARY}`}  style={{ color: 'rgba(253,246,227,0.78)', textDecoration: 'none', fontFamily: '"Lato"', fontSize: '0.88rem', display: 'flex', gap: 8 }}>
-                <span style={{ color: '#d4a017' }}>📞</span> +91 93981 83197
+              <a href={`tel:${PHONE_SECONDARY}`}  style={{ color: 'rgba(255,247,229,0.78)', textDecoration: 'none', fontFamily: '"DM Sans"', fontSize: '0.88rem', display: 'flex', gap: 8 }}>
+                <span style={{ color: '#C9A857' }}>📞</span> +91 93981 83197
               </a>
-              <a href={`mailto:${EMAIL_PRIMARY}`} style={{ color: 'rgba(253,246,227,0.78)', textDecoration: 'none', fontFamily: '"Lato"', fontSize: '0.85rem', display: 'flex', gap: 8 }}>
-                <span style={{ color: '#d4a017' }}>✉️</span> {EMAIL_PRIMARY}
+              <a href={`mailto:${EMAIL_PRIMARY}`} style={{ color: 'rgba(255,247,229,0.78)', textDecoration: 'none', fontFamily: '"DM Sans"', fontSize: '0.85rem', display: 'flex', gap: 8 }}>
+                <span style={{ color: '#C9A857' }}>✉️</span> {EMAIL_PRIMARY}
               </a>
-              <p style={{ color: 'rgba(253,246,227,0.7)', fontFamily: '"Cormorant Garamond"', fontSize: '0.95rem', lineHeight: 1.7, display: 'flex', gap: 8 }}>
-                <span style={{ color: '#d4a017' }}>📍</span>
+              <p style={{ color: 'rgba(255,247,229,0.7)', fontFamily: '"DM Sans"', fontSize: '0.95rem', lineHeight: 1.7, display: 'flex', gap: 8 }}>
+                <span style={{ color: '#C9A857' }}>📍</span>
                 <span>Balajinagar, Kukatpally,<br />Hyderabad - 500072</span>
               </p>
-              <p style={{ color: 'rgba(253,246,227,0.7)', fontFamily: '"Cormorant Garamond"', fontSize: '0.95rem', lineHeight: 1.7, display: 'flex', gap: 8 }}>
-                <span style={{ color: '#d4a017' }}>📍</span>
+              <p style={{ color: 'rgba(255,247,229,0.7)', fontFamily: '"DM Sans"', fontSize: '0.95rem', lineHeight: 1.7, display: 'flex', gap: 8 }}>
+                <span style={{ color: '#C9A857' }}>📍</span>
                 <span>Chilkanagar, Uppal,<br />Hyderabad</span>
               </p>
             </div>
@@ -144,12 +144,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div style={{ borderTop: '1px solid rgba(212,160,23,0.18)', paddingTop: 26, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
-          <p style={{ fontFamily: '"Lato",sans-serif', color: 'rgba(253,246,227,0.45)', fontSize: '0.82rem', letterSpacing: '0.04em' }}>
+        <div style={{ borderTop: '1px solid rgba(201,168,87,0.18)', paddingTop: 26, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
+          <p style={{ fontFamily: '"DM Sans", sans-serif', color: 'rgba(255,247,229,0.45)', fontSize: '0.82rem', letterSpacing: '0.04em' }}>
             © {new Date().getFullYear()} Aadhya Caterers. All Rights Reserved.
           </p>
-          <p style={{ fontFamily: '"Lato",sans-serif', color: 'rgba(253,246,227,0.5)', fontSize: '0.82rem', letterSpacing: '0.04em' }}>
-            Developed by <a href="#" style={{ color: '#d4a017', textDecoration: 'none', fontWeight: 700, letterSpacing: '0.06em' }}>StaffArc</a>
+          <p style={{ fontFamily: '"DM Sans", sans-serif', color: 'rgba(255,247,229,0.5)', fontSize: '0.82rem', letterSpacing: '0.04em' }}>
+            Developed by <a href="#" style={{ color: '#C9A857', textDecoration: 'none', fontWeight: 700, letterSpacing: '0.06em' }}>StaffArc</a>
           </p>
         </div>
       </div>

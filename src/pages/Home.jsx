@@ -33,22 +33,22 @@ export default function Home() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 60, alignItems: 'center' }}>
             <FadeIn x={-40}>
               <div style={{ position: 'relative', paddingBottom: 40 }}>
-                <div style={{ position: 'relative', borderRadius: 4, overflow: 'hidden', border: '3px solid rgba(212,160,23,0.5)', boxShadow: '0 16px 40px rgba(58,36,6,0.18)' }}>
+                <div style={{ position: 'relative', borderRadius: 4, overflow: 'hidden', border: '3px solid rgba(201,168,87,0.5)', boxShadow: '0 16px 40px rgba(42,36,36,0.18)' }}>
                   <img src="/img6.jpg" alt="Aadhya catering team in action" style={{ width: '100%', height: 460, objectFit: 'cover', filter: 'brightness(0.98) contrast(1.05) saturate(1.1)', display: 'block' }} />
                 </div>
-                <div style={{ position: 'absolute', bottom: 10, right: -20, width: '55%', border: '4px solid #fffdf4', borderRadius: 4, overflow: 'hidden', boxShadow: '0 14px 32px rgba(58,36,6,0.25)' }}>
+                <div style={{ position: 'absolute', bottom: 10, right: -20, width: '55%', border: '4px solid #FFFBEC', borderRadius: 4, overflow: 'hidden', boxShadow: '0 14px 32px rgba(42,36,36,0.25)' }}>
                   <img src="/img2.jpg" alt="Premium buffet setup" style={{ width: '100%', height: 220, objectFit: 'cover', display: 'block' }} />
                 </div>
                 <div style={{
                   position: 'absolute', top: 24, left: -16,
-                  background: 'linear-gradient(135deg,#b8860b,#d4a017,#f2cd25)',
-                  color: '#1a0e02',
+                  background: 'linear-gradient(135deg,#B8923D,#C9A857,#E0C68A)',
+                  color: '#221F1F',
                   padding: '14px 22px',
                   fontFamily: '"Playfair Display", serif',
                   fontWeight: 700,
                   fontSize: '0.9rem',
                   textAlign: 'center',
-                  boxShadow: '0 8px 22px rgba(138,101,8,0.35)',
+                  boxShadow: '0 8px 22px rgba(139,107,42,0.35)',
                   borderRadius: 2,
                 }}>
                   8+ Years
@@ -65,11 +65,11 @@ export default function Home() {
               </h2>
               <Ornament maxWidth={220} />
 
-              <p style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.15rem', lineHeight: 1.8, marginBottom: 16 }}>
+              <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '1.15rem', lineHeight: 1.8, marginBottom: 16 }}>
                 Aadhya Caterers is a premium catering service based in Hyderabad, dedicated to delivering exceptional culinary experiences for weddings, corporate events, birthday celebrations, house warmings and all special occasions.
               </p>
-              <p style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: 26 }}>
-                With <strong style={{ color: '#8a6508' }}>8+ years</strong> of catering expertise across Hyderabad and Telangana, we specialize in authentic Telugu meals, elaborate buffet setups, live cooking counters and grand wedding feasts.
+              <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: 26 }}>
+                With <strong style={{ color: '#8B6B2A' }}>8+ years</strong> of catering expertise across Hyderabad and Telangana, we specialize in authentic Telugu meals, elaborate buffet setups, live cooking counters and grand wedding feasts.
               </p>
 
               <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
@@ -82,13 +82,13 @@ export default function Home() {
       </section>
 
       {/* ── SERVICES PREVIEW (dark luxury) ───────────────────────── */}
-      <section className="section-pad" style={{ background: 'linear-gradient(to bottom, #1a0e02, #0e0700 60%, #1a0e02)' }}>
+      <section className="section-pad" style={{ background: 'linear-gradient(to bottom, #221F1F, #1A1717 60%, #221F1F)' }}>
         <div style={{ maxWidth: 1240, margin: '0 auto', padding: '0 24px' }}>
           <FadeUp style={{ textAlign: 'center', marginBottom: 56 }}>
             <p className="section-kicker">What We Offer</p>
             <h2 className="section-title" style={{ fontSize: 'clamp(1.8rem,3.2vw,2.6rem)', marginTop: 4, marginBottom: 4 }}>Our Catering Services</h2>
             <Ornament />
-            <p className="section-subtitle" style={{ maxWidth: 620, margin: '14px auto 0', fontFamily: '"Cormorant Garamond"', fontSize: '1.1rem' }}>
+            <p className="section-subtitle" style={{ maxWidth: 620, margin: '14px auto 0', fontFamily: '"DM Sans"', fontSize: '1.1rem' }}>
               From intimate gatherings to grand wedding feasts — explore the signature experiences we craft for every occasion.
             </p>
           </FadeUp>
@@ -106,20 +106,20 @@ export default function Home() {
                       onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
                       onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                     />
-                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(26,14,2,0.85) 0%, transparent 55%)' }} />
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(34,31,31,0.85) 0%, transparent 55%)' }} />
                     <div style={{ position: 'absolute', bottom: 14, left: 18, fontSize: '2rem', filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.6))' }}>{svc.icon}</div>
                   </div>
                   <div style={{ padding: '24px 24px 26px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                    <h3 style={{ fontFamily: '"Playfair Display", serif', fontSize: '1.18rem', color: '#d4a017', marginBottom: 10 }}>{svc.title}</h3>
-                    <p style={{ fontFamily: '"Lato", sans-serif', fontSize: '0.88rem', color: 'rgba(253,246,227,0.78)', lineHeight: 1.7, marginBottom: 18 }}>
+                    <h3 style={{ fontFamily: '"Playfair Display", serif', fontSize: '1.18rem', color: '#C9A857', marginBottom: 10 }}>{svc.title}</h3>
+                    <p style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.88rem', color: 'rgba(255,247,229,0.78)', lineHeight: 1.7, marginBottom: 18 }}>
                       {svc.desc}
                     </p>
                     <Link
                       to="/services"
                       style={{
                         marginTop: 'auto',
-                        fontFamily: '"Lato"',
-                        color: '#d4a017',
+                        fontFamily: '"DM Sans"',
+                        color: '#C9A857',
                         textDecoration: 'none',
                         fontSize: '0.78rem',
                         letterSpacing: '0.18em',
@@ -151,7 +151,7 @@ export default function Home() {
             <p className="section-kicker">Moments Captured</p>
             <h2 className="section-title" style={{ fontSize: 'clamp(1.8rem,3.2vw,2.6rem)', marginTop: 4, marginBottom: 4 }}>From Our Gallery</h2>
             <Ornament />
-            <p style={{ fontFamily: '"Cormorant Garamond"', fontSize: '1.05rem', maxWidth: 600, margin: '14px auto 0', lineHeight: 1.7 }}>
+            <p style={{ fontFamily: '"DM Sans"', fontSize: '1.05rem', maxWidth: 600, margin: '14px auto 0', lineHeight: 1.7 }}>
               A glimpse of our recent weddings, traditional feasts and grand celebrations across Hyderabad.
             </p>
           </FadeUp>
@@ -166,11 +166,11 @@ export default function Home() {
                     className={`gallery-item${isWide ? '' : ' gallery-span-none'}`}
                     style={{
                       borderRadius: 4,
-                      border: '2px solid rgba(212,160,23,0.35)',
+                      border: '2px solid rgba(201,168,87,0.35)',
                       cursor: 'pointer',
                       overflow: 'hidden',
                       display: 'block',
-                      boxShadow: '0 10px 24px rgba(58,36,6,0.12)',
+                      boxShadow: '0 10px 24px rgba(42,36,36,0.12)',
                     }}
                   >
                     <div style={{ position: 'relative' }}>
@@ -182,7 +182,7 @@ export default function Home() {
                         style={{ width: '100%', height: isWide ? 380 : 250, objectFit: 'cover', objectPosition: 'center', display: 'block', filter: 'brightness(0.95) contrast(1.05) saturate(1.1)', transition: 'transform 0.5s' }}
                       />
                       <div className="gallery-overlay" style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0)', transition: 'background 0.35s' }}>
-                        <span className="gallery-zoom-icon" style={{ color: '#d4a017', fontSize: '2rem', opacity: 0, transition: 'opacity 0.35s, transform 0.35s', border: '2px solid #d4a017', width: 56, height: 56, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>+</span>
+                        <span className="gallery-zoom-icon" style={{ color: '#C9A857', fontSize: '2rem', opacity: 0, transition: 'opacity 0.35s, transform 0.35s', border: '2px solid #C9A857', width: 56, height: 56, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>+</span>
                       </div>
                     </div>
                   </Link>
@@ -198,7 +198,7 @@ export default function Home() {
       </section>
 
       {/* ── VIDEO / REELS PREVIEW (dark) ─────────────────────────── */}
-      <section className="section-pad" style={{ background: 'linear-gradient(to bottom, #1a0e02 0%, #0e0700 100%)', position: 'relative', overflow: 'hidden' }}>
+      <section className="section-pad" style={{ background: 'linear-gradient(to bottom, #221F1F 0%, #1A1717 100%)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(/img4.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.06 }} />
 
         <div style={{ maxWidth: 1240, margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
@@ -206,7 +206,7 @@ export default function Home() {
             <p className="section-kicker">Watch Aadhya in Action</p>
             <h2 className="section-title" style={{ fontSize: 'clamp(1.8rem,3.2vw,2.6rem)', marginTop: 4, marginBottom: 4 }}>Reels &amp; Catering Shorts</h2>
             <Ornament />
-            <p className="section-subtitle" style={{ maxWidth: 620, margin: '14px auto 0', fontFamily: '"Cormorant Garamond"', fontSize: '1.1rem' }}>
+            <p className="section-subtitle" style={{ maxWidth: 620, margin: '14px auto 0', fontFamily: '"DM Sans"', fontSize: '1.1rem' }}>
               Quick vertical clips capturing the magic of our weddings, live counters and traditional feasts.
             </p>
           </FadeUp>
@@ -223,12 +223,12 @@ export default function Home() {
                   />
                   <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.92) 100%)' }} />
                   <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(212,160,23,0.95)', color: '#1a0e02', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 6px 22px rgba(212,160,23,0.5)', fontSize: '1.3rem', paddingLeft: 4 }}>▶</div>
+                    <div style={{ width: 64, height: 64, borderRadius: '50%', background: 'rgba(201,168,87,0.95)', color: '#221F1F', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 6px 22px rgba(201,168,87,0.5)', fontSize: '1.3rem', paddingLeft: 4 }}>▶</div>
                   </div>
-                  <div style={{ position: 'absolute', top: 12, right: 12, background: 'rgba(26,14,2,0.85)', color: '#d4a017', padding: '4px 10px', fontSize: '0.72rem', borderRadius: 12, fontFamily: '"Lato"', border: '1px solid rgba(212,160,23,0.4)' }}>⏱ {v.duration}</div>
+                  <div style={{ position: 'absolute', top: 12, right: 12, background: 'rgba(34,31,31,0.85)', color: '#C9A857', padding: '4px 10px', fontSize: '0.72rem', borderRadius: 12, fontFamily: '"DM Sans"', border: '1px solid rgba(201,168,87,0.4)' }}>⏱ {v.duration}</div>
                   <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '20px 18px 18px' }}>
-                    <h3 style={{ fontFamily: '"Playfair Display"', color: '#fdf6e3', fontSize: '1.05rem', marginBottom: 4, lineHeight: 1.25 }}>{v.title}</h3>
-                    <p style={{ fontFamily: '"Lato"', color: 'rgba(253,246,227,0.7)', fontSize: '0.75rem' }}>Tap to watch</p>
+                    <h3 style={{ fontFamily: '"Playfair Display"', color: '#FFF7E5', fontSize: '1.05rem', marginBottom: 4, lineHeight: 1.25 }}>{v.title}</h3>
+                    <p style={{ fontFamily: '"DM Sans"', color: 'rgba(255,247,229,0.7)', fontSize: '0.75rem' }}>Tap to watch</p>
                   </div>
                 </Link>
               </FadeUp>

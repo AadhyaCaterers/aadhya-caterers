@@ -36,10 +36,10 @@ export default function Navbar() {
         style={{
           transition: 'all 0.35s ease',
           background: scrolled
-            ? 'rgba(26,14,2,0.97)'
-            : 'linear-gradient(to bottom, rgba(26,14,2,0.92), rgba(26,14,2,0.55))',
+            ? 'rgba(34,31,31,0.97)'
+            : 'linear-gradient(to bottom, rgba(34,31,31,0.92), rgba(34,31,31,0.55))',
           backdropFilter: scrolled ? 'blur(10px)' : 'blur(4px)',
-          borderBottom: scrolled ? '1px solid rgba(212,160,23,0.25)' : '1px solid rgba(212,160,23,0.08)',
+          borderBottom: scrolled ? '1px solid rgba(201,168,87,0.25)' : '1px solid rgba(201,168,87,0.08)',
           boxShadow: scrolled ? '0 10px 30px rgba(0,0,0,0.45)' : 'none',
         }}
       >
@@ -60,14 +60,14 @@ export default function Navbar() {
                 height: scrolled ? 50 : 60,
                 objectFit: 'contain',
                 transition: 'height 0.3s',
-                filter: 'drop-shadow(0 2px 10px rgba(212,160,23,0.25))',
+                filter: 'drop-shadow(0 2px 10px rgba(201,168,87,0.25))',
               }}
             />
             <div className="hidden-mobile" style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
-              <span style={{ fontFamily: '"Playfair Display", serif', fontSize: '1.15rem', color: '#d4a017', fontWeight: 700, letterSpacing: '0.04em' }}>
+              <span style={{ fontFamily: '"Playfair Display", serif', fontSize: '1.15rem', color: '#C9A857', fontWeight: 700, letterSpacing: '0.04em' }}>
                 Aadhya Caterers
               </span>
-              <span style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '0.72rem', color: 'rgba(253,246,227,0.65)', letterSpacing: '0.22em', textTransform: 'uppercase', marginTop: 4 }}>
+              <span style={{ fontFamily: '"DM Sans", sans-serif', fontSize: '0.72rem', color: 'rgba(255,247,229,0.65)', letterSpacing: '0.22em', textTransform: 'uppercase', marginTop: 4 }}>
                 Premium Catering
               </span>
             </div>
@@ -88,7 +88,7 @@ export default function Navbar() {
           </nav>
 
           {/* CTA — desktop */}
-          <a href={`tel:${PHONE_PRIMARY}`} className="btn-gold hidden-mobile" style={{ textDecoration: 'none' }}>
+          <a href={`tel:${PHONE_PRIMARY}`} className="btn-primary hidden-mobile" style={{ textDecoration: 'none' }}>
             Book Now
           </a>
 
@@ -103,17 +103,17 @@ export default function Navbar() {
             <motion.div
               animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.25 }}
-              style={{ width: 26, height: 2, background: '#d4a017', transformOrigin: 'center', borderRadius: 1 }}
+              style={{ width: 26, height: 2, background: '#C9A857', transformOrigin: 'center', borderRadius: 1 }}
             />
             <motion.div
               animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
               transition={{ duration: 0.2 }}
-              style={{ width: 26, height: 2, background: '#d4a017', borderRadius: 1 }}
+              style={{ width: 26, height: 2, background: '#C9A857', borderRadius: 1 }}
             />
             <motion.div
               animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.25 }}
-              style={{ width: 18, height: 2, background: '#d4a017', transformOrigin: 'center', borderRadius: 1 }}
+              style={{ width: 18, height: 2, background: '#C9A857', transformOrigin: 'center', borderRadius: 1 }}
             />
           </button>
         </div>
@@ -128,8 +128,8 @@ export default function Navbar() {
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3 }}
               style={{
-                background: 'rgba(14,7,0,0.98)',
-                borderTop: '1px solid rgba(212,160,23,0.25)',
+                background: 'rgba(26,23,23,0.98)',
+                borderTop: '1px solid rgba(201,168,87,0.25)',
                 overflow: 'hidden',
               }}
             >
@@ -141,14 +141,14 @@ export default function Navbar() {
                     end={l.to === '/'}
                     onClick={closeMenu}
                     className={({ isActive }) => `nav-link${isActive ? ' nav-link-active' : ''}`}
-                    style={{ fontSize: '1.18rem', borderBottom: '1px solid rgba(212,160,23,0.1)', paddingBottom: 12 }}
+                    style={{ fontSize: '1.18rem', borderBottom: '1px solid rgba(201,168,87,0.1)', paddingBottom: 12 }}
                   >
                     {l.label}
                   </NavLink>
                 ))}
                 <a
                   href={`tel:${PHONE_PRIMARY}`}
-                  className="btn-gold"
+                  className="btn-primary"
                   onClick={closeMenu}
                   style={{ textDecoration: 'none', textAlign: 'center', marginTop: 8 }}
                 >
