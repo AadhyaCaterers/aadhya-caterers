@@ -1,14 +1,21 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-// Gold horizontal accent line — used under section titles
+// Gold horizontal accent line — used under section titles (legacy)
 export const GoldDivider = () => <div className="gold-divider my-4" />;
+
+// Ornamental filigree-style divider: thin line ✦ ❀ ✦ thin line — premium catering brochure feel
+export const Ornament = ({ symbol = '✦ ❀ ✦', maxWidth = 280, className = '' }) => (
+  <div className={`ornament-divider ${className}`} style={{ maxWidth }}>
+    <span className="ornament-symbol">{symbol}</span>
+  </div>
+);
 
 // Star rating row used in testimonials
 export const StarRating = ({ count = 5 }) => (
   <div style={{ display: 'flex', gap: 4, justifyContent: 'center' }}>
     {Array.from({ length: count }).map((_, i) => (
-      <span key={i} style={{ color: '#d4a017' }}>★</span>
+      <span key={i} style={{ color: '#d4a017', fontSize: '1.1rem' }}>★</span>
     ))}
   </div>
 );

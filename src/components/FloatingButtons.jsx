@@ -18,14 +18,48 @@ export default function FloatingButtons() {
 
       {/* Mobile sticky bottom bar */}
       <div className="mobile-sticky">
-        <a href={`tel:${PHONE_PRIMARY}`} style={{ flex: 1, padding: 16, background: '#d4a017', color: '#1a0e02', textAlign: 'center', textDecoration: 'none', fontFamily: '"Lato",sans-serif', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-          📞 Call Now
+        <a
+          href={`tel:${PHONE_PRIMARY}`}
+          style={{
+            flex: 1, padding: '16px 8px',
+            background: 'linear-gradient(135deg,#b8860b,#d4a017,#f2cd25)',
+            color: '#1a0e02', textAlign: 'center', textDecoration: 'none',
+            fontFamily: '"Lato",sans-serif', fontWeight: 700,
+            fontSize: '0.78rem', letterSpacing: '0.1em', textTransform: 'uppercase',
+            display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2,
+          }}
+        >
+          <span style={{ fontSize: '1.05rem' }}>📞</span>
+          <span>Call</span>
         </a>
-        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" style={{ flex: 1, padding: 16, background: '#25D366', color: 'white', textAlign: 'center', textDecoration: 'none', fontFamily: '"Lato",sans-serif', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-          💬 WhatsApp
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            flex: 1, padding: '16px 8px',
+            background: '#25D366', color: 'white', textAlign: 'center', textDecoration: 'none',
+            fontFamily: '"Lato",sans-serif', fontWeight: 700,
+            fontSize: '0.78rem', letterSpacing: '0.1em', textTransform: 'uppercase',
+            display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2,
+          }}
+        >
+          <span style={{ fontSize: '1.05rem' }}>💬</span>
+          <span>WhatsApp</span>
         </a>
-        <Link to="/contact" style={{ flex: 1, padding: 16, background: '#1a0e02', color: '#d4a017', textAlign: 'center', textDecoration: 'none', fontFamily: '"Lato",sans-serif', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.06em', textTransform: 'uppercase', border: '2px solid #d4a017', borderBottom: 'none' }}>
-          🍽️ Book
+        <Link
+          to="/contact"
+          style={{
+            flex: 1, padding: '16px 8px',
+            background: '#1a0e02', color: '#d4a017', textAlign: 'center', textDecoration: 'none',
+            fontFamily: '"Lato",sans-serif', fontWeight: 700,
+            fontSize: '0.74rem', letterSpacing: '0.08em', textTransform: 'uppercase',
+            border: '2px solid #d4a017', borderBottom: 'none',
+            display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2,
+          }}
+        >
+          <span style={{ fontSize: '1.05rem' }}>🍽️</span>
+          <span>Book</span>
         </Link>
       </div>
     </>
