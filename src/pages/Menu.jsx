@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageBanner from '../components/PageBanner';
@@ -11,356 +11,158 @@ import {
 } from '../data/menu';
 import { WHATSAPP_URL, PHONE_PRIMARY } from '../data/constants';
 
+// Anchor-friendly slug for category navigation
+const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
 // ──────────────────────────────────────────────────────────────────
-// PREMIUM MENU CATEGORY CARD
+// CATEGORY SECTION — typography only (NO food images).
+// Elegant header + centered gold ornament + italic description
+// + 2-column item list with dashed gold separators.
 // ──────────────────────────────────────────────────────────────────
-const CategoryCard = ({ cat, onView, index }) => (
-  <motion.button
-    layout
-    initial={{ opacity: 0, y: 30 }}
+const CategorySection = ({ cat, index }) => (
+  <motion.section
+    id={`cat-${slug(cat.name)}`}
+    initial={{ opacity: 0, y: 24 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: '-60px' }}
-    transition={{ duration: 0.55, delay: (index % 3) * 0.08, ease: 'easeOut' }}
-    onClick={() => onView(cat)}
-    aria-label={`View ${cat.name} menu`}
-    style={{
-      position: 'relative',
-      background: '#FFFFFF',
-      borderRadius: 18,
-      overflow: 'hidden',
-      border: '1px solid rgba(139,107,42,0.20)',
-      boxShadow: '0 10px 28px rgba(139,107,42,0.12)',
-      cursor: 'pointer',
-      textAlign: 'left',
-      padding: 0,
-      display: 'flex',
-      flexDirection: 'column',
-      transition: 'transform 0.5s cubic-bezier(0.2,0.7,0.3,1), box-shadow 0.5s, border-color 0.5s',
-      width: '100%',
-    }}
-    onMouseEnter={(e) => {
-      e.currentTarget.style.transform = 'translateY(-10px)';
-      e.currentTarget.style.borderColor = 'rgba(201,161,74,0.75)';
-      e.currentTarget.style.boxShadow =
-        '0 22px 50px rgba(139,107,42,0.28), 0 0 0 2px rgba(201,161,74,0.30)';
-      const img = e.currentTarget.querySelector('img');
-      if (img) img.style.transform = 'scale(1.10)';
-    }}
-    onMouseLeave={(e) => {
-      e.currentTarget.style.transform = 'translateY(0)';
-      e.currentTarget.style.borderColor = 'rgba(139,107,42,0.20)';
-      e.currentTarget.style.boxShadow = '0 10px 28px rgba(139,107,42,0.12)';
-      const img = e.currentTarget.querySelector('img');
-      if (img) img.style.transform = 'scale(1)';
-    }}
+    transition={{ duration: 0.55, delay: Math.min(index * 0.04, 0.25), ease: 'easeOut' }}
+    style={{ marginBottom: 64, scrollMarginTop: 200 }}
   >
-    {/* IMAGE BLOCK */}
-    <div style={{ position: 'relative', overflow: 'hidden', aspectRatio: '4/3' }}>
-      <img
-        src={cat.img}
-        alt={cat.name}
-        loading="lazy"
-        style={{
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          display: 'block',
-          transition: 'transform 0.7s ease',
-          filter: 'saturate(1.10) contrast(1.04)',
-        }}
-      />
-      {/* Warm bottom gradient for legibility */}
+    {/* HEADER ROW — small gold icon + title + counter */}
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: 20,
+      flexWrap: 'wrap',
+      marginBottom: 16,
+    }}>
       <div style={{
-        position: 'absolute', inset: 0,
-        background:
-          'linear-gradient(to top, rgba(59,42,31,0.55) 0%, rgba(59,42,31,0.10) 40%, rgba(255,251,242,0.20) 100%)',
-        pointerEvents: 'none',
-      }} />
-      {/* Top-left icon medallion */}
-      <div style={{
-        position: 'absolute', top: 16, left: 16,
-        width: 52, height: 52, borderRadius: '50%',
+        width: 52, height: 52,
+        borderRadius: '50%',
         background: 'linear-gradient(135deg, #E5C77F 0%, #C9A14A 50%, #8B6B2A 100%)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontSize: '1.45rem',
-        boxShadow: '0 8px 18px rgba(139,107,42,0.40)',
-        border: '2px solid rgba(255,251,242,0.85)',
+        fontSize: '1.4rem',
+        boxShadow: '0 8px 18px rgba(139,107,42,0.30)',
+        border: '2px solid #FFFBF2',
+        flexShrink: 0,
       }}>
         {cat.icon}
       </div>
-      {/* Bottom-right item count chip */}
-      <div style={{
-        position: 'absolute', bottom: 14, right: 14,
-        background: 'rgba(255,251,242,0.94)',
-        color: '#8B6B2A',
-        padding: '5px 14px',
-        fontFamily: '"DM Sans", sans-serif',
-        fontSize: '0.72rem',
-        fontWeight: 700,
-        letterSpacing: '0.16em',
-        textTransform: 'uppercase',
-        borderRadius: 999,
-        border: '1px solid rgba(139,107,42,0.30)',
-      }}>
-        {cat.items.length} Items
-      </div>
-    </div>
-
-    {/* CONTENT BLOCK */}
-    <div style={{ padding: '24px 26px 26px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-      <h3 style={{
-        fontFamily: '"Playfair Display", serif',
-        color: '#3B2A1F',
-        fontSize: '1.32rem',
-        fontWeight: 700,
-        marginBottom: 10,
-        lineHeight: 1.2,
-      }}>
-        {cat.name}
-      </h3>
-      <div style={{
-        width: 44, height: 2,
-        background: 'linear-gradient(90deg, #C9A14A, transparent)',
-        marginBottom: 14,
-      }} />
-      <p style={{
-        fontFamily: '"DM Sans", sans-serif',
-        color: '#6B5544',
-        fontSize: '0.94rem',
-        lineHeight: 1.7,
-        marginBottom: 16,
-      }}>
-        {cat.desc}
-      </p>
-
-      {/* Sample item chips */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 18 }}>
-        {cat.items.slice(0, 3).map((it) => (
-          <span key={it} style={{
-            fontFamily: '"DM Sans", sans-serif',
-            fontSize: '0.74rem',
-            color: '#8B6B2A',
-            background: 'rgba(201,161,74,0.10)',
-            border: '1px solid rgba(201,161,74,0.30)',
-            padding: '4px 10px',
-            borderRadius: 999,
-          }}>
-            {it}
-          </span>
-        ))}
-        {cat.items.length > 3 && (
-          <span style={{
-            fontFamily: '"DM Sans", sans-serif',
-            fontSize: '0.74rem',
-            color: '#C0392B',
-            padding: '4px 10px',
-            fontWeight: 700,
-          }}>
-            +{cat.items.length - 3} more
-          </span>
-        )}
-      </div>
-
-      <span
-        style={{
-          marginTop: 'auto',
+      <div style={{ flex: '1 1 200px', minWidth: 0 }}>
+        <h3 style={{
+          fontFamily: '"Playfair Display", serif',
+          color: '#3B2A1F',
+          fontSize: 'clamp(1.5rem, 2.6vw, 1.95rem)',
+          fontWeight: 700,
+          lineHeight: 1.15,
+          letterSpacing: '-0.005em',
+          marginBottom: 4,
+        }}>
+          {cat.name}
+        </h3>
+        <p style={{
           fontFamily: '"DM Sans", sans-serif',
-          color: '#C0392B',
-          fontSize: '0.78rem',
-          letterSpacing: '0.20em',
+          color: '#8C7763',
+          fontSize: '0.72rem',
+          letterSpacing: '0.24em',
           textTransform: 'uppercase',
           fontWeight: 700,
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: 8,
-        }}
-      >
-        View Full Menu <span aria-hidden>→</span>
-      </span>
+        }}>
+          {cat.items.length} Curated Selections
+        </p>
+      </div>
     </div>
-  </motion.button>
+
+    {/* CENTERED GOLD RULE WITH ✦ */}
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: 16,
+      marginBottom: 18,
+    }}>
+      <div style={{
+        flex: 1, height: 1,
+        background: 'linear-gradient(90deg, transparent, rgba(139,107,42,0.55) 30%, rgba(139,107,42,0.55) 70%, transparent)',
+      }} />
+      <span style={{
+        color: '#8B6B2A',
+        fontSize: '0.95rem',
+        letterSpacing: '0.4em',
+        fontFamily: '"Playfair Display", serif',
+      }}>
+        ✦
+      </span>
+      <div style={{
+        flex: 1, height: 1,
+        background: 'linear-gradient(90deg, transparent, rgba(139,107,42,0.55) 30%, rgba(139,107,42,0.55) 70%, transparent)',
+      }} />
+    </div>
+
+    {/* ITALIC DESCRIPTION */}
+    <p style={{
+      fontFamily: '"Playfair Display", serif',
+      fontStyle: 'italic',
+      color: '#6B5544',
+      fontSize: 'clamp(1rem, 1.5vw, 1.10rem)',
+      lineHeight: 1.7,
+      marginBottom: 32,
+      textAlign: 'center',
+      maxWidth: 760,
+      marginInline: 'auto',
+    }}>
+      {cat.desc}
+    </p>
+
+    {/* ITEMS — 2-column elegant list with dashed gold separators */}
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+      columnGap: 56,
+      rowGap: 0,
+      maxWidth: 920,
+      marginInline: 'auto',
+    }}>
+      {cat.items.map((item) => (
+        <div
+          key={item}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 14,
+            padding: '13px 4px',
+            borderBottom: '1px dashed rgba(139,107,42,0.28)',
+          }}
+        >
+          <span style={{
+            color: '#C9A14A',
+            fontSize: '0.85rem',
+            flexShrink: 0,
+            fontFamily: '"Playfair Display", serif',
+          }}>
+            ✦
+          </span>
+          <span style={{
+            fontFamily: '"DM Sans", sans-serif',
+            color: '#3B2A1F',
+            fontSize: '1rem',
+            fontWeight: 500,
+            letterSpacing: '0.005em',
+          }}>
+            {item}
+          </span>
+        </div>
+      ))}
+    </div>
+  </motion.section>
 );
 
 // ──────────────────────────────────────────────────────────────────
-// CATEGORY ITEMS MODAL
-// ──────────────────────────────────────────────────────────────────
-const CategoryModal = ({ cat, onClose }) => {
-  // Close on Escape
-  useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
-    window.addEventListener('keydown', onKey);
-    document.body.style.overflow = 'hidden';
-    return () => {
-      window.removeEventListener('keydown', onKey);
-      document.body.style.overflow = '';
-    };
-  }, [onClose]);
-
-  if (!cat) return null;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      onClick={onClose}
-      style={{
-        position: 'fixed', inset: 0, zIndex: 1000,
-        background: 'rgba(59,42,31,0.55)',
-        backdropFilter: 'blur(6px)',
-        WebkitBackdropFilter: 'blur(6px)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        padding: 20,
-      }}
-    >
-      <motion.div
-        initial={{ opacity: 0, scale: 0.96, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.96, y: 20 }}
-        transition={{ duration: 0.35, ease: 'easeOut' }}
-        onClick={(e) => e.stopPropagation()}
-        style={{
-          background: 'linear-gradient(180deg, #FFFBF2 0%, #FFF7E5 100%)',
-          maxWidth: 640, width: '100%',
-          maxHeight: '90vh', overflow: 'auto',
-          borderRadius: 18,
-          border: '1.5px solid rgba(201,161,74,0.45)',
-          boxShadow: '0 30px 80px rgba(59,42,31,0.45)',
-          position: 'relative',
-        }}
-      >
-        {/* Banner image */}
-        <div style={{ position: 'relative', height: 200, overflow: 'hidden' }}>
-          <img src={cat.img} alt={cat.name} style={{
-            width: '100%', height: '100%', objectFit: 'cover',
-            filter: 'saturate(1.10) contrast(1.04)',
-          }} />
-          <div style={{
-            position: 'absolute', inset: 0,
-            background: 'linear-gradient(to top, rgba(255,251,242,1) 0%, rgba(255,251,242,0.30) 50%, transparent 100%)',
-          }} />
-          {/* Close button */}
-          <button
-            onClick={onClose}
-            aria-label="Close"
-            style={{
-              position: 'absolute', top: 14, right: 14,
-              width: 38, height: 38,
-              borderRadius: '50%',
-              background: 'rgba(255,251,242,0.96)',
-              border: '1px solid rgba(139,107,42,0.30)',
-              color: '#8B6B2A',
-              cursor: 'pointer',
-              fontSize: '1rem',
-              fontWeight: 700,
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.20)',
-            }}
-          >
-            ✕
-          </button>
-        </div>
-
-        <div style={{ padding: '0 36px 32px', marginTop: -40, position: 'relative' }}>
-          {/* Icon medallion */}
-          <div style={{
-            width: 76, height: 76, borderRadius: '50%',
-            background: 'linear-gradient(135deg, #E5C77F 0%, #C9A14A 50%, #8B6B2A 100%)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: '2rem',
-            boxShadow: '0 12px 26px rgba(139,107,42,0.35)',
-            border: '4px solid #FFFBF2',
-            margin: '0 auto 16px',
-          }}>
-            {cat.icon}
-          </div>
-
-          <h2 style={{
-            fontFamily: '"Playfair Display", serif',
-            color: '#3B2A1F',
-            fontSize: 'clamp(1.6rem, 3vw, 2rem)',
-            fontWeight: 700,
-            textAlign: 'center',
-            marginBottom: 10,
-          }}>
-            {cat.name}
-          </h2>
-
-          <div className="ornament-divider" style={{ maxWidth: 200 }}>
-            <span className="ornament-symbol">✦ ❀ ✦</span>
-          </div>
-
-          <p style={{
-            fontFamily: '"DM Sans", sans-serif',
-            color: '#6B5544',
-            fontSize: '1rem',
-            lineHeight: 1.78,
-            textAlign: 'center',
-            marginBottom: 26,
-          }}>
-            {cat.desc}
-          </p>
-
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-            gap: 10,
-          }}>
-            {cat.items.map((item, i) => (
-              <motion.div
-                key={item}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: i * 0.03 }}
-                style={{
-                  display: 'flex', alignItems: 'center', gap: 12,
-                  padding: '12px 16px',
-                  background: '#FFFFFF',
-                  border: '1px solid rgba(201,161,74,0.25)',
-                  borderRadius: 8,
-                }}
-              >
-                <span style={{
-                  width: 26, height: 26, borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #E5C77F, #C9A14A)',
-                  color: '#3B2A1F',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '0.75rem',
-                  fontWeight: 700,
-                  flexShrink: 0,
-                }}>
-                  ✦
-                </span>
-                <span style={{
-                  fontFamily: '"DM Sans", sans-serif',
-                  color: '#3B2A1F',
-                  fontSize: '0.94rem',
-                  fontWeight: 600,
-                }}>
-                  {item}
-                </span>
-              </motion.div>
-            ))}
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: 28 }}>
-            <Link to="/contact" onClick={onClose} className="btn-gold" style={{ textDecoration: 'none' }}>
-              <span>Customise This Menu</span>
-            </Link>
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-};
-
-// ──────────────────────────────────────────────────────────────────
-// WEDDING PACKAGE CARD
+// WEDDING PACKAGE CARD — kept (tier visuals, not food spam).
+// Replaced food image header with a gold gradient tier band.
 // ──────────────────────────────────────────────────────────────────
 const PackageCard = ({ pkg, index }) => {
   const isPopular = pkg.popular;
 
-  // Tier-specific gold accent
   const accents = {
     Silver: { from: '#E8E2D2', mid: '#C9C4B6', to: '#9C9685', text: '#3B2A1F' },
     Gold:   { from: '#E5C77F', mid: '#C9A14A', to: '#8B6B2A', text: '#3B2A1F' },
@@ -381,7 +183,7 @@ const PackageCard = ({ pkg, index }) => {
         overflow: 'hidden',
         border: isPopular
           ? '2px solid rgba(201,161,74,0.65)'
-          : '1px solid rgba(139,107,42,0.20)',
+          : '1px solid rgba(139,107,42,0.22)',
         boxShadow: isPopular
           ? '0 24px 56px rgba(201,161,74,0.30), 0 0 0 1px rgba(201,161,74,0.30)'
           : '0 14px 36px rgba(139,107,42,0.15)',
@@ -390,7 +192,6 @@ const PackageCard = ({ pkg, index }) => {
         display: 'flex', flexDirection: 'column',
       }}
     >
-      {/* "MOST POPULAR" ribbon */}
       {isPopular && (
         <div style={{
           position: 'absolute', top: 16, right: -36,
@@ -410,48 +211,41 @@ const PackageCard = ({ pkg, index }) => {
         </div>
       )}
 
-      {/* Image header */}
-      <div style={{ position: 'relative', height: 200, overflow: 'hidden' }}>
-        <img
-          src={pkg.img}
-          alt={pkg.label}
-          loading="lazy"
-          style={{
-            width: '100%', height: '100%', objectFit: 'cover',
-            display: 'block',
-            filter: 'saturate(1.10) contrast(1.04)',
-          }}
-        />
-        {/* Tier-coloured gradient overlay */}
+      {/* Tier-coloured header band — decorative pattern, not a food image */}
+      <div style={{
+        height: 110,
+        position: 'relative',
+        background: `linear-gradient(135deg, ${a.from} 0%, ${a.mid} 50%, ${a.to} 100%)`,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        overflow: 'hidden',
+      }}>
         <div style={{
           position: 'absolute', inset: 0,
-          background: `linear-gradient(180deg, transparent 0%, ${a.to}55 60%, ${a.to}DD 100%)`,
+          backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 18px, rgba(255,251,242,0.10) 18px, rgba(255,251,242,0.10) 36px)',
         }} />
-        {/* Tier badge */}
         <div style={{
-          position: 'absolute', bottom: 14, left: 18,
-          padding: '8px 18px',
-          background: `linear-gradient(135deg, ${a.from} 0%, ${a.mid} 50%, ${a.to} 100%)`,
-          color: a.text,
+          position: 'relative', zIndex: 1,
+          padding: '8px 22px',
+          background: 'rgba(255,251,242,0.94)',
+          color: a.to,
           fontFamily: '"Playfair Display", serif',
-          fontSize: '0.92rem',
+          fontSize: '0.95rem',
           fontWeight: 700,
-          letterSpacing: '0.20em',
+          letterSpacing: '0.32em',
           textTransform: 'uppercase',
-          borderRadius: 6,
-          border: '1px solid rgba(255,251,242,0.45)',
-          boxShadow: '0 6px 14px rgba(0,0,0,0.18)',
+          borderRadius: 4,
+          border: '1px solid rgba(139,107,42,0.30)',
+          boxShadow: '0 6px 14px rgba(0,0,0,0.10)',
         }}>
-          {pkg.tier}
+          {pkg.tier} Tier
         </div>
       </div>
 
-      {/* Content */}
       <div style={{ padding: '32px 30px 28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
         <h3 style={{
           fontFamily: '"Playfair Display", serif',
           color: '#3B2A1F',
-          fontSize: '1.6rem',
+          fontSize: '1.65rem',
           fontWeight: 700,
           marginBottom: 6,
           lineHeight: 1.15,
@@ -462,7 +256,7 @@ const PackageCard = ({ pkg, index }) => {
           fontFamily: '"Playfair Display", serif',
           fontStyle: 'italic',
           color: '#C0392B',
-          fontSize: '0.95rem',
+          fontSize: '0.98rem',
           fontWeight: 500,
           marginBottom: 14,
         }}>
@@ -572,15 +366,17 @@ const PackageCard = ({ pkg, index }) => {
 // ──────────────────────────────────────────────────────────────────
 export default function Menu() {
   const [activeTab, setActiveTab] = useState('veg'); // 'veg' | 'nonveg'
-  const [openCat, setOpenCat]     = useState(null);
 
   const categories = useMemo(
     () => (activeTab === 'veg' ? VEG_CATEGORIES : NONVEG_CATEGORIES),
     [activeTab]
   );
 
-  const handleViewCategory = useCallback((cat) => setOpenCat(cat), []);
-  const handleCloseModal   = useCallback(() => setOpenCat(null), []);
+  // Smooth-scroll a category section into view
+  const jumpTo = (name) => {
+    const el = document.getElementById(`cat-${slug(name)}`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   return (
     <>
@@ -610,7 +406,6 @@ export default function Menu() {
             </p>
           </FadeUp>
 
-          {/* Stats row */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
@@ -646,12 +441,12 @@ export default function Menu() {
         </div>
       </section>
 
-      {/* ── VEG / NON-VEG TAB SWITCHER (sticky) ───────────────────── */}
+      {/* ── VEG / NON-VEG STICKY TAB SWITCHER ─────────────────────── */}
       <div style={{
         position: 'sticky',
         top: 76,
         zIndex: 60,
-        background: 'rgba(255, 251, 242, 0.92)',
+        background: 'rgba(255, 251, 242, 0.94)',
         backdropFilter: 'blur(14px)',
         WebkitBackdropFilter: 'blur(14px)',
         borderTop: '1px solid rgba(201,161,74,0.18)',
@@ -672,7 +467,6 @@ export default function Menu() {
               boxShadow: '0 10px 24px rgba(139,107,42,0.18)',
             }}
           >
-            {/* Sliding gold indicator */}
             <motion.div
               layout
               transition={{ type: 'spring', stiffness: 400, damping: 32 }}
@@ -683,8 +477,7 @@ export default function Menu() {
                 width: 'calc(50% - 6px)',
                 background: 'linear-gradient(135deg, #E5C77F 0%, #C9A14A 50%, #8B6B2A 100%)',
                 borderRadius: 999,
-                boxShadow:
-                  '0 8px 18px rgba(201,161,74,0.55), inset 0 1px 0 rgba(255,251,242,0.50)',
+                boxShadow: '0 8px 18px rgba(201,161,74,0.55), inset 0 1px 0 rgba(255,251,242,0.50)',
                 zIndex: 0,
               }}
             />
@@ -730,9 +523,9 @@ export default function Menu() {
         </div>
       </div>
 
-      {/* ── CATEGORY CARDS (beige) ────────────────────────────────── */}
-      <section className="section-pad beige-section" style={{ paddingTop: 60 }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
+      {/* ── MENU BOOKLET (cream) — typography-driven, no images ──── */}
+      <section className="cream-section" style={{ padding: '60px 0 100px', position: 'relative' }}>
+        <div style={{ maxWidth: 1080, margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -740,76 +533,150 @@ export default function Menu() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.4 }}
-              style={{ textAlign: 'center', marginBottom: 50 }}
-            >
-              <p className="section-kicker">{activeTab === 'veg' ? 'Vegetarian Selections' : 'Non-Vegetarian Selections'}</p>
-              <h2 className="section-title" style={{ fontSize: 'clamp(1.7rem, 3vw, 2.4rem)', marginTop: 4 }}>
-                {activeTab === 'veg' ? 'Veg Menu ' : 'Non-Veg Menu '}
-                <span style={{
-                  background: 'linear-gradient(135deg, #B8923D, #C9A14A, #8B6B2A)',
-                  WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                  fontStyle: 'italic',
-                }}>Categories</span>
-              </h2>
-              <div className="ornament-divider" style={{ maxWidth: 200 }}>
-                <span className="ornament-symbol">✦</span>
-              </div>
-              <p style={{
-                fontFamily: '"DM Sans", sans-serif',
-                color: '#6B5544',
-                fontSize: '1.04rem',
-                maxWidth: 660,
-                margin: '12px auto 0',
-                lineHeight: 1.78,
-              }}>
-                Tap any category to see the full curated list of dishes — every menu can be customised to your wedding theme and guest count.
-              </p>
-            </motion.div>
-          </AnimatePresence>
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`grid-${activeTab}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.35 }}
-              className="premium-cards-grid"
               style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-                gap: 26,
+                background: 'linear-gradient(180deg, #FFFBF2 0%, #FFFFFF 70%, #FFFBF2 100%)',
+                border: '1.5px solid rgba(139,107,42,0.30)',
+                borderRadius: 20,
+                padding: 'clamp(40px, 6vw, 80px) clamp(28px, 5vw, 64px)',
+                boxShadow: '0 24px 60px rgba(139,107,42,0.18)',
+                position: 'relative',
               }}
             >
-              {categories.map((cat, i) => (
-                <CategoryCard
-                  key={`${activeTab}-${cat.name}`}
-                  cat={cat}
-                  onView={handleViewCategory}
-                  index={i}
-                />
-              ))}
+              {/* Decorative gold corners */}
+              <div style={{ position: 'absolute', top: 18, left: 18, width: 26, height: 26, borderTop: '1.5px solid #8B6B2A', borderLeft: '1.5px solid #8B6B2A', opacity: 0.55, pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', top: 18, right: 18, width: 26, height: 26, borderTop: '1.5px solid #8B6B2A', borderRight: '1.5px solid #8B6B2A', opacity: 0.55, pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', bottom: 18, left: 18, width: 26, height: 26, borderBottom: '1.5px solid #8B6B2A', borderLeft: '1.5px solid #8B6B2A', opacity: 0.55, pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', bottom: 18, right: 18, width: 26, height: 26, borderBottom: '1.5px solid #8B6B2A', borderRight: '1.5px solid #8B6B2A', opacity: 0.55, pointerEvents: 'none' }} />
+
+              {/* MENU TITLE */}
+              <header style={{ textAlign: 'center', marginBottom: 36 }}>
+                <p style={{
+                  fontFamily: '"DM Sans", sans-serif',
+                  color: '#C0392B',
+                  fontSize: '0.74rem',
+                  letterSpacing: '0.32em',
+                  textTransform: 'uppercase',
+                  fontWeight: 700,
+                  marginBottom: 10,
+                }}>
+                  {activeTab === 'veg' ? 'Pure Vegetarian Selection' : 'Non-Vegetarian Selection'}
+                </p>
+                <h2 style={{
+                  fontFamily: '"Playfair Display", serif',
+                  color: '#3B2A1F',
+                  fontSize: 'clamp(2rem, 4vw, 3.2rem)',
+                  fontWeight: 700,
+                  fontStyle: 'italic',
+                  lineHeight: 1.1,
+                  marginBottom: 12,
+                }}>
+                  {activeTab === 'veg' ? 'Veg Menu' : 'Non-Veg Menu'}
+                </h2>
+                <Ornament />
+                <p style={{
+                  fontFamily: '"Playfair Display", serif',
+                  fontStyle: 'italic',
+                  color: '#6B5544',
+                  fontSize: 'clamp(1rem, 1.5vw, 1.12rem)',
+                  marginTop: 10,
+                  maxWidth: 640,
+                  marginInline: 'auto',
+                  lineHeight: 1.7,
+                }}>
+                  {activeTab === 'veg'
+                    ? 'A graceful spread of authentic Telugu, North Indian and South Indian vegetarian classics.'
+                    : 'Royal Hyderabadi & Mughlai non-veg specialties with signature live counters and BBQ.'}
+                </p>
+              </header>
+
+              {/* QUICK-JUMP CHIPS — table of contents */}
+              <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                flexWrap: 'wrap',
+                gap: 8,
+                margin: '0 auto 50px',
+                paddingBottom: 28,
+                borderBottom: '1px dashed rgba(139,107,42,0.30)',
+                maxWidth: 880,
+              }}>
+                {categories.map((cat) => (
+                  <button
+                    key={cat.name}
+                    onClick={() => jumpTo(cat.name)}
+                    style={{
+                      padding: '7px 16px',
+                      background: 'rgba(201,161,74,0.06)',
+                      border: '1px solid rgba(139,107,42,0.30)',
+                      color: '#8B6B2A',
+                      fontFamily: '"DM Sans", sans-serif',
+                      fontSize: '0.78rem',
+                      fontWeight: 600,
+                      letterSpacing: '0.04em',
+                      borderRadius: 999,
+                      cursor: 'pointer',
+                      transition: 'all 0.3s',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 6,
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, #E5C77F, #C9A14A)';
+                      e.currentTarget.style.color = '#3B2A1F';
+                      e.currentTarget.style.borderColor = '#8B6B2A';
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'rgba(201,161,74,0.06)';
+                      e.currentTarget.style.color = '#8B6B2A';
+                      e.currentTarget.style.borderColor = 'rgba(139,107,42,0.30)';
+                      e.currentTarget.style.transform = 'translateY(0)';
+                    }}
+                  >
+                    <span style={{ fontSize: '0.86rem' }}>{cat.icon}</span>
+                    {cat.name}
+                  </button>
+                ))}
+              </div>
+
+              {/* CATEGORY SECTIONS — typography only */}
+              <div>
+                {categories.map((cat, i) => (
+                  <CategorySection key={`${activeTab}-${cat.name}`} cat={cat} index={i} />
+                ))}
+              </div>
+
+              {/* BOOKLET FOOTER */}
+              <div style={{
+                textAlign: 'center',
+                paddingTop: 38,
+                marginTop: 20,
+                borderTop: '1px dashed rgba(139,107,42,0.30)',
+              }}>
+                <p style={{
+                  fontFamily: '"Playfair Display", serif',
+                  fontStyle: 'italic',
+                  color: '#6B5544',
+                  fontSize: '1rem',
+                  marginBottom: 24,
+                  maxWidth: 580,
+                  marginInline: 'auto',
+                  lineHeight: 1.7,
+                }}>
+                  Every menu is fully customisable to your wedding theme, guest count and dietary preferences.
+                </p>
+                <div style={{ display: 'flex', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}>
+                  <Link to="/contact" className="btn-gold" style={{ textDecoration: 'none' }}>Request Custom Menu</Link>
+                  <a href="/menu.pdf" className="btn-outline-gold" style={{ textDecoration: 'none' }} download>Download Full Menu</a>
+                </div>
+              </div>
             </motion.div>
           </AnimatePresence>
-
-          <FadeUp style={{ textAlign: 'center', marginTop: 56 }}>
-            <Link to="/contact" className="btn-gold" style={{ textDecoration: 'none', marginRight: 10 }}>
-              Request Custom Menu
-            </Link>
-            <a
-              href="/menu.pdf"
-              className="btn-outline-gold"
-              style={{ textDecoration: 'none' }}
-              download
-            >
-              Download Full Menu
-            </a>
-          </FadeUp>
         </div>
       </section>
 
-      {/* ── WEDDING PACKAGES (cream) ──────────────────────────────── */}
-      <section className="section-pad cream-section">
+      {/* ── WEDDING PACKAGES (beige) ──────────────────────────────── */}
+      <section className="section-pad beige-section">
         <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
           <FadeUp style={{ textAlign: 'center', marginBottom: 60 }}>
             <p className="section-kicker">Crafted For Every Celebration</p>
@@ -826,15 +693,12 @@ export default function Menu() {
             </p>
           </FadeUp>
 
-          <div
-            className="premium-cards-grid"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))',
-              gap: 30,
-              alignItems: 'stretch',
-            }}
-          >
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))',
+            gap: 30,
+            alignItems: 'stretch',
+          }}>
             {WEDDING_PACKAGES.map((pkg, i) => (
               <PackageCard key={pkg.tier} pkg={pkg} index={i} />
             ))}
@@ -867,32 +731,6 @@ export default function Menu() {
         title="Let's Curate Your Dream Wedding Menu"
         subtitle="From welcome drinks to grand desserts — every dish, every detail, designed around your celebration."
       />
-
-      {/* ── CATEGORY ITEMS MODAL ──────────────────────────────────── */}
-      <AnimatePresence>
-        {openCat && <CategoryModal cat={openCat} onClose={handleCloseModal} />}
-      </AnimatePresence>
-
-      {/* ── MOBILE: convert grid to horizontal carousel ───────────── */}
-      <style>{`
-        @media (max-width: 700px) {
-          .premium-cards-grid {
-            grid-auto-flow: column !important;
-            grid-auto-columns: 80% !important;
-            grid-template-columns: unset !important;
-            overflow-x: auto !important;
-            scroll-snap-type: x mandatory;
-            padding-bottom: 18px;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            margin: 0 -24px;
-            padding-left: 24px;
-            padding-right: 24px;
-          }
-          .premium-cards-grid::-webkit-scrollbar { display: none; }
-          .premium-cards-grid > * { scroll-snap-align: start; }
-        }
-      `}</style>
     </>
   );
 }
