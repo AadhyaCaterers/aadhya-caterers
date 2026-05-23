@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import PageBanner from '../components/PageBanner';
 import CTASection from '../components/CTASection';
 import MenuPlan from '../components/MenuPlan';
 import { FadeUp, Ornament } from '../components/animations';
@@ -25,19 +24,19 @@ export default function VegMenu() {
 
   return (
     <>
-      <PageBanner
-        tagline="Pure Vegetarian Selection"
-        title="Vegetarian Menu"
-        subtitle="A graceful spread of authentic Telugu, North and South Indian vegetarian classics — curated for traditional weddings, receptions and family celebrations."
-        image="/img6.jpg"
-        height={460}
-      />
-
-      {/* Intro + plan switcher */}
-      <section className="cream-section" style={{ padding: '80px 0 30px', position: 'relative' }}>
+      {/* Page header — text-only, banner image removed */}
+      <section
+        className="cream-section"
+        style={{
+          // Clears the fixed navbar (TopBar + Navbar) and gives the
+          // heading comfortable breathing room without empty space.
+          padding: 'clamp(140px, 16vw, 180px) 0 clamp(40px, 6vw, 64px)',
+          position: 'relative',
+        }}
+      >
         <div
           style={{
-            maxWidth: 1100,
+            maxWidth: 880,
             margin: '0 auto',
             padding: '0 24px',
             position: 'relative',
@@ -46,12 +45,14 @@ export default function VegMenu() {
           }}
         >
           <FadeUp>
-            <p className="section-kicker">A Royal Vegetarian Experience</p>
-            <h2
+            <p className="section-kicker">Pure Vegetarian Selection</p>
+            <h1
               className="section-title"
-              style={{ fontSize: 'clamp(1.85rem, 3.4vw, 2.6rem)', marginTop: 4 }}
+              style={{
+                fontSize: 'clamp(2rem, 4.4vw, 3rem)',
+                marginTop: 6,
+              }}
             >
-              Our{' '}
               <span
                 style={{
                   background:
@@ -62,19 +63,19 @@ export default function VegMenu() {
                   fontStyle: 'italic',
                 }}
               >
-                Veg Catering Plans
+                Veg Menu
               </span>
-            </h2>
+            </h1>
             <Ornament />
             <p
               className="section-subtitle"
               style={{
                 maxWidth: 720,
                 margin: '14px auto 0',
-                fontSize: '1.08rem',
+                fontSize: '1.05rem',
               }}
             >
-              Choose between our Vegetarian Standard and Silver plans. Every plan is fully customisable to your guest count, theme and preferences.
+              A graceful spread of authentic Telugu, North and South Indian vegetarian classics — curated for traditional weddings, receptions and family celebrations.
             </p>
           </FadeUp>
 
