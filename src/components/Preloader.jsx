@@ -53,72 +53,46 @@ export default function Preloader({ onDone }) {
         }}
       />
 
-      {/* GOLD RING */}
-      <motion.div
-        animate={{
-          rotate: 360,
-        }}
-        transition={{
-          repeat: Infinity,
-          duration: 18,
-          ease: 'linear',
-        }}
-        style={{
-          position: 'absolute',
-
-          width: '650px',
-          height: '650px',
-
-          borderRadius: '50%',
-
-          border:
-            '1px solid rgba(212,175,55,0.18)',
-        }}
-      />
-
-      {/* CONTENT */}
-      <motion.div
-        initial={{
-          opacity: 0,
-          y: 40,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          duration: 1,
-        }}
+      {/* MAIN CONTENT */}
+      <div
         style={{
           position: 'relative',
-          zIndex: 5,
+          zIndex: 2,
 
-          textAlign: 'center',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
         }}
       >
         {/* LOGO */}
         <motion.img
           src="/logo.png"
           alt="Aadhya Caterers"
-          className="brand-logo"
-
           initial={{
-            scale: 0.85,
+            opacity: 0,
+            y: 20,
+            scale: 0.9,
           }}
           animate={{
+            opacity: 1,
+            y: 0,
             scale: 1,
-            y: [0, -6, 0],
           }}
-
           transition={{
-            scale: { duration: 0.8 },
-            y: { repeat: Infinity, duration: 3 },
+            duration: 1,
           }}
-
           style={{
-            width: '280px',
-            maxWidth: '80vw',
-            margin: '0 auto 36px',
+            width: 140,
+            height: 'auto',
+
+            background: '#ffffff',
+            padding: '12px',
+            borderRadius: '22px',
+
+            boxShadow:
+              '0 12px 35px rgba(0,0,0,0.10)',
+
+            marginBottom: 28,
           }}
         />
 
@@ -126,36 +100,64 @@ export default function Preloader({ onDone }) {
         <motion.h1
           initial={{
             opacity: 0,
+            y: 20,
           }}
           animate={{
             opacity: 1,
+            y: 0,
           }}
           transition={{
-            delay: 0.4,
+            delay: 0.2,
+            duration: 1,
           }}
           style={{
             fontFamily:
               '"Playfair Display", serif',
 
-            fontSize:
-              'clamp(2.8rem,5vw,4.5rem)',
-
-            marginBottom: '16px',
-
+            fontSize: 'clamp(2.4rem,5vw,4.5rem)',
             fontWeight: 700,
 
-            lineHeight: 1.1,
+            color: '#8B6B2A',
 
-            background:
-              'linear-gradient(135deg,#B68B3A,#E5C77F,#B68B3A)',
+            letterSpacing: '0.04em',
 
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor:
-              'transparent',
+            margin: 0,
+            textAlign: 'center',
+
+            textShadow:
+              '0 4px 18px rgba(139,107,42,0.15)',
           }}
         >
           Aadhya Caterers
         </motion.h1>
+
+        {/* GOLD LINE */}
+        <motion.div
+          initial={{
+            width: 0,
+            opacity: 0,
+          }}
+          animate={{
+            width: 220,
+            opacity: 1,
+          }}
+          transition={{
+            delay: 0.5,
+            duration: 1.2,
+          }}
+          style={{
+            height: 4,
+            borderRadius: 999,
+
+            marginTop: 28,
+
+            background:
+              'linear-gradient(90deg,#B68B3A,#D4AF37,#B68B3A)',
+
+            boxShadow:
+              '0 4px 18px rgba(212,175,55,0.35)',
+          }}
+        />
 
         {/* TAGLINE */}
         <motion.p
@@ -166,92 +168,28 @@ export default function Preloader({ onDone }) {
             opacity: 1,
           }}
           transition={{
-            delay: 0.7,
+            delay: 1,
+            duration: 1,
           }}
           style={{
-            color: '#7A624D',
+            marginTop: 24,
 
-            fontSize: '0.95rem',
+            fontFamily:
+              '"Playfair Display", serif',
 
-            letterSpacing: '0.35em',
+            color: '#8B6B2A',
 
-            textTransform: 'uppercase',
+            letterSpacing: '0.08em',
 
-            fontWeight: 700,
+            fontSize: '1rem',
+            fontWeight: 600,
 
-            marginBottom: '42px',
+            textAlign: 'center',
           }}
         >
-          Pure Veg · Perfectly Served
+          Premium Catering Hyderabad
         </motion.p>
-
-        {/* LOADER */}
-        <div
-          style={{
-            width: '280px',
-            height: '7px',
-
-            margin: '0 auto',
-
-            borderRadius: '999px',
-
-            overflow: 'hidden',
-
-            background:
-              'rgba(182,139,58,0.14)',
-          }}
-        >
-          <motion.div
-            initial={{
-              width: 0,
-            }}
-            animate={{
-              width: '100%',
-            }}
-            transition={{
-              duration: 2,
-              ease: 'easeInOut',
-            }}
-            style={{
-              height: '100%',
-
-              borderRadius: '999px',
-
-              background:
-                'linear-gradient(90deg,#B68B3A,#E5C77F,#B68B3A)',
-
-              boxShadow:
-                '0 0 20px rgba(212,175,55,0.55)',
-            }}
-          />
-        </div>
-
-        {/* LOADING TEXT */}
-        <motion.p
-          animate={{
-            opacity: [0.5, 1, 0.5],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 1.8,
-          }}
-          style={{
-            marginTop: '18px',
-
-            color: '#9A7A45',
-
-            fontSize: '0.85rem',
-
-            letterSpacing: '0.22em',
-
-            textTransform: 'uppercase',
-
-            fontWeight: 700,
-          }}
-        >
-          Preparing Premium Experience...
-        </motion.p>
-      </motion.div>
+      </div>
     </motion.div>
   );
 }
