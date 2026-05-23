@@ -132,9 +132,11 @@ export default function Footer() {
             <img
               src="/logo.png"
               alt="Aadhya Caterers"
+              className="brand-logo"
               style={{
-                height: 62,
-                marginBottom: 18,
+                height: 58,
+                width: 'auto',
+                marginBottom: 26,
               }}
             />
 

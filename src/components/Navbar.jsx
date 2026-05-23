@@ -83,19 +83,19 @@ export default function Navbar() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 12,
+              gap: 14,
               textDecoration: 'none',
+              padding: '4px 0',
             }}
           >
             <img
               src="/logo.png"
               alt="Aadhya Caterers"
+              className="brand-logo"
               style={{
-                height: scrolled ? 50 : 60,
+                height: scrolled ? 44 : 52,
                 width: 'auto',
-                objectFit: 'contain',
-                display: 'block',
-                transition: 'all .3s ease',
+                transition: 'height .3s ease, padding .3s ease',
               }}
             />
 
