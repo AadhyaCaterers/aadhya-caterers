@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { LOGO_SRC } from '../data/constants';
 
 export default function Preloader({ onDone }) {
   useEffect(() => {
@@ -66,7 +67,7 @@ export default function Preloader({ onDone }) {
       >
         {/* LOGO */}
         <motion.img
-          src="/logo.png"
+          src={LOGO_SRC}
           alt="Aadhya Caterers"
           initial={{
             opacity: 0,
@@ -82,15 +83,16 @@ export default function Preloader({ onDone }) {
             duration: 1,
           }}
           style={{
-            width: 140,
+            width: 220,
+            maxWidth: '85vw',
             height: 'auto',
 
             background: '#ffffff',
-            padding: '12px',
-            borderRadius: '22px',
+            padding: '16px',
+            borderRadius: '24px',
 
             boxShadow:
-              '0 12px 35px rgba(0,0,0,0.10)',
+              '0 14px 40px rgba(0,0,0,0.12)',
 
             marginBottom: 28,
           }}

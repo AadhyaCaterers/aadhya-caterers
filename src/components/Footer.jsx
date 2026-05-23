@@ -10,6 +10,7 @@ import {
   PHONE_PRIMARY,
   PHONE_SECONDARY,
   EMAIL_PRIMARY,
+  LOGO_SRC,
 } from '../data/constants';
 
 const IconWhatsApp = () => (
@@ -130,11 +131,11 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <img
-              src="/logo.png"
+              src={LOGO_SRC}
               alt="Aadhya Caterers"
               className="brand-logo"
               style={{
-                height: 58,
+                height: 78,
                 width: 'auto',
                 marginBottom: 26,
               }}
