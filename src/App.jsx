@@ -5,14 +5,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Layout from './components/Layout';
 import Preloader from './components/Preloader';
 
-import Home     from './pages/Home';
-import About    from './pages/About';
-import Services from './pages/Services';
-import Gallery  from './pages/Gallery';
-import Videos   from './pages/Videos';
-import Menu     from './pages/Menu';
-import Contact  from './pages/Contact';
-import NotFound from './pages/NotFound';
+import Home       from './pages/Home';
+import About      from './pages/About';
+import Services   from './pages/Services';
+import Gallery    from './pages/Gallery';
+import Videos     from './pages/Videos';
+import Menu       from './pages/Menu';
+import VegMenu    from './pages/VegMenu';
+import NonVegMenu from './pages/NonVegMenu';
+import Contact    from './pages/Contact';
+import NotFound   from './pages/NotFound';
 
 // Top-level app shell:
 // 1. Show preloader on first paint
@@ -29,14 +31,16 @@ export default function App() {
           <BrowserRouter>
             <Routes>
               <Route element={<Layout />}>
-                <Route path="/"         element={<Home />} />
-                <Route path="/about"    element={<About />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/gallery"  element={<Gallery />} />
-                <Route path="/videos"   element={<Videos />} />
-                <Route path="/menu"     element={<Menu />} />
-                <Route path="/contact"  element={<Contact />} />
-                <Route path="*"         element={<NotFound />} />
+                <Route path="/"             element={<Home />} />
+                <Route path="/about"        element={<About />} />
+                <Route path="/services"     element={<Services />} />
+                <Route path="/gallery"      element={<Gallery />} />
+                <Route path="/videos"       element={<Videos />} />
+                <Route path="/menu"         element={<Menu />} />
+                <Route path="/veg-menu"     element={<VegMenu />} />
+                <Route path="/non-veg-menu" element={<NonVegMenu />} />
+                <Route path="/contact"      element={<Contact />} />
+                <Route path="*"             element={<NotFound />} />
               </Route>
             </Routes>
           </BrowserRouter>

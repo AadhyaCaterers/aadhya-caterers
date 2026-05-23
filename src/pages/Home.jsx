@@ -8,6 +8,7 @@ import { SERVICES } from '../data/services';
 import { GALLERY_IMAGES } from '../data/gallery';
 import { VIDEOS } from '../data/videos';
 import { YOUTUBE_URL } from '../data/constants';
+import MenuChoiceCards from '../components/MenuChoiceCards';
 
 // Reusable ornamental divider
 const Ornament = ({ symbol = '✦ ❀ ✦', maxWidth = 280 }) => (
@@ -285,6 +286,34 @@ export default function Home() {
               </FadeUp>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── MENU PREVIEW (beige) ──────────────────────────────────── */}
+      <section id="menu-preview" className="section-pad beige-section">
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
+          <FadeUp style={{ textAlign: 'center', marginBottom: 56 }}>
+            <p className="section-kicker">Curated Catering Menus</p>
+            <h2 className="section-title" style={{ fontSize: 'clamp(1.9rem, 3.4vw, 2.8rem)', marginTop: 4 }}>
+              Our <span style={{
+                background: 'linear-gradient(135deg, #B8923D, #C9A14A, #8B6B2A)',
+                WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                fontStyle: 'italic',
+              }}>Menu</span>
+            </h2>
+            <Ornament />
+            <p className="section-subtitle" style={{ maxWidth: 640, margin: '14px auto 0', fontSize: '1.1rem' }}>
+              Explore our complete Veg &amp; Non-Veg catering menu for every celebration.
+            </p>
+          </FadeUp>
+
+          <MenuChoiceCards />
+
+          <FadeUp style={{ textAlign: 'center', marginTop: 50 }}>
+            <Link to="/menu" className="btn-outline-gold" style={{ textDecoration: 'none' }}>
+              View Full Menu Overview
+            </Link>
+          </FadeUp>
         </div>
       </section>
 
