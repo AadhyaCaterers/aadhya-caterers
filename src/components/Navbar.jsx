@@ -171,33 +171,6 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* CTA */}
-          <a
-            href={`tel:${PHONE_PRIMARY}`}
-            className="btn-primary hidden-mobile"
-            style={{
-              textDecoration: 'none',
-
-              background:
-                'linear-gradient(135deg,#B68B3A,#D4AF37)',
-
-              padding: '12px 24px',
-
-              borderRadius: 999,
-
-              color: '#fff',
-
-              fontWeight: 700,
-
-              boxShadow:
-                '0 10px 24px rgba(182,139,58,0.24)',
-
-              transition: 'all .3s ease',
-            }}
-          >
-            <span>Book Now</span>
-          </a>
-
           {/* MOBILE BUTTON */}
           <button
             onClick={() => setMenuOpen((o) => !o)}
