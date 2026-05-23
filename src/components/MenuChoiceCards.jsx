@@ -15,7 +15,7 @@ const MENU_OPTIONS = [
     tagline: 'Pure Vegetarian',
     description:
       'Traditional vegetarian catering with premium presentation, authentic flavours and elegant dining experience.',
-    image: '/img1.jpg',
+    image: '/img6.jpg',
     icon: '🥗',
     plans: VEG_PLANS,
 
@@ -30,12 +30,12 @@ const MENU_OPTIONS = [
 
   {
     key: 'nonveg',
-    to: '/nonveg-menu',
+    to: '/non-veg-menu',
     label: 'Non-Veg Menu',
     tagline: 'Premium Non-Veg',
     description:
       'Luxury non-vegetarian catering crafted with rich flavours, live counters and signature premium dishes.',
-    image: '/img2.jpg',
+    image: '/img5.jpg',
     icon: '🍗',
     plans: NONVEG_PLANS,
 
