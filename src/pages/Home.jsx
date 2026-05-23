@@ -290,32 +290,93 @@ export default function Home() {
       </section>
 
       {/* ── MENU PREVIEW (beige) ──────────────────────────────────── */}
-      <section id="menu-preview" className="section-pad beige-section">
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
-          <FadeUp style={{ textAlign: 'center', marginBottom: 56 }}>
-            <p className="section-kicker">Curated Catering Menus</p>
-            <h2 className="section-title" style={{ fontSize: 'clamp(1.9rem, 3.4vw, 2.8rem)', marginTop: 4 }}>
-              Our <span style={{
-                background: 'linear-gradient(135deg, #B8923D, #C9A14A, #8B6B2A)',
-                WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                fontStyle: 'italic',
-              }}>Menu</span>
-            </h2>
-            <Ornament />
-            <p className="section-subtitle" style={{ maxWidth: 640, margin: '14px auto 0', fontSize: '1.1rem' }}>
-              Explore our complete Veg &amp; Non-Veg catering menu for every celebration.
-            </p>
-          </FadeUp>
+     {/* ── MENU PREVIEW (beige) ──────────────────────────────────── */}
+<section id="menu-preview" className="section-pad beige-section">
+  <div
+    style={{
+      maxWidth: 1200,
+      margin: '0 auto',
+      padding: '0 24px',
+      position: 'relative',
+      zIndex: 1,
+    }}
+  >
+    <FadeUp style={{ textAlign: 'center', marginBottom: 56 }}>
+      <p className="section-kicker">
+        Premium Vegetarian Catering
+      </p>
 
-          <MenuChoiceCards />
+      <h2
+        className="section-title"
+        style={{
+          fontSize: 'clamp(1.9rem, 3.4vw, 2.8rem)',
+          marginTop: 4,
+          lineHeight: 1.2,
+        }}
+      >
+        <span
+          style={{
+            color: '#234B2C',
+            fontWeight: 800,
+          }}
+        >
+          Veg
+        </span>
 
-          <FadeUp style={{ textAlign: 'center', marginTop: 50 }}>
-            <Link to="/menu" className="btn-outline-gold" style={{ textDecoration: 'none' }}>
-              View Full Menu Overview
-            </Link>
-          </FadeUp>
-        </div>
-      </section>
+        <span
+          style={{
+            margin: '0 10px',
+            color: '#5C4634',
+          }}
+        >
+          &
+        </span>
+
+        <span
+          style={{
+            background:
+              'linear-gradient(135deg, #B8923D, #C9A14A, #8B6B2A)',
+            WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            fontStyle: 'italic',
+            fontSize: '0.82em',
+            fontWeight: 500,
+          }}
+        >
+          Non-Veg Menus
+        </span>
+      </h2>
+
+      <Ornament />
+
+      <p
+        className="section-subtitle"
+        style={{
+          maxWidth: 680,
+          margin: '14px auto 0',
+          fontSize: '1.08rem',
+        }}
+      >
+        Specialists in pure vegetarian feasts — with elegant
+        Non-Veg catering options for weddings, receptions and
+        family celebrations.
+      </p>
+    </FadeUp>
+
+    <MenuChoiceCards />
+
+    <FadeUp style={{ textAlign: 'center', marginTop: 50 }}>
+      <Link
+        to="/menu"
+        className="btn-outline-gold"
+        style={{ textDecoration: 'none' }}
+      >
+        View Full Menu Overview
+      </Link>
+    </FadeUp>
+  </div>
+</section>
 
       {/* ── GALLERY PREVIEW (rose-cream) ──────────────────────────── */}
       <section className="section-pad rose-section">
