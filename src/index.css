@@ -74,6 +74,23 @@ body {
   overflow-x: hidden;
 }
 
+/* ── BRAND LOGO (shared across Navbar, Footer, Preloader) ─────── */
+.brand-logo {
+  background: #ffffff;
+  padding: 8px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .brand-logo {
+    padding: 6px;
+    border-radius: 12px;
+  }
+}
+
 /* ── PRELOADER ─────────────────────────────────────────────────── */
 .preloader {
   position: fixed; inset: 0; z-index: 9999;

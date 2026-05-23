@@ -96,58 +96,31 @@ export default function Preloader({ onDone }) {
           textAlign: 'center',
         }}
       >
-        {/* LOGO CARD */}
-        <motion.div
+        {/* LOGO */}
+        <motion.img
+          src="/logo.png"
+          alt="Aadhya Caterers"
+          className="brand-logo"
+
           initial={{
             scale: 0.85,
           }}
           animate={{
             scale: 1,
+            y: [0, -6, 0],
           }}
+
           transition={{
-            duration: 0.8,
+            scale: { duration: 0.8 },
+            y: { repeat: Infinity, duration: 3 },
           }}
+
           style={{
-            background:
-              'rgba(255,255,255,0.75)',
-
-            backdropFilter: 'blur(18px)',
-
-            border:
-              '1px solid rgba(212,175,55,0.25)',
-
-            borderRadius: '36px',
-
-            padding: '42px',
-
-            boxShadow:
-              '0 30px 80px rgba(0,0,0,0.08)',
-
-            marginBottom: '36px',
+            width: '280px',
+            maxWidth: '80vw',
+            margin: '0 auto 36px',
           }}
-        >
-          <motion.img
-            src="/logo.png"
-            alt="Aadhya Caterers"
-
-            animate={{
-              y: [0, -6, 0],
-            }}
-
-            transition={{
-              repeat: Infinity,
-              duration: 3,
-            }}
-
-            style={{
-              width: '300px',
-              maxWidth: '80vw',
-
-              display: 'block',
-              margin: '0 auto',
-            }}
-          />
-        </motion.div>
+        />
 
         {/* BRAND NAME */}
         <motion.h1
