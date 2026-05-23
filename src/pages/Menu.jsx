@@ -12,6 +12,7 @@ import { WHATSAPP_URL, PHONE_PRIMARY } from '../data/constants';
 // and routes them to the dedicated menu page. The full menus
 // live at /veg-menu and /non-veg-menu.
 // ──────────────────────────────────────────────────────────────────
+
 export default function Menu() {
   return (
     <>
@@ -24,7 +25,13 @@ export default function Menu() {
       />
 
       {/* Choice section */}
-      <section className="cream-section" style={{ padding: '90px 0 100px', position: 'relative' }}>
+      <section
+        className="cream-section"
+        style={{
+          padding: '90px 0 100px',
+          position: 'relative',
+        }}
+      >
         <div
           style={{
             maxWidth: 1100,
@@ -34,13 +41,42 @@ export default function Menu() {
             zIndex: 1,
           }}
         >
-          <FadeUp style={{ textAlign: 'center', marginBottom: 56 }}>
-            <p className="section-kicker">Choose Your Catering Style</p>
+          <FadeUp
+            style={{
+              textAlign: 'center',
+              marginBottom: 56,
+            }}
+          >
+            <p className="section-kicker">
+              Premium Vegetarian Catering
+            </p>
+
             <h2
               className="section-title"
-              style={{ fontSize: 'clamp(1.95rem, 3.6vw, 2.9rem)', marginTop: 4 }}
+              style={{
+                fontSize: 'clamp(1.95rem, 3.6vw, 2.9rem)',
+                marginTop: 4,
+                lineHeight: 1.2,
+              }}
             >
-              Veg &amp;{' '}
+              <span
+                style={{
+                  color: '#234B2C',
+                  fontWeight: 800,
+                }}
+              >
+                Veg
+              </span>
+
+              <span
+                style={{
+                  margin: '0 10px',
+                  color: '#5C4634',
+                }}
+              >
+                &
+              </span>
+
               <span
                 style={{
                   background:
@@ -49,12 +85,16 @@ export default function Menu() {
                   backgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   fontStyle: 'italic',
+                  fontSize: '0.82em',
+                  fontWeight: 500,
                 }}
               >
                 Non-Veg Menus
               </span>
             </h2>
+
             <Ornament />
+
             <p
               className="section-subtitle"
               style={{
@@ -63,13 +103,20 @@ export default function Menu() {
                 fontSize: '1.1rem',
               }}
             >
-              Every plan is fully customisable to your guest count, wedding theme and preferences.
+              Specialists in pure vegetarian wedding feasts —
+              with elegant Non-Veg catering options for every
+              celebration.
             </p>
           </FadeUp>
 
           <MenuChoiceCards />
 
-          <FadeUp style={{ textAlign: 'center', marginTop: 56 }}>
+          <FadeUp
+            style={{
+              textAlign: 'center',
+              marginTop: 56,
+            }}
+          >
             <p
               style={{
                 fontFamily: '"DM Sans", sans-serif',
@@ -80,8 +127,11 @@ export default function Menu() {
                 lineHeight: 1.7,
               }}
             >
-              Need a fully personalised menu? Our team will craft a bespoke catering plan around your venue, theme and budget.
+              Need a fully personalised menu? Our team will
+              craft a bespoke catering plan around your venue,
+              theme and budget.
             </p>
+
             <div
               style={{
                 display: 'flex',
@@ -97,6 +147,7 @@ export default function Menu() {
               >
                 <span>📞 &nbsp;Speak to Our Team</span>
               </a>
+
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
@@ -106,6 +157,7 @@ export default function Menu() {
               >
                 Chat on WhatsApp
               </a>
+
               <Link
                 to="/contact"
                 className="btn-outline-gold"
