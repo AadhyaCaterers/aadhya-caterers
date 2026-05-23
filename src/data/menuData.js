@@ -1,24 +1,19 @@
 // ─────────────────────────────────────────────────────────────────
-// Aadhya Caterers — Catering Menu Data
-//
-// Two top-level menus: VEG and NON-VEG, each containing one or more
-// pricing plans (Standard, Silver). Each plan is a list of named
-// categories with item arrays. Fully data-driven: pages and home
-// cards consume the same source of truth.
+// Aadhya Caterers — Premium Menu Data
 // ─────────────────────────────────────────────────────────────────
 
-// ── Veg plans ────────────────────────────────────────────────────
+// ── VEG MENUS ───────────────────────────────────────────────────
+
 export const VEG_PLANS = [
   {
     id: 'veg-standard',
     title: 'Vegetarian Standard Menu',
-    tagline: 'A classic vegetarian celebration spread',
-    description:
-      'A graceful selection of authentic Telugu, North and South Indian vegetarian classics — perfectly curated for every traditional celebration.',
+    itemsCount: '15 Items',
+
     categories: [
       {
         name: 'Sweet',
-        icon: '🍮',
+        choose: 'Choose Any One',
         items: [
           'Gulab Jamun',
           'Kala Jamoon',
@@ -29,36 +24,40 @@ export const VEG_PLANS = [
           'Poornam',
         ],
       },
+
       {
         name: 'Hot',
-        icon: '🌶',
+        choose: 'Choose Any One',
         items: [
           'Mirchi Bajji',
           'Masala Gare',
           'Minapa Gare',
         ],
       },
+
       {
         name: 'Indian Bread',
-        icon: '🫓',
+        choose: 'Choose Any One',
         items: [
           'Pulka',
           'Rumali Roti',
           'Chepathi',
         ],
       },
+
       {
         name: 'SPL Masala Curry',
-        icon: '🥘',
+        choose: 'Choose Any One',
         items: [
           'Paneer Butter Masala',
           'Chole Masala',
           'Kadai Paneer',
         ],
       },
+
       {
         name: 'Flavour Rice',
-        icon: '🍚',
+        choose: 'Choose Any One',
         items: [
           'Veg Biryani',
           'Veg Dhum Biryani',
@@ -68,9 +67,10 @@ export const VEG_PLANS = [
           'Pulihora',
         ],
       },
+
       {
         name: 'Common Masala Curry',
-        icon: '🍲',
+        choose: 'Choose Any One',
         items: [
           'Guthi Vankaya Masala',
           'Alu Kurma',
@@ -78,44 +78,42 @@ export const VEG_PLANS = [
           'Mixed Veg Kurma',
         ],
       },
+
       {
         name: 'Oil Fry',
-        icon: '🍳',
+        choose: 'Choose Any One',
         items: [
           'Bendi Fry',
           'Alu Fry',
           'Dondkaya Fry',
           'Cabbage Fry',
-        ],
-      },
-      {
-        name: 'Common Items',
-        icon: '🥗',
-        items: [
-          'Dall',
-          'Samabar',
-          'Chutney',
-          'Pickle',
-          'Curd',
-          'Raitha',
-          'Plain Rice',
-          'Mouth Freshener',
-          'Papad',
-          'Drinking Water (Cool Water Tin)',
         ],
       },
     ],
+
+    commonItems: [
+      'Dal',
+      'Sambar',
+      'Chutney',
+      'Pickle',
+      'Curd',
+      'Raitha',
+      'Plain Rice',
+      'Mouth Freshener',
+      'Papad',
+      'Drinking Water',
+    ],
   },
+
   {
     id: 'veg-silver',
     title: 'Vegetarian Silver Menu',
-    tagline: 'An elevated silver-tier vegetarian feast',
-    description:
-      'Our premium vegetarian spread with the same authentic flavours plus refined add-ons like ice cream, sweet pan and green salad.',
+    itemsCount: '18 Items',
+
     categories: [
       {
         name: 'Sweet',
-        icon: '🍮',
+        choose: 'Choose Any One',
         items: [
           'Gulab Jamun',
           'Kala Jamoon',
@@ -126,36 +124,40 @@ export const VEG_PLANS = [
           'Poornam',
         ],
       },
+
       {
         name: 'Hot',
-        icon: '🌶',
+        choose: 'Choose Any One',
         items: [
           'Mirchi Bajji',
           'Masala Gare',
           'Minapa Gare',
         ],
       },
+
       {
         name: 'Indian Bread',
-        icon: '🫓',
+        choose: 'Choose Any One',
         items: [
           'Pulka',
           'Rumali Roti',
           'Chepathi',
         ],
       },
+
       {
         name: 'SPL Masala Curry',
-        icon: '🥘',
+        choose: 'Choose Any One',
         items: [
           'Paneer Butter Masala',
           'Chole Masala',
           'Kadai Paneer',
         ],
       },
+
       {
         name: 'Flavour Rice',
-        icon: '🍚',
+        choose: 'Choose Any One',
         items: [
           'Veg Biryani',
           'Veg Dhum Biryani',
@@ -165,9 +167,10 @@ export const VEG_PLANS = [
           'Pulihora',
         ],
       },
+
       {
         name: 'Common Masala Curry',
-        icon: '🍲',
+        choose: 'Choose Any One',
         items: [
           'Guthi Vankaya Masala',
           'Alu Kurma',
@@ -175,9 +178,10 @@ export const VEG_PLANS = [
           'Mixed Veg Kurma',
         ],
       },
+
       {
         name: 'Oil Fry',
-        icon: '🍳',
+        choose: 'Choose Any One',
         items: [
           'Bendi Fry',
           'Alu Fry',
@@ -185,40 +189,155 @@ export const VEG_PLANS = [
           'Cabbage Fry',
         ],
       },
+    ],
+
+    commonItems: [
+      'Dal',
+      'Sambar',
+      'Chutney',
+      'Pickle',
+      'Curd',
+      'Raitha',
+      'Plain Rice',
+      'Sweet Pan',
+      'Papad',
+      'Water Bottle',
+      'Ice Cream',
+      'Green Salad',
+    ],
+  },
+
+  {
+    id: 'veg-platinum',
+    title: 'Vegetarian Platinum Menu',
+    itemsCount: '21 Items',
+
+    categories: [
       {
-        name: 'Common Items',
-        icon: '🥗',
+        name: 'Welcome Drink',
+        choose: 'Included',
+        items: ['Welcome Drink'],
+      },
+
+      {
+        name: 'Veg Starter',
+        choose: 'Included',
+        items: ['Veg Starter'],
+      },
+
+      {
+        name: 'Sweet',
+        choose: 'Common One & SPL One',
         items: [
-          'Dall',
-          'Samabar',
-          'Chutney',
-          'Pickle',
-          'Curd',
-          'Raitha',
-          'Plain Rice',
-          'Sweet Pan',
-          'Papad',
-          'Water Bottle',
-          'Ice Cream',
-          'Green Salad',
+          'Gulab Jamun',
+          'Kala Jamoon',
+          'Double ka Mita',
+          'Jilebi',
+          'Badusha',
+          'Bobbatlu',
+          'Poornam',
+          'Kadu Kheer',
+          'Rasmalai',
         ],
       },
+
+      {
+        name: 'Hot',
+        choose: 'Choose Any One',
+        items: [
+          'Mirchi Bajji',
+          'Masala Gare',
+          'Minapa Gare',
+        ],
+      },
+
+      {
+        name: 'Indian Bread',
+        choose: 'Choose Any One',
+        items: [
+          'Pulka',
+          'Rumali Roti',
+          'Chepathi',
+          'Poori',
+        ],
+      },
+
+      {
+        name: 'SPL Masala Curry',
+        choose: 'Choose Any One',
+        items: [
+          'Paneer Butter Masala',
+          'Chole Masala',
+          'Kadai Paneer',
+          'Palak Paneer',
+        ],
+      },
+
+      {
+        name: 'Flavour Rice',
+        choose: 'Choose Any One',
+        items: [
+          'Veg Biryani',
+          'Veg Dhum Biryani',
+          'Paneer Dhum Biryani',
+          'Bagara Rice',
+          'Pudina Rice',
+          'Pulihora',
+        ],
+      },
+
+      {
+        name: 'Common Masala Curry',
+        choose: 'Choose Any One',
+        items: [
+          'Guthi Vankaya Masala',
+          'Alu Kurma',
+          'Mirchi Ka Salan',
+          'Mixed Veg Kurma',
+        ],
+      },
+
+      {
+        name: 'Oil Fry',
+        choose: 'Choose Any One',
+        items: [
+          'Bendi Fry',
+          'Alu Fry',
+          'Dondkaya Fry',
+          'Cabbage Fry',
+        ],
+      },
+    ],
+
+    commonItems: [
+      'Dal',
+      'Sambar',
+      'Chutney',
+      'Pickle',
+      'Curd',
+      'Raitha',
+      'Plain Rice',
+      'Sweet Pan',
+      'Papad',
+      'Water Bottle',
+      'Ice Cream',
+      'Green Salad',
     ],
   },
 ];
 
-// ── Non-Veg plans ────────────────────────────────────────────────
+// ── NON VEG MENUS ───────────────────────────────────────────────
+
 export const NONVEG_PLANS = [
   {
     id: 'nonveg-standard',
     title: 'Non-Veg Standard Menu',
-    tagline: 'A royal Hyderabadi non-veg celebration spread',
-    description:
-      'A classic non-vegetarian feast featuring authentic Hyderabadi Dum Biryani, signature chicken curries and traditional Telugu sides.',
+    itemsCount: '17 Items',
+
     categories: [
       {
         name: 'Sweet',
-        icon: '🍮',
+        choose: 'Choose Any One',
         items: [
           'Gulab Jamun',
           'Kala Jamoon',
@@ -229,9 +348,10 @@ export const NONVEG_PLANS = [
           'Poornam',
         ],
       },
+
       {
         name: 'Hot',
-        icon: '🌶',
+        choose: 'Choose Any One',
         items: [
           'Mirchi Bajji',
           'Masala Gare',
@@ -239,75 +359,73 @@ export const NONVEG_PLANS = [
           'Veg Manchurian',
         ],
       },
+
       {
         name: 'Indian Bread',
-        icon: '🫓',
+        choose: 'Choose Any One',
         items: [
           'Pulka',
           'Rumali Roti',
           'Chepathi',
         ],
       },
+
       {
         name: 'Paneer Butter Masala',
-        icon: '🧈',
-        items: [
-          'Paneer Butter Masala',
-        ],
+        choose: 'Included',
+        items: ['Paneer Butter Masala'],
       },
+
       {
         name: 'Hyderabad Dhum Biryani',
-        icon: '🍛',
+        choose: 'Choose Any One',
         items: [
           'Chicken Biryani',
           'Mutton Biryani',
         ],
       },
+
       {
         name: 'Mirchi Ka Salan',
-        icon: '🌶',
-        items: [
-          'Mirchi Ka Salan',
-        ],
+        choose: 'Included',
+        items: ['Mirchi Ka Salan'],
       },
+
       {
         name: 'Non-Veg Curry',
-        icon: '🍗',
+        choose: 'Choose Any One',
         items: [
           'Chicken Curry',
           'Chicken Fry',
           'Dhum Ka Chicken',
         ],
       },
-      {
-        name: 'Common Items',
-        icon: '🥗',
-        items: [
-          'Dall',
-          'Samabar',
-          'Chutney',
-          'Veg Biryani or Bagara',
-          'Curd',
-          'Raitha',
-          'Plain Rice',
-          'Mouth Freshener',
-          'Papad',
-          'Drinking Water (Cool Water Tin)',
-          'Green Salad',
-        ],
-      },
+    ],
+
+    commonItems: [
+      'Dal',
+      'Sambar',
+      'Chutney',
+      'Veg Biryani or Bagara',
+      'Curd',
+      'Raitha',
+      'Plain Rice',
+      'Mouth Freshener',
+      'Papad',
+      'Drinking Water',
+      'Green Salad',
     ],
   },
+
   {
     id: 'nonveg-silver',
     title: 'Non-Veg Silver Menu',
-    tagline: 'A grand silver-tier non-veg banquet',
-    description:
-      'Our signature non-veg silver spread — premium starters, dum biryanis, signature curries, plus refined add-ons like sweet pan and ice cream.',
+    itemsCount: '21 Items',
+
     categories: [
       {
         name: 'Sweet',
-        icon: '🍮',
+        choose: 'Choose Any One',
         items: [
           'Gulab Jamun',
           'Kala Jamoon',
@@ -318,9 +436,10 @@ export const NONVEG_PLANS = [
           'Poornam',
         ],
       },
+
       {
         name: 'Hot',
-        icon: '🌶',
+        choose: 'Choose Any One',
         items: [
           'Mirchi Bajji',
           'Masala Gare',
@@ -328,9 +447,10 @@ export const NONVEG_PLANS = [
           'Veg Manchurian',
         ],
       },
+
       {
         name: 'Non Veg Snack',
-        icon: '🍢',
+        choose: 'Choose Any One',
         items: [
           'Chicken Manchurian',
           'Chilli Chicken',
@@ -339,109 +459,62 @@ export const NONVEG_PLANS = [
           'Fish Fry',
         ],
       },
+
       {
         name: 'Indian Bread',
-        icon: '🫓',
+        choose: 'Choose Any One',
         items: [
           'Pulka',
           'Rumali Roti',
           'Chepathi',
         ],
       },
+
       {
         name: 'Paneer Butter Masala',
-        icon: '🧈',
-        items: [
-          'Paneer Butter Masala',
-        ],
+        choose: 'Included',
+        items: ['Paneer Butter Masala'],
       },
+
       {
         name: 'Hyderabad Dhum Biryani',
-        icon: '🍛',
+        choose: 'Choose Any One',
         items: [
           'Chicken Biryani',
           'Mutton Biryani',
         ],
       },
+
       {
         name: 'Mirchi Ka Salan',
-        icon: '🌶',
-        items: [
-          'Mirchi Ka Salan',
-        ],
+        choose: 'Included',
+        items: ['Mirchi Ka Salan'],
       },
+
       {
         name: 'Non-Veg Curry',
-        icon: '🍗',
+        choose: 'Choose Any One',
         items: [
           'Chicken Curry',
           'Chicken Fry',
           'Dhum Ka Chicken',
         ],
       },
-      {
-        name: 'Common Items',
-        icon: '🥗',
-        items: [
-          'Dall',
-          'Samabar',
-          'Chutney',
-          'Veg Biryani or Bagara',
-          'Curd',
-          'Raitha',
-          'Plain Rice',
-          'Sweet Pan',
-          'Papad',
-          'Water Bottle',
-          'Green Salad',
-          'Ice Cream',
-        ],
-      },
+    ],
+
+    commonItems: [
+      'Dal',
+      'Sambar',
+      'Chutney',
+      'Veg Biryani or Bagara',
+      'Curd',
+      'Raitha',
+      'Plain Rice',
+      'Sweet Pan',
+      'Papad',
+      'Water Bottle',
+      'Green Salad',
+      'Ice Cream',
     ],
   },
 ];
-
-// ── Top-level menu choice cards (Home + /menu hub) ───────────────
-// Each entry powers one premium card on the homepage and the menu hub.
-export const MENU_OPTIONS = [
-  {
-    key: 'veg',
-    label: 'Veg Menu',
-    tagline: 'Pure Vegetarian Delights',
-    description:
-      'Authentic Telugu and North Indian vegetarian classics — Standard & Silver plans curated for every celebration.',
-    icon: '🌿',
-    image: '/img6.jpg',
-    to: '/veg-menu',
-    accent: {
-      from: '#E5C77F',   // gold light
-      mid:  '#C9A14A',   // gold
-      to:   '#8B6B2A',   // gold deep
-      ring: 'rgba(201,161,74,0.45)',
-      tint: 'rgba(229,199,127,0.18)',
-    },
-    plans: VEG_PLANS,
-  },
-  {
-    key: 'nonveg',
-    label: 'Non-Veg Menu',
-    tagline: 'Royal Hyderabadi Non-Veg Feast',
-    description:
-      'Hyderabadi Dum Biryani, signature chicken & mutton curries — Standard & Silver plans for grand occasions.',
-    icon: '🍗',
-    image: '/img7.jpg',
-    to: '/non-veg-menu',
-    accent: {
-      from: '#E8A29C',   // soft rose
-      mid:  '#C0392B',   // primary red
-      to:   '#6B1F1F',   // maroon
-      ring: 'rgba(192,57,43,0.45)',
-      tint: 'rgba(232,162,156,0.20)',
-    },
-    plans: NONVEG_PLANS,
-  },
-];
-
-// Helper: get a menu option by key
-export const getMenuOption = (key) =>
-  MENU_OPTIONS.find((m) => m.key === key);
