@@ -95,7 +95,13 @@ export default function Navbar() {
               style={{
                 height: scrolled ? 44 : 52,
                 width: 'auto',
-                transition: 'height .3s ease, padding .3s ease',
+                objectFit: 'contain',
+                display: 'block',
+                background: '#ffffff',
+                padding: '6px',
+                borderRadius: '14px',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+                transition: 'all .3s ease',
               }}
             />
 
