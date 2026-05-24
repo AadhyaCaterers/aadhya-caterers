@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PageBanner from '../components/PageBanner';
 import { FadeUp, FadeIn, Ornament } from '../components/animations';
 import {
-  WHATSAPP_URL, YOUTUBE_URL, PHONE_PRIMARY, PHONE_SECONDARY, EMAIL_PRIMARY,
+  WHATSAPP_URL, YOUTUBE_URL, PHONE_PRIMARY, EMAIL_PRIMARY,
   USE_FORMSPREE, FORMSPREE_ENDPOINT,
   EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY,
 } from '../data/constants';
@@ -58,7 +58,7 @@ export default function Contact() {
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 18 }}>
             {[
-              { icon: '📞', label: 'Call Now',     val: '+91 93981 83297',         href: `tel:${PHONE_PRIMARY}`,    color: 'linear-gradient(135deg, #C0392B, #962E22)', textColor: '#FFFBF2' },
+              { icon: '📞', label: 'Call Now',     val: '+91 90908 09026',         href: `tel:${PHONE_PRIMARY}`,    color: 'linear-gradient(135deg, #C0392B, #962E22)', textColor: '#FFFBF2' },
               { icon: '💬', label: 'WhatsApp Chat', val: 'Chat with us instantly', href: WHATSAPP_URL,             color: '#25D366', textColor: '#FFF', external: true },
               { icon: '✉️', label: 'Email Us',     val: EMAIL_PRIMARY,             href: `mailto:${EMAIL_PRIMARY}`, color: 'linear-gradient(135deg, #E5C77F, #C9A14A, #8B6B2A)', textColor: '#3B2A1F' },
               { icon: '▶',  label: 'YouTube',      val: 'Watch our reels',         href: YOUTUBE_URL,              color: '#FF0000', textColor: '#FFF', external: true },
@@ -109,8 +109,8 @@ export default function Contact() {
 
               {[
                 { icon: '📞', label: 'Phone', lines: [
-                  <a key="p1" href={`tel:${PHONE_PRIMARY}`}   style={{ color: '#C0392B', textDecoration: 'none', fontWeight: 600 }}>+91 93981 83297</a>,
-                  <a key="p2" href={`tel:${PHONE_SECONDARY}`} style={{ color: '#3B2A1F', textDecoration: 'none' }}>+91 90908 09026</a>,
+                  <a key="p1" href={`tel:${PHONE_PRIMARY}`}                                 style={{ color: '#C0392B', textDecoration: 'none', fontWeight: 600 }}>+91 90908 09026</a>,
+                  <a key="p2" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" style={{ color: '#3B2A1F', textDecoration: 'none' }}>+91 93981 83297</a>,
                 ]},
                 { icon: '✉️', label: 'Email', lines: [
                   <a key="e" href={`mailto:${EMAIL_PRIMARY}`} style={{ color: '#C0392B', textDecoration: 'none', fontSize: '0.95rem', fontWeight: 600 }}>{EMAIL_PRIMARY}</a>,
@@ -197,7 +197,7 @@ export default function Contact() {
               )}
               {status === 'error' && (
                 <div style={{ background: 'rgba(192,57,43,0.10)', border: '1.5px solid #C0392B', padding: '14px 22px', marginBottom: 24, fontFamily: '"DM Sans"', color: '#962E22', fontSize: '1rem', borderRadius: 8, fontWeight: 600 }}>
-                  ✗ Something went wrong. Please call us directly at +91 93981 83297.
+                  ✗ Something went wrong. Please call us directly at +91 90908 09026.
                 </div>
               )}
 

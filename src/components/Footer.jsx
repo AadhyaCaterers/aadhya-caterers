@@ -8,7 +8,6 @@ import {
   INSTAGRAM_URL,
   FACEBOOK_URL,
   PHONE_PRIMARY,
-  PHONE_SECONDARY,
   EMAIL_PRIMARY,
   LOGO_SRC,
 } from '../data/constants';
@@ -341,11 +340,13 @@ export default function Footer() {
                   fontSize: '0.92rem',
                 }}
               >
-                📞 +91 93981 83297
+                📞 +91 90908 09026
               </a>
 
               <a
-                href={`tel:${PHONE_SECONDARY}`}
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   color:
                     'rgba(255,251,242,0.80)',
@@ -354,7 +355,7 @@ export default function Footer() {
                   fontSize: '0.92rem',
                 }}
               >
-                📞 +91 90908 09026
+                💬 +91 93981 83297
               </a>
 
               <a
