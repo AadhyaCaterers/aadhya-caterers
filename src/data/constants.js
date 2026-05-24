@@ -16,7 +16,7 @@ export const FORMSPREE_ENDPOINT =
 
 export const PHONE_PRIMARY = '9398183297';
 
-export const PHONE_SECONDARY = '9393823244';
+export const PHONE_SECONDARY = '9090809026';
 
 export const EMAIL_PRIMARY =
   'aadhyacaterers01@gmail.com';

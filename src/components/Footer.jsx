@@ -341,7 +341,7 @@ export default function Footer() {
                   fontSize: '0.92rem',
                 }}
               >
-                📞 +91 94940 55353
+                📞 +91 93981 83297
               </a>
 
               <a
@@ -354,7 +354,7 @@ export default function Footer() {
                   fontSize: '0.92rem',
                 }}
               >
-                📞 +91 93981 83197
+                📞 +91 90908 09026
               </a>
 
               <a

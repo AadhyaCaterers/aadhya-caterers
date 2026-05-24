@@ -33,8 +33,8 @@ export default function TopBar() {
     <div className="top-bar">
       <div className="top-bar-inner">
         <div className="tb-info">
-          <a href={`tel:${PHONE_PRIMARY}`}><Phone /> +91 94940 55353</a>
-          <a href={`tel:${PHONE_SECONDARY}`}><Phone /> +91 93981 83197</a>
+          <a href={`tel:${PHONE_PRIMARY}`}><Phone /> +91 93981 83297</a>
+          <a href={`tel:${PHONE_SECONDARY}`}><Phone /> +91 90908 09026</a>
           <a href={`mailto:${EMAIL_PRIMARY}`}><Mail /> {EMAIL_PRIMARY}</a>
           <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#6B5544' }}>
             <Clock /> Mon – Sun · 8:00 AM – 9:00 PM
