@@ -14,9 +14,11 @@ export const FORMSPREE_ENDPOINT =
 
 // ─── CONTACT INFO ────────────────────────────────────────────────────────────
 
-export const PHONE_PRIMARY = '9398183297';
+// PRIMARY = call number (used for all tel: links)
+export const PHONE_PRIMARY = '9090809026';
 
-export const PHONE_SECONDARY = '9090809026';
+// SECONDARY = WhatsApp number (displayed alongside; its links open WhatsApp, not the dialer)
+export const PHONE_SECONDARY = '9398183297';
 
 export const EMAIL_PRIMARY =
   'aadhyacaterers01@gmail.com';
@@ -27,7 +29,7 @@ const WHATSAPP_MSG = encodeURIComponent(
   'Hi, I want to book catering for my event. Please share details about your packages and availability.'
 );
 
-// WhatsApp redirects to PRIMARY number
+// WhatsApp opens chat with the dedicated WhatsApp number (PHONE_SECONDARY)
 
 export const WHATSAPP_URL =
   `https://wa.me/919398183297?text=${WHATSAPP_MSG}`;
