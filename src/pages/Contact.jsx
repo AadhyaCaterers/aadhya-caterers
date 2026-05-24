@@ -1,51 +1,122 @@
 import React, { useState } from 'react';
+
 import PageBanner from '../components/PageBanner';
 import { FadeUp, FadeIn, Ornament } from '../components/animations';
+
 import {
-  WHATSAPP_URL, YOUTUBE_URL, PHONE_PRIMARY, EMAIL_PRIMARY,
-  USE_FORMSPREE, FORMSPREE_ENDPOINT,
-  EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY,
+  WHATSAPP_URL,
+  YOUTUBE_URL,
+  PHONE_PRIMARY,
+  EMAIL_PRIMARY,
+  USE_FORMSPREE,
+  FORMSPREE_ENDPOINT,
+  EMAILJS_SERVICE_ID,
+  EMAILJS_TEMPLATE_ID,
+  EMAILJS_PUBLIC_KEY,
 } from '../data/constants';
 
-// Bright cream luxury Contact page — form, branches, map
-export default function Contact() {
-  const [form, setForm] = useState({ name: '', phone: '', email: '', event: '', message: '' });
-  const [status, setStatus] = useState('idle');
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+// Bright cream luxury Contact page — form, branches, map
+
+export default function Contact() {
+
+  const [form, setForm] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    event: '',
+    message: '',
+  });
+
+  const [status, setStatus] =
+    useState('idle');
+
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
+
     setStatus('sending');
+
     try {
+
       if (USE_FORMSPREE) {
-        const res = await fetch(FORMSPREE_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify(form),
-        });
-        if (!res.ok) throw new Error('Formspree error');
+
+        const res = await fetch(
+          FORMSPREE_ENDPOINT,
+          {
+            method: 'POST',
+
+            headers: {
+              'Content-Type': 'application/json',
+              Accept: 'application/json',
+            },
+
+            body: JSON.stringify(form),
+          }
+        );
+
+        if (!res.ok) {
+          throw new Error('Formspree error');
+        }
+
       } else {
-        const emailjs = await import('@emailjs/browser');
+
+        const emailjs =
+          await import('@emailjs/browser');
+
         await emailjs.send(
           EMAILJS_SERVICE_ID,
           EMAILJS_TEMPLATE_ID,
-          { from_name: form.name, phone: form.phone, email: form.email, event_type: form.event, message: form.message },
-          EMAILJS_PUBLIC_KEY,
+          {
+            from_name: form.name,
+            phone: form.phone,
+            email: form.email,
+            event_type: form.event,
+            message: form.message,
+          },
+          EMAILJS_PUBLIC_KEY
         );
       }
+
       setStatus('success');
-      setForm({ name: '', phone: '', email: '', event: '', message: '' });
-      setTimeout(() => setStatus('idle'), 6000);
+
+      setForm({
+        name: '',
+        phone: '',
+        email: '',
+        event: '',
+        message: '',
+      });
+
+      setTimeout(() => {
+        setStatus('idle');
+      }, 6000);
+
     } catch (err) {
+
       console.error(err);
+
       setStatus('error');
-      setTimeout(() => setStatus('idle'), 5000);
+
+      setTimeout(() => {
+        setStatus('idle');
+      }, 5000);
     }
   };
 
+
   return (
     <>
+
       <PageBanner
         tagline="Get in Touch"
         title="Contact Aadhya Caterers"
@@ -53,40 +124,165 @@ export default function Contact() {
         image="/img6.jpg"
       />
 
-      {/* ── QUICK ACTIONS (cream) ─────────────────────────────────── */}
-      <section className="cream-section" style={{ padding: '80px 0 30px', position: 'relative' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 18 }}>
+
+      {/* QUICK ACTIONS */}
+
+      <section
+        className="cream-section"
+        style={{
+          padding: '80px 0 30px',
+          position: 'relative',
+        }}
+      >
+
+        <div
+          style={{
+            maxWidth: 1100,
+            margin: '0 auto',
+            padding: '0 24px',
+            position: 'relative',
+            zIndex: 1,
+          }}
+        >
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns:
+                'repeat(auto-fit, minmax(220px, 1fr))',
+              gap: 18,
+            }}
+          >
+
             {[
-              { icon: '📞', label: 'Call Now',     val: '+91 90908 09026',         href: `tel:${PHONE_PRIMARY}`,    color: 'linear-gradient(135deg, #C0392B, #962E22)', textColor: '#FFFBF2' },
-              { icon: '💬', label: 'WhatsApp Chat', val: 'Chat with us instantly', href: WHATSAPP_URL,             color: '#25D366', textColor: '#FFF', external: true },
-              { icon: '✉️', label: 'Email Us',     val: EMAIL_PRIMARY,             href: `mailto:${EMAIL_PRIMARY}`, color: 'linear-gradient(135deg, #E5C77F, #C9A14A, #8B6B2A)', textColor: '#3B2A1F' },
-              { icon: '▶',  label: 'YouTube',      val: 'Watch our reels',         href: YOUTUBE_URL,              color: '#FF0000', textColor: '#FFF', external: true },
+              {
+                icon: '📞',
+                label: 'Call Now',
+                val: '+91 90908 09026',
+                href: `tel:${PHONE_PRIMARY}`,
+                color:
+                  'linear-gradient(135deg, #C0392B, #962E22)',
+                textColor: '#FFFBF2',
+              },
+
+              {
+                icon: '💬',
+                label: 'WhatsApp Chat',
+                val: 'Chat with us instantly',
+
+                href: WHATSAPP_URL,
+
+                color: '#25D366',
+                textColor: '#FFF',
+                external: true,
+              },
+
+              {
+                icon: '✉️',
+                label: 'Email Us',
+                val: EMAIL_PRIMARY,
+
+                href:
+                  `mailto:${EMAIL_PRIMARY}`,
+
+                color:
+                  'linear-gradient(135deg, #E5C77F, #C9A14A, #8B6B2A)',
+
+                textColor: '#3B2A1F',
+              },
+
+              {
+                icon: '▶',
+                label: 'YouTube',
+                val: 'Watch our reels',
+
+                href: YOUTUBE_URL,
+
+                color: '#FF0000',
+                textColor: '#FFF',
+                external: true,
+              },
+
             ].map((a, i) => (
-              <FadeUp key={a.label} delay={i * 0.06}>
+
+              <FadeUp
+                key={a.label}
+                delay={i * 0.06}
+              >
+
                 <a
                   href={a.href}
-                  target={a.external ? '_blank' : undefined}
-                  rel={a.external ? 'noopener noreferrer' : undefined}
+                  target={
+                    a.external
+                      ? '_blank'
+                      : undefined
+                  }
+
+                  rel={
+                    a.external
+                      ? 'noopener noreferrer'
+                      : undefined
+                  }
+
                   className="cream-card"
-                  style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '22px 22px', textDecoration: 'none', color: 'inherit' }}
+
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 14,
+                    padding: '22px 22px',
+                    textDecoration: 'none',
+                    color: 'inherit',
+                  }}
                 >
-                  <div style={{
-                    width: 52, height: 52, borderRadius: '50%',
-                    background: a.color, color: a.textColor,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: '1.3rem', flexShrink: 0,
-                    boxShadow: '0 8px 16px rgba(139,107,42,0.20)',
-                  }}>
+
+                  <div
+                    style={{
+                      width: 52,
+                      height: 52,
+                      borderRadius: '50%',
+                      background: a.color,
+                      color: a.textColor,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '1.3rem',
+                      flexShrink: 0,
+
+                      boxShadow:
+                        '0 8px 16px rgba(139,107,42,0.20)',
+                    }}
+                  >
                     {a.icon}
                   </div>
+
                   <div>
-                    <p style={{ fontFamily: '"DM Sans"', color: '#8C7763', fontSize: '0.7rem', letterSpacing: '0.20em', textTransform: 'uppercase', fontWeight: 700 }}>
+
+                    <p
+                      style={{
+                        fontFamily: '"DM Sans"',
+                        color: '#8C7763',
+                        fontSize: '0.7rem',
+                        letterSpacing: '0.20em',
+                        textTransform: 'uppercase',
+                        fontWeight: 700,
+                      }}
+                    >
                       {a.label}
                     </p>
-                    <p style={{ fontFamily: '"DM Sans"', color: '#3B2A1F', fontSize: '0.98rem', fontWeight: 600, marginTop: 2 }}>
+
+                    <p
+                      style={{
+                        fontFamily: '"DM Sans"',
+                        color: '#3B2A1F',
+                        fontSize: '0.98rem',
+                        fontWeight: 600,
+                        marginTop: 2,
+                      }}
+                    >
                       {a.val}
                     </p>
+
                   </div>
                 </a>
               </FadeUp>
@@ -109,7 +305,7 @@ export default function Contact() {
 
               {[
                 { icon: '📞', label: 'Phone', lines: [
-                  <a key="p1" href={`tel:${PHONE_PRIMARY}`} style={{ color: '#C0392B', textDecoration: 'none', fontWeight: 600 }}>+91 90908 09026</a>,
+                  <a key="p1" href={`tel:${PHONE_PRIMARY}`}                                 style={{ color: '#C0392B', textDecoration: 'none', fontWeight: 600 }}>+91 90908 09026</a>,
                   <a key="p2" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" style={{ color: '#3B2A1F', textDecoration: 'none' }}>+91 93981 83297</a>,
                 ]},
                 { icon: '✉️', label: 'Email', lines: [
