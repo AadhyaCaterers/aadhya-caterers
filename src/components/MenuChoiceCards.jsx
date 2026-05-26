@@ -34,7 +34,7 @@ const MENU_OPTIONS = [
 
   {
     key: 'nonveg',
-    to: '/nonveg-menu',
+    to: '/non-veg-menu',
 
     label: 'Non-Veg Menu',
 
