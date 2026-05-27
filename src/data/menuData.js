@@ -60,7 +60,6 @@ export const VEG_PLANS = [
         choose: 'Choose Any One',
         items: [
           'Veg Biryani',
-          'Veg Dhum Biryani',
           'Jeera Rice',
           'Bagara Rice',
           'Pudina Rice',
