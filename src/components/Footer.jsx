@@ -380,8 +380,20 @@ export default function Footer() {
                   lineHeight: 1.7,
                 }}
               >
-                📍 Kukatpally • Uppal • Hyderabad
+                📍 Uppal . Chilka nagar• Hyderabad
               </p>
+<p
+                style={{
+                  color:
+                    'rgba(255,251,242,0.72)',
+                  fontFamily: '"DM Sans"',
+                  fontSize: '0.92rem',
+                  lineHeight: 1.7,
+                }}
+              >
+                📍 Kukatpally • Balaji Nagar• Hyderabad
+              </p>
+              
             </div>
           </div>
         </div>
