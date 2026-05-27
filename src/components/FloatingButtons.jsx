@@ -36,7 +36,7 @@ export default function FloatingButtons() {
           href={`tel:${PHONE_PRIMARY}`}
           style={{
             flex: 1,
-            padding: '16px 8px',
+            padding: '14px 5px',
             background:
               'linear-gradient(135deg, #C0392B, #962E22)',
             color: '#FFFBF2',
@@ -67,7 +67,7 @@ export default function FloatingButtons() {
           rel="noopener noreferrer"
           style={{
             flex: 1,
-            padding: '16px 8px',
+            padding: '14px 5px',
             background: '#25D366',
             color: '#FFF',
             textAlign: 'center',
