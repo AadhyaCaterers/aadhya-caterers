@@ -536,6 +536,7 @@ export default function Home() {
             <Link to="/videos" className="btn-gold" style={{ textDecoration: 'none' }}>View All Reels</Link>
             <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer" className="btn-outline-gold" style={{ textDecoration: 'none' }}>YouTube Channel</a>
           </FadeUp>
+          
         </div>
       </section>
 
@@ -545,5 +546,14 @@ export default function Home() {
       {/* ── CTA BANNER ───────────────────────────────────────────── */}
       <CTASection />
     </>
-  );
+  );<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-10797028884">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-10797028884');
+</script>
 }
